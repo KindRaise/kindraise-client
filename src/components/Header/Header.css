@@ -4,7 +4,7 @@
   align-items: center;
   padding: 20px 50px;
   width: 100%;
-  max-width: 1200px; /* Set your desired max width */
+  max-width: 1200px; 
   height: 80px; 
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -105,7 +105,6 @@
     cursor: pointer; 
   }
 
-  /* Additional styles for screens 400px and up */
   @media (min-width: 400px) {
     .header-mobile {
       display: flex; 
@@ -117,24 +116,78 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
     
-    /* Add spacing for individual items */
     .header-mobile .search-header,
     .header-mobile .header-logo,
     .hamburger {
-      margin: 0 15px; /* Adjust as needed for desired spacing */
+      margin: 0 15px; 
     }
     
     .header-logo {
       width: 160px; 
     }
     
-    /* Update for search icon and hamburger */
     .search-header {
-      margin-right: 10px; /* Space after search icon */
+      margin-right: 10px; 
     }
     
     .hamburger {
       margin-left: 10px; 
+      color: black;
+    }
+
+    .mobile-nav {
+      position: fixed; 
+      top: 0; 
+      right: -250px; 
+      width: 250px; 
+      height: 50%;
+      display: flex;
+      flex-direction: column; 
+      background-color: #fff; 
+      padding: 20px; 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+      border-radius: 0 8px 8px 0; 
+      transition: all 0.3s ease; 
+      z-index: 1000;
+
+
+
+      display: flex; 
+  
+    }
+    
+    .mobile-nav.open {
+      right: 0;
+    }
+    
+    .mobile-nav a {
+      margin: 15px 0; 
+      text-decoration: none; 
+      color: #333; 
+      font-size: 18px;
+      text-align: left;
+      padding: 10px;
+      transition: color 0.3s ease; 
+    }
+    
+    .mobile-nav a:hover {
+      color: #05BB6D;
+    }
+    
+    .signup-button {
+      margin-top: auto; 
+      padding: 12px; 
+      background-color: #05BB6D; 
+      color: white; 
+      border: none; 
+      border-radius: 8px; 
+      text-align: center; 
+      font-size: 16px; 
+      transition: background-color 0.3s ease; 
+    }
+    
+    .signup-button:hover {
+      background-color: #05CE78; 
     }
   }    
 }

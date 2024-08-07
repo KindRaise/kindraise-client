@@ -36,15 +36,13 @@ const Header = () => {
           <CiSearch />
           <img src={logo} alt="logo" className="header-logo" onClick={() => navigate('/')} />
           <Hamburger
-            toggled={isOpen}
-            toggle={toggleMenu}
-            aria-label="Toggle navigation"
-            aria-expanded={isOpen}
-          />
+          toggled={isOpen}
+          toggle={toggleMenu}
+          aria-label="Toggle navigation"
+        />
           {isOpen && (
-            <nav className="mobile-nav">
-              <a onClick={() => navigate('/explore-campaigns')}>Campaigns</a>
-              <a onClick={() => navigate('/search')} className='search-header'><CiSearch /><span>Search</span></a>
+            <nav className={`mobile-nav ${isOpen ? 'open' : ''}`}>
+            <a onClick={() => navigate('/explore-campaigns')}>Campaigns</a>
               <a onClick={() => navigate('/about-us')}>About</a>
               <a onClick={() => navigate('/login')}>Login</a>
               <a className="signup-button" onClick={() => navigate('/signup')}>Sign Up</a>
@@ -55,7 +53,10 @@ const Header = () => {
         <div className="header header-desktop">
           <div className="header-left">
             <a onClick={() => navigate('/explore-campaigns')}>Campaigns</a>
-            <a onClick={() => navigate('/search')} className='search-header'><CiSearch /><span>Search</span></a>
+            <a onClick={() => navigate('/search')} className='search-header-mobile'>
+            <CiSearch />
+            <span>Search</span>
+          </a>
           </div>
           <div className="header-center">
             <img src={logo} alt="logo" className="header-logo" onClick={() => navigate('/')} />
