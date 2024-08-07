@@ -3,7 +3,7 @@ import "./Transaction.css";
 // import PayoutTable from '../components/PayoutTable/PayoutTable'
 import { useTable } from "react-table";
 import { BsArrowDown } from "react-icons/bs";
-import Donordetails from "./Donordetails";
+import Donordetails from "../DonorDetails/DonorDetails";
 import useLocalStorage from "use-local-storage";
 import { BiSearch } from "react-icons/bi";
 

@@ -5,7 +5,10 @@ const appSlice = createSlice({
   name: 'app',
   initialState: {
     user: {},
-    token: {}
+    allCampaigns: [],
+    myCampaigns: [],
+    token: '',
+    role:''
   },
   reducers:{
     addUser: (state, {payload})=>{
@@ -13,8 +16,17 @@ const appSlice = createSlice({
     },
     userToken: (state, {payload})=>{
       state.token = payload
+    },
+    userRole: (state, {payload})=>{
+      state.role = payload
+    },
+    allCampaigns: (state, {payload})=>{
+      state.allCampaigns = payload
+    },
+    myCampaigns: (state, {payload})=>{
+      state.myCampaigns = payload
     }
   }
 });
-export const { addUser, userToken} = appSlice.actions;
+export const { allCampaigns, addUser, myCampaigns, userToken,userRole} = appSlice.actions;
 export default appSlice.reducer;

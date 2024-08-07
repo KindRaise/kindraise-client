@@ -1,10 +1,10 @@
 import React from 'react'
-import './PasswordChange.css'
+import './ChangePassword.css'
 import { BiCheckShield } from 'react-icons/bi'
 import logo from '../../assets/logo.svg';
 import { useNavigate } from 'react-router-dom';
 
-const PasswordChange = () => {
+const ChangePassword = () => {
   const Nav = useNavigate()
   return (
     <div className="loginBody">
@@ -31,4 +31,4 @@ const PasswordChange = () => {
   )
 }
 
-export default PasswordChange
+export default ChangePassword

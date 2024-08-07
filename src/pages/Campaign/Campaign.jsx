@@ -1,189 +1,206 @@
-import React, { useEffect, useState } from "react";
-import "./Campaign.css";
-import { BiFilter, BiSearch } from "react-icons/bi";
-import { CgMenu } from "react-icons/cg";
-import { useNavigate } from "react-router-dom";
-import { VscKebabVertical } from "react-icons/vsc";
-// import Table from "../components/Table/Table";
-import Table from "../../components/Table/Table";
+import React, { useEffect, useState } from "react";  
+import "./Campaign.css"; // Ensure your styles are correctly imported  
+import { BiFilter, BiSearch } from "react-icons/bi";  
+import { useNavigate } from "react-router-dom";  
+import { useDispatch, useSelector } from "react-redux";  
+import axios from "axios";  
+import { myCampaigns } from "../../Global/slice";  
+import { useTable } from "react-table";  
+import { BsArrowDown } from "react-icons/bs";  
+import toast, { Toaster } from "react-hot-toast";
 
-const Campaign = () => {
-  const Nav = useNavigate();
-  const campaigns = [
-    {
-      name: "Root of Hope",
-      created: "02/19/2024",
-      raised: "NO",
-      supporters: 0,
-      status: "Active",
-    },
-    {
-      name: "Root of Hope",
-      created: "02/19/2024",
-      raised: "NO",
-      supporters: 0,
-      status: "Active",
-    },
-    {
-      name: "Root of Hope",
-      created: "02/19/2024",
-      raised: "NO",
-      supporters: 0,
-      status: "Active",
-    },
-    {
-      name: "Root of Hope",
-      created: "02/19/2024",
-      raised: "NO",
-      supporters: 0,
-      status: "Active",
-    },
-  ];
-  const [isOpen, setIsOpen] = useState(false);
-  const [search, setSearch] = useState("")
-  // console.log(search);
+const Campaign = () => {  
+  const Nav = useNavigate();  
+  const dispatch = useDispatch();  
+  const token = useSelector((state) => state.kindraise.token);  
 
-  const [data, setData] = useState([
-    {
-      name: "campaign",
-      id: 1,
-    },
-    {
-      name: "donr",
-      id: 1,
-    },
-    {
-      name: "tree of hope",
-      id: 1,
-    },
-    {
-      name: "gracious land",
-      id: 1,
-    },
-    {
-      name: "hope little",
-      id: 1,
-    },
-  ]);
-  // console.log(isOpen)
+  const [filterToggle, setFilterToggle] = useState(false);  
+  const [searchTerm, setSearchTerm] = useState("");  
+  const [loading, setLoading] = useState(false);  
+  const [campaigns, setCampaigns] = useState([]); // Original campaign list  
+  const [filteredCampaigns, setFilteredCampaigns] = useState([]); // Filtered campaign list  
+  const [selectedStatus, setSelectedStatus] = useState(""); // State for selected status  
 
-  //CREATE: create a search function for data
-  //NOTE: search function
+  // Fetch campaigns from the API  
+  useEffect(() => {  
+    setLoading(true);  
+    const url = "https://kindraise.onrender.com/api/v1/get-NpoallCampaign";  
 
-  const searchFunction=()=>{
-    setData(data.filter(search))
-  }
+    axios  
+      .get(url, {  
+        headers: { Authorization: `Bearer: ${token}` },  
+      })  
+      .then((res) => {  
+        const data = res?.data?.allCampaigns || [];  
+        setCampaigns(data);  
+        setFilteredCampaigns(data); // Initialize filtered campaigns  
+        dispatch(myCampaigns(data)); // Dispatch to Redux store  
+        setLoading(false);  
+      })  
+      .catch((err) => {  
+        toast.error(err?.response?.data?.message);  
+        setLoading(false);  
+      });  
+  }, [token, dispatch]);  
 
+  // Search function to filter campaigns based on searchTerm and selectedStatus  
+  useEffect(() => {  
+    const filtered = campaigns.filter((campaign) => {  
+      const matchesSearch = campaign.story.toLowerCase().includes(searchTerm.toLowerCase());  
+      const matchesStatus = selectedStatus ? campaign.status === selectedStatus : true; // Filter by status if selected  
+      return matchesSearch && matchesStatus;  
+    });  
+    setFilteredCampaigns(filtered); // Set filtered campaigns based on searchTerm and selected status  
+  }, [searchTerm, campaigns, selectedStatus]);  
 
-  return (
-    <div className="campaignBody">
-      <h2 className="pageName">Campaign</h2>
-      <div className="campaignContent">
-        <div className="campaignSearchSide">
-          <div className="SearchSide">
-            <div className="searchBox">
-              <BiSearch color="gray" />
-              <input type="text" placeholder="Search" onChange={(e)=>setSearch(e.target.value)}/>
-            </div>
-            <div className="filterIcon">
-              <BiFilter size={17} />
-            </div>
-          </div>
-          <div>
-            <button
-              className="campaignBtn"
-              onClick={() => Nav("/campaign/create.campaign")}
+  const [selectedRowIndex, setSelectedRowIndex] = useState(null);
+  const [selectedAction, setSelectedAction] = useState("");
+
+  // Configure table columns  
+  const columns = React.useMemo(() => [  
+    { Header: "Campaign", accessor: "story" },  
+    { Header: "Created", accessor: "createdAt" },  
+    { Header: "Raised", accessor: "totalRaised" },  
+    { Header: "Supporters", accessor: "supporters" },  
+    { Header: "Status", accessor: "status" },  
+    {
+      Header: "Actions",
+      Cell: ({ row }) => (
+        <div>
+          <button
+            onClick={() => {
+              setSelectedRowIndex(
+                selectedRowIndex === row.index ? null : row.index
+              );
+            }}
+          >
+            ...
+          </button>
+          {selectedRowIndex === row.index && (
+            <div
+              style={{
+                position: "absolute",
+                background: "white",
+                border: "1px solid #ccc",
+                padding: "10px",
+              }}
             >
-              New Campaign
-            </button>
-          </div>
+              <button onClick={() => handleAction("Edit", row.original.id)}>
+                Edit
+              </button>
+              <button onClick={() => handleAction("View", row.original.id)}>
+                View
+              </button>
+            </div>
+          )}
         </div>
+      ),
+    },  
+  ], [selectedRowIndex]);  
 
-        <div className="campaignTable">
-          <div className="tableHeader">
-            <div className="tableHeadName tb">Campaign</div>
-            <div className="tableHeadDetails1 tb">
-              <div>Created</div>
-              <div>Raised</div>
-              <div>Supporters</div>
-            </div>
-            <div className="tableHeadStatus1 tb">
-              <div>Status</div>
-              <div className="emp"></div>
-            </div>
-          </div>
+  const handleAction = (action, id) => {
+    setSelectedAction(action);
+    setSelectedRowIndex(null); // Close the menu after an action
 
-          <div className="createdCampaigns">
-            <div className="CampaignName tb">hi</div>
-            <div className="tableHeadDetails tb">
-              <div>hey</div>
-              <div>hello</div>
-              <div>hello</div>
-            </div>
-            <div className="tableHeadStatus tb">
-              <div>hello</div>
-              <div className="campaignMenuSec">
-                <span onMouseEnter={()=>setIsOpen(!isOpen)}>
-                  <VscKebabVertical />
-                </span>
-                {
-                  isOpen ? 
-                <div className="campaignOption" onMouseLeave={()=>setIsOpen(false)}>
-                  <div>Edit</div>
-                  <div onClick={()=>Nav("/fundraising-page")}>View</div>
-                </div>:
-                null
-                }
-              </div>
-            </div>
-          </div>
-        </div>
+    // Navigate to the appropriate component based on the action
+    if (action === "Edit") {
+      alert("true"); 
+    } else if (action === "View") {
+      Nav(`/fundraising-page/${id}`); 
+    }
+  };
 
-        {/* <Table/> */}
+  // Set up the table using React Table  
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({  
+    columns,  
+    data: filteredCampaigns, // Use filtered campaigns for the table  
+  });  
 
-        {/* <div className="container">
-          <table className="full-width-border">
-            <thead className="the">
-              <tr className="bg-gray-100">
-                <th className="border-style">Campaign</th>
-                <th className="border-style">Created</th>
-                <th className="border-style">Raised</th>
-                <th className="border-style">Supporters</th>
-                <th className="border-style">Status</th>
-              </tr>
-            </thead>
+  return (  
+    <>  
+      <div className="campaignBody">  
+        <h2 className="pageName">Campaign</h2>  
+        <div className="campaignContent">  
+          <div className="campaignSearchSide">  
+            <div className="SearchSide">  
+              <div className="searchBox">  
+                <BiSearch color="gray" />  
+                <input  
+                  type="text"  
+                  placeholder="Search"  
+                  value={searchTerm}  
+                  onChange={(e) => setSearchTerm(e.target.value)}  
+                />  
+              </div>  
+              <div className="filterContainer">  
+                <div  
+                  className="filterIcon"  
+                  onClick={() => setFilterToggle(!filterToggle)}  
+                >  
+                  <BiFilter size={17} />  
+                </div>  
+                {filterToggle && (  
+                  <div className="filterBox">  
+                    <div onClick={() => { setSelectedStatus(""); setFilterToggle(false); }}>All</div>  
+                    <div onClick={() => { setSelectedStatus("active"); setFilterToggle(false); }}>Active</div>  
+                    <div onClick={() => { setSelectedStatus("inactive"); setFilterToggle(false); }}>Inactive</div>  
+                    {/* Add other statuses as needed */}  
+                  </div>  
+                )}  
+              </div>  
+            </div>  
+            <button className="campaignBtn" onClick={() => Nav("/campaign/create-campaign")}>  
+              New Campaign  
+            </button>  
+          </div>  
 
-            <tbody>
-              {campaigns.map((campaign, index) => (
-                <tr key={index} className="border-bottom">
-                  <td className="border-style">
-                    {campaign.name}
-                  </td>
-                  <td className="border-style">
-                    {campaign.created}
-                  </td>
-                  <td className="border-style">
-                    {campaign.raised}
-                  </td>
-                  <td className="border-style">
-                    {campaign.supporters}
-                  </td>
-                  <td className="border-style">
-                    <span className="text-green">{campaign.status}</span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <div className="flex-justify-between">
-            <button className="bg-gray">Previous</button>
-            <span>1</span>
-            <button className="bg-gray">Next</button>
-          </div>
-        </div> */}
-      </div>
-    </div>
-  );
-};
+          <div className="tableWrapperTransaction">  
+            <div className="table-containerTransaction">  
+              {loading ? (  
+                <div>Fetching...</div>  
+              ) : (  
+                <table {...getTableProps()} className="campaign-table">  
+                  <thead>  
+                    {headerGroups.map(headerGroup => (  
+                      <tr {...headerGroup.getHeaderGroupProps()} className="table-header">  
+                        {headerGroup.headers.map(column => (  
+                          <th {...column.getHeaderProps()} className="table-header-cell">  
+                            {column.render("Header")}  
+                          </th>  
+                        ))}  
+                      </tr>  
+                    ))}  
+                  </thead>  
+                  <tbody {...getTableBodyProps()}>  
+                    {rows.map(row => {  
+                      prepareRow(row);  
+                      return (  
+                        <tr {...row.getRowProps()} className="table-row">  
+                          {row.cells.map(cell => (  
+                            <td {...cell.getCellProps()} className="table-cellNow">  
+                              {cell.render("Cell")}  
+                            </td>  
+                          ))}  
+                        </tr>  
+                      );  
+                    })}  
+                  </tbody>  
+                </table>  
+              )}  
+            </div>  
+            <div className="tableFooterPagination">  
+              <div>Hello</div>  
+              <div>Hello</div>  
+              <div>  
+                10 per page <BsArrowDown />  
+              </div>  
+            </div>  
+          </div>  
+        </div>  
+      </div>  
+      <Toaster/>
+    </>  
+  );  
+};  
 
 export default Campaign;
