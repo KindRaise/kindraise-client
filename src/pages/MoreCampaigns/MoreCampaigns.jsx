@@ -10,7 +10,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";  
 import axios from "axios";  
 import { useDispatch } from "react-redux"; // Import useDispatch from react-redux  
-import { allCampaigns } from "../../Global/slice";  
+import { allCampaigns } from "../../global/slice";  
 
 const MoreCampaigns = () => {  
   const [campaign, setCampaigns] = useState([]);  
