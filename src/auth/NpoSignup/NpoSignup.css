@@ -1,23 +1,154 @@
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0; /* Hides horizontal scrollbar as well */
+}
+
+/* Hide scrollbars for Firefox */
+body {
+  scrollbar-width: none; /* Hides both vertical and horizontal scrollbars */
+}
+
+/* General scroll behavior */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Ensure both x and y overflow are hidden */
+}
+
+
 .npoSignUpBody {
-    height: 100%;
-    width: 90%;
-    /* background-color: red; */
-  }
-  
+  height: auto;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto; 
+}
+
+.npoSignupInputBox {
+  width: auto;
+  max-width: 600px; 
+  background-color: rgb(207, 207, 207);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+
+.npoQusBox {
+  width: 100%;
+  max-width: 600px;
+  min-width: 300px;
+  background-color: aqua;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1900px) {
   .npoSignupInputBox {
-    height: max-content;
-    background-color: rgb(207, 207, 207);
-    display: flex;
-    margin-top: 50px;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 40px;
+    max-width: 800px;
+    padding: 30px;
+    gap: 50px;
+  }
+
+  .npoQusBox {
+    max-width: 800px;
+    font-size: 1.3rem;
+  }
+}
+
+/* 2K screens */
+@media (min-width: 2560px) {
+  .npoSignupInputBox {
+    max-width: 900px;
+    padding: 30px;
+    gap: 50px;
+  }
+
+  .npoQusBox {
+    max-width: 900px;
+    font-size: 1.5rem;
+  }
+}
+
+/* 4K screens */
+@media (min-width: 3840px) {
+  .npoSignupInputBox {
+    max-width: 1200px;
+    padding: 40px;
+    gap: 60px;
+  }
+
+  .npoQusBox {
+    max-width: 1200px;
+    font-size: 1.8rem;
+  }
+}
+
+/* Small screens (400px and below) */
+@media (max-width: 400px) {
+  .npoSignUpBody {
+    width: 100%;
+    padding: 10px;
+    height: 100vh; 
+    overflow-y: auto; 
+  }
+
+  .npoSignupInputBox {
+    margin-top: 20px;
+    padding: 10px;
+    gap: 20px;
+  }
+
+  .npoQusBox {
+    min-width: 200px;
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+}
+
+/* Mobile and tablet screens (max-width: 768px) */
+@media (max-width: 768px) {
+  body::-webkit-scrollbar {
+    width: 0;
+    height: 0; 
   }
   
-  .npoQusBox {
-    /* height: 20px; */
-    width: 50%;
-    min-width: 360px;
-    background-color: aqua;
+  body {
+    scrollbar-width: none; 
   }
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; 
+  }
+
+  .npoSignUpBody {
+    width: 100%;
+    padding: 10px;
+    height: auto; 
+    overflow-y: auto; 
+  }
+
+  .npoSignupInputBox {
+    margin-top: 20px;
+    padding: 15px;
+    gap: 20px;
+  }
+
+  .npoQusBox {
+    min-width: 250px;
+    font-size: 1rem;
+    padding: 10px;
+  }
+}

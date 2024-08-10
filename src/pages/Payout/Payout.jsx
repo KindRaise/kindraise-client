@@ -15,7 +15,7 @@ const Payout = () => {
             <div className='payoutAccDetailsBox'>
               <h2>Bank Account</h2>
               <div>Connect a bank account to begin withdrawing funds.</div>
-              <button>connect</button>
+              <button>Connect</button>
             </div>
           </div>
           <div className='payoutWidDetails'>
