@@ -20,6 +20,7 @@ import PrivacyCookies from "./pages/PrivacyCookies/PrivacyCookies";
 import TermsOfUse from "./pages/TermsOfUse/TermsOfUse"; 
 import AboutUs from "./pages/AboutUs/AboutUs"; 
 import Faqs from "./pages/Faqs/Faqs"; 
+import Search from './pages/Search/Search'
 import Pricing from "./pages/Pricing/Pricing"; 
 import ContactUs from "./pages/ContactUs/ContactUs"; 
 
@@ -52,6 +53,7 @@ const App = () => {
         <Route path="/privacy-cookies" element={<PrivacyCookies />} />
         <Route path="/terms-of-use" element={<TermsOfUse />} />
         <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/search" element={<Search />} />
         <Route path="/faqs" element={<Faqs />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/contact-us" element={<ContactUs />} />
