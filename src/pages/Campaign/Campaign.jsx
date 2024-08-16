@@ -4,7 +4,7 @@ import { BiFilter, BiSearch } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";  
 import { useDispatch, useSelector } from "react-redux";  
 import axios from "axios";  
-import { myCampaigns } from "../../Global/slice";  
+import { myCampaigns } from "../../global/slice";  
 import { useTable } from "react-table";  
 import { BsArrowDown } from "react-icons/bs";  
 import toast, { Toaster } from "react-hot-toast";
