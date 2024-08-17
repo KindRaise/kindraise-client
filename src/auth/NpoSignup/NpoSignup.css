@@ -1,20 +1,3 @@
-body::-webkit-scrollbar {
-  width: 0;
-  height: 0; /* Hides horizontal scrollbar as well */
-}
-
-/* Hide scrollbars for Firefox */
-body {
-  scrollbar-width: none; /* Hides both vertical and horizontal scrollbars */
-}
-
-/* General scroll behavior */
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden; /* Ensure both x and y overflow are hidden */
-}
-
 
 .npoSignUpBody {
   height: auto;
@@ -118,21 +101,6 @@ html, body {
 
 /* Mobile and tablet screens (max-width: 768px) */
 @media (max-width: 768px) {
-  body::-webkit-scrollbar {
-    width: 0;
-    height: 0; 
-  }
-  
-  body {
-    scrollbar-width: none; 
-  }
-  
-  html, body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden; 
-  }
-
   .npoSignUpBody {
     width: 100%;
     padding: 10px;
