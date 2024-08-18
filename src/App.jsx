@@ -22,10 +22,14 @@ import AboutUs from "./pages/AboutUs/AboutUs";
 import Faqs from "./pages/Faqs/Faqs"; 
 import Search from './pages/Search/Search'
 import Pricing from "./pages/Pricing/Pricing"; 
-import ContactUs from "./pages/ContactUs/ContactUs"; 
+import ContactUs from "./pages/ContactUs/ContactUs";
+
+import { Provider } from 'react-redux';
+import store from './global/store'
 
 const App = () => {
   return (
+  <Provider store={store}>
     <Router>
       <Routes>
         <Route path="/" element={<HomepageLayout />} />
@@ -61,6 +65,7 @@ const App = () => {
         <Route path="*" element={<div>Page not found</div>} />
       </Routes>
     </Router>
+  </Provider>
   );
 };
 
