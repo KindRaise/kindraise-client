@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Period from '../../assets/period.png';
 import Ads from '../../assets/ads.png';
@@ -9,7 +9,7 @@ import { SlArrowDown } from 'react-icons/sl';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
 
-const campaigns = [
+const Mcampaigns = [
     {
         id: 1,
         image: BackToSchool,
@@ -36,10 +36,38 @@ const campaigns = [
         donors: 120,
         raised: 200000,
         funded: 90
+    },
+    {
+        id: 4,
+        image: 'https://www.gavi.org/sites/default/files/news/2023/RS40523_Gavi_COVID-19_Vaccination__Ghana_Nipah-Dennis_59_h2.jpg',
+        title: 'Provide Life-Saving Health Care to Rural Communities',
+        description: 'Hi, I’m Ahmed, and I’m partnering with Health4All to deliver essential medical services to underserved areas...',
+        donors: 85,
+        raised: 130000,
+        funded: 70
+    },
+    {
+        id: 5,
+        image: 'https://th.bing.com/th/id/OIP.Qh5Nl2QsVTMtW1cJTrKR9wHaDk?rs=1&pid=ImgDetMain',
+        title: 'Empower Youth Through Skill Development Workshops',
+        description: 'We are organizing workshops to equip young Nigerians with essential skills for the job market. Help us provide training and resources...',
+        donors: 102,
+        raised: 140000,
+        funded: 85
+    },
+    {
+        id: 6,
+        image: 'https://th.bing.com/th/id/OIP.iIK1Tg9-TioXv_Zl2HwZLwHaD8?rs=1&pid=ImgDetMain',
+        title: 'Emergency Food Relief for Displaced Families',
+        description: 'Greetings from CharityFirst! We’re raising funds to deliver emergency food packages to families affected by recent crises...',
+        donors: 150,
+        raised: 250000,
+        funded: 85
     }
 ];
 
 const MoreCampaigns = () => {
+    const [visibleCount, setVisibleCount] = useState(3); // Initially show 3 campaigns
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -51,7 +79,11 @@ const MoreCampaigns = () => {
     }, []);
 
     const handleClick = () => {
-        navigate('/explore-campaigns'); 
+        setVisibleCount(prevCount => {
+            // Show 3 more campaigns, but limit it to the length of Mcampaigns
+            const newCount = prevCount + 3;
+            return newCount > Mcampaigns.length ? Mcampaigns.length : newCount;
+        });
     };
 
     const handleSignup = () => {
@@ -60,7 +92,7 @@ const MoreCampaigns = () => {
 
     return (
         <section className='more-campaigns'>
-            <div className='more-campaigns-header' data-aos="fade-down">
+            <div className='more-campaigns-header'>
                 <h1>Discover Fundraising Campaigns</h1>
             </div>
             <div className='container'>
@@ -78,29 +110,32 @@ const MoreCampaigns = () => {
                     Individual
                 </label>
             </div>
-            <div className='campaigns-container'>
-                {campaigns.map((campaign) => (
-                    <div className='campaign-card' key={campaign.id} data-aos="fade-up"> 
-                        <img src={campaign.image} alt={campaign.title} className='campaign-image' />        
-                        <div className='campaign-info'>
-                            <h2 className='campaign-title'>{campaign.title}</h2>
-                            <p className='campaign-description'>{campaign.description}</p>
-                            <p className='campaign-donors'>{campaign.donors} Donors</p>
-                            <progress className='campaign-progress' value={campaign.funded} max="100"></progress>
-                            <div className='campaign-stats'>
-                                <p className='campaign-raised'>₦{campaign.raised.toLocaleString()} raised</p>
-                                <p className='campaign-funded'>{campaign.funded}% funded</p>
+            <div className='Mcampaigns-container'>
+                {Mcampaigns.slice(0, visibleCount).map((Mcampaign) => (
+                    <div className='Mcampaigns-card' key={Mcampaign.id} data-aos="fade-up"> 
+                        <img src={Mcampaign.image} alt={Mcampaign.title} className='campaign-image' />        
+                        <div className='Mcampaigns-info'>
+                            <h2 className='Mcampaigns-title'>{Mcampaign.title}</h2>
+                            <p className='Mcampaigns-description'>{Mcampaign.description}</p>
+                            <p className='Mcampaigns-donors'>{Mcampaign.donors} Donors</p>
+                            <progress className='Mcampaigns-progress' value={Mcampaign.funded} max="100"></progress>
+                            <div className='Mcampaigns-stats'>
+                                <p className='Mcampaigns-raised'>₦{Mcampaign.raised.toLocaleString()} raised</p>
+                                <p className='Mcampaigns-funded'>{Mcampaign.funded}% funded</p>
                             </div>
                         </div>
                     </div>
                 ))}
             </div>
 
-            <div className="explore-button-wrapper">
-                <button onClick={handleClick} className="explore-campaigns-button">
-                    <span>Show more</span> <SlArrowDown />
-                </button>
-            </div>
+            {visibleCount < Mcampaigns.length && (
+                <div className="explore-button-wrapper">
+                    <button onClick={handleClick} className="explore-campaigns-button">
+                        <span>Show more</span> <SlArrowDown />
+                    </button>
+                </div>
+            )}
+
             <div className='ads-img'>
                 <img src={Ads} alt="" />
                 <div className='explore-text'>

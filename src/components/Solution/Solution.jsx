@@ -1,46 +1,37 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Solution.css';
-import AOS from 'aos';
-import 'aos/dist/aos.css'; 
 
 const Solution = () => {
   const navigate = useNavigate();
-  
-  useEffect(() => {
-    AOS.init({
-      duration: 2000,
-      once: true, 
-    });
-  }, []);
 
   return (
     <div className='fundraising-solution-section'>
-      <div className='fundraising-solution-header' data-aos="fade-up">
+      <div className='fundraising-solution-header'>
         <div className='fundraising-solution-content'>
             <h1>A Fundraising <span>Solution</span> For All</h1>
             <p>No cause is big or small. From heartfelt personal missions to grand community projects, we empower you to turn dreams into reality.</p>
         </div>
       </div>
 
-      <div className='fundraising-steps-header' data-aos="fade-down">
+      <div className='fundraising-steps-header'>
         <h1>Raise Funds In 3 Easy Steps</h1>
       </div>
 
       <div className='fundraising-steps-container'>
-        <div className='fundraising-step' data-aos="fade-right">
+        <div className='fundraising-step'>
           <div className='step-number'>1</div>
           <h1 className='step-title'>Start your fundraiser</h1>
           <p>Tell your story, set a target, add pictures and videos</p>
         </div>
 
-        <div className='fundraising-step' data-aos="fade-up">
+        <div className='fundraising-step'>
           <div className='step-number'>2</div>
           <h1 className='step-title'>Share with friends</h1>
           <p>Send emails, share on social media</p>
         </div>
 
-        <div className='fundraising-step' data-aos="fade-left">
+        <div className='fundraising-step'>
           <div className='step-number'>3</div>
           <h1 className='step-title'>Manage donations</h1>
           <p>Receive donations, thank donors, money goes to your bank account</p>
