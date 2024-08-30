@@ -8,7 +8,6 @@ const PrivacyCookies = () => {
    <>
    <Header/>
    <div className='privacy-container'>
-   <h1>Privacy and Cookies Policy for KindRaise</h1>
     <p><strong>Last Updated: 09/09/2024</strong></p>
     
     <p>At KindRaise, we value your privacy and are committed to being transparent about how we collect, use, and protect your personal information. This Privacy and Cookies Policy explains how we handle your data and the use of cookies when you use our services.</p>

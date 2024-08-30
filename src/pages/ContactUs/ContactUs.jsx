@@ -30,7 +30,7 @@ const ContactUs = () => {
             </div>
             <div className='help-container'>
                     <h1>Need more help?</h1>
-                    <p>Find answers to your questions. Explore our docs to learn <br /> everything you need to know about KindRaise.</p>
+                    <p>Find answers to your questions. Explore our docs to learn everything you need to know about KindRaise.</p>
 
                     <div className='faq-container'>
                     <img src={Faq} alt="FAQ Icon" />

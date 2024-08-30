@@ -26,10 +26,9 @@ const Hero = () => {
         <div className="text-wrapper" data-aos="fade-left">
           <h1>Do something incredible today</h1>
           <p>
-            Empower the causes you care <br />about. Fundraise with ease.
-          </p>
+          Fundraise for yourself, as a group working towards a goal, or an NGO on a mission. </p>
 
-          <button onClick={() => navigate('/signup')} className="cta-button">Get Started</button>
+          <button onClick={() => navigate('/signup')} className="cta-button">Start Your Campaign</button>
         </div>
       </div>
     </section>

@@ -19,8 +19,7 @@ const DonorEngagement = () => {
         <div className="donor-engagement-text" data-aos="fade-up">
           <h1>Donor <span>Engagement</span></h1>
           <p>
-            Increase donor interaction with <br /> custom QR codes for every <br /> KindRaise campaign.
-          </p>
+          Every KindRaise campaign gets its own unique QR code. You can print it on flyers, or share it at events. When someone scans your code, they’ll be taken directly to your fundraising page.</p>
         </div>
 
         <div className="donor-engagement-image" data-aos="fade-left">

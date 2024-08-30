@@ -32,7 +32,7 @@ const Header = () => {
           <button className="nav-button" onClick={() => navigate('/search')}>
             <CiSearch /><span>Search</span>
           </button>
-          <button onClick={() => navigate('/login')} className="auth-button auth-login">
+          <button onClick={() => navigate('/about-us')} className="auth-button auth-login">
             About
           </button>
           <button onClick={() => navigate('/login')} className="auth-button auth-login">

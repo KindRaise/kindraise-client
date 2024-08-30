@@ -15,8 +15,10 @@ import './HomepageLayout.css';
 const HomepageLayout = () => {
   return (
     <section className='landingpage-container'>
+      <div className='coloured-nav'>
       <Header />
       <Hero />
+      </div>
       <PopularCampaigns />
       <Fundraising />
       <DonorEngagement />
@@ -31,3 +33,4 @@ const HomepageLayout = () => {
 }
 
 export default HomepageLayout;
+

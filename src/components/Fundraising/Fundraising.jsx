@@ -34,8 +34,7 @@ const Fundraising = () => {
           <div className="fundraising-text" data-aos="fade-left">
             <h1>Fundraising <span>Pages</span></h1>
             <p>
-            Get more support for your cause with engaging, interactive fundraising pages that inspire people to give.
-            </p>
+            We make it easy for you to create a beautiful campaign page where you can tell your story, share why you’re raising money, add photos and invite people to contribute. </p>
           </div>
         </div>
       </section>

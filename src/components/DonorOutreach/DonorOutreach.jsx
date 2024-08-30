@@ -21,7 +21,7 @@ const DonorOutreach = () => {
         <div className="donor-outreach-text" data-aos="fade-left">
           <h1>Donor <span>Outreach</span></h1>
           <p>
-            Stay engaged. Share your message. Our Outreach Tools can help you build relationships and keep donors connected to your cause.
+          The more people who see your campaign, the more support you can get. Use our tools to help you reach out to more donors, through social media, email, or even directly from our platform. 
           </p>
         </div>
       </div>

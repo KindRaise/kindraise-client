@@ -1,5 +1,6 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; 
 import DashboardLayout from "./layouts/DashboardLayout/DashboardLayout";
+import AdminLayout from "./layouts/AdminLayout/AdminLayout";
 import Signup from "./auth/Signup/Signup";
 import Login from "./auth/Login/Login";
 import PasswordChange from "./auth/PasswordChange/PasswordChange";
@@ -11,6 +12,7 @@ import Track from "./pages/Track/Track";
 import Payout from "./pages/Payout/Payout";
 import Account from "./pages/Account/Account";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import AdminDashboard from "./pages/AdminDashboard/AdminDashboard";
 import CreateCampaign from "./pages/CreateCampaign/CreateCampaign";
 import FundraisingPage from "./pages/FundraisingPage/FundraisingPage";
 import HomepageLayout from "./layouts/HomepageLayout/HomepageLayout";
@@ -31,16 +33,20 @@ const App = () => {
         <Route path="/passwordchange" element={<PasswordChange />} />
         <Route path="/createpassword" element={<CreateNewPassword />} />
         <Route path="/resetpassword" element={<ResetPassword />} />
-        <Route path="/fundraising-page" element={<FundraisingPage />} />
+        <Route path="/fundraising-page/:ev" element={<FundraisingPage />} />
         <Route path="/explore-campaigns" element={<ExploreCampaigns />} />
-
-        <Route path="/dashboard" element={<DashboardLayout />}>
-          <Route index element={<Dashboard />} />
-          <Route path="campaign" element={<Campaign />} />
-          <Route path="track" element={<Track />} />
-          <Route path="payout" element={<Payout />} />
-          <Route path="account" element={<Account />} />
-          <Route path="campaign/create-campaign" element={<CreateCampaign />} />
+        
+        <Route element={<AdminLayout />}>
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        </Route>
+        
+        <Route element={<DashboardLayout />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/campaign" element={<Campaign />} />
+          <Route path="/donor" element={<Track />} />
+          <Route path="/payout" element={<Payout />} />
+          <Route path="/account" element={<Account />} />
+          <Route path="/campaign/create-campaign" element={<CreateCampaign />} />
         </Route>
 
         <Route path="/privacy-cookies" element={<PrivacyCookies />} />
