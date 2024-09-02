@@ -98,7 +98,7 @@
 
 .campaign-funded {
     text-align: right;
-    color: #05BB6D;
+    color: #05BB6D !important; 
 }
 
 .campaign-card img {
@@ -184,10 +184,11 @@ progress::-webkit-progress-value {
     }
 
     .popular-campaigns-header p {
-        font-size: 14px;
+        font-size: 16px;
     }
 
     .campaigns-list {
+        margin-top: -10%;
         flex-direction: column;
         align-items: center;
         padding: 15px;
@@ -210,5 +211,9 @@ progress::-webkit-progress-value {
     .explore-button {
         font-size: 16px;
         padding: 8px 16px;
+    }
+
+    .campaign-funded{
+        color: #05BB6D !important; 
     }
 }

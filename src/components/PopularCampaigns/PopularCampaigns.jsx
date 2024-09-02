@@ -54,7 +54,7 @@ const PopularCampaigns = () => {
             </div>
             <div className='campaigns-list'>
                 {campaigns.map((campaign) => (
-                    <div className='campaign-card' key={campaign.id} data-aos="fade-up">
+                    <div className='campaign-card' key={campaign.id} data-aos="fade-up"> 
                         <img src={campaign.image} alt={campaign.title} className='campaign-image' />        
                         <div className='campaign-details'>
                             <h2 className='campaign-title'>{campaign.title}</h2>
