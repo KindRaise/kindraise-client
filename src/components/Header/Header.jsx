@@ -16,22 +16,23 @@ const Header = () => {
   return (
     <div className="header-wrapper">
       <header className="header-content">
-        <div className="header-nav">
-          <button className="nav-button" onClick={() => navigate('/campaigns')}>
-            Campaigns
-          </button>
-          <button className="nav-button" onClick={() => navigate('/search')}>
-          <CiSearch /><span>Search</span> 
-    </button>
-        </div>
         <img
           src={logo}
           alt="Logo"
           className="header-logo"
           onClick={() => navigate('/')}
         />
-        <div className="header-auth">
-          <button onClick={() => navigate('/about')} className="auth-button auth-login">
+        <div className="header-hamburger">
+          <Hamburger toggled={isMenuOpen} toggle={handleHamburgerClick} />
+        </div>
+        <nav className={`header-nav ${isMenuOpen ? 'show-nav' : ''}`}>
+          <button className="nav-button" onClick={() => navigate('/campaigns')}>
+            Campaigns
+          </button>
+          <button className="nav-button" onClick={() => navigate('/search')}>
+            <CiSearch /><span>Search</span>
+          </button>
+          <button onClick={() => navigate('/about')} className="auth-button auth-about">
             About
           </button>
           <button onClick={() => navigate('/login')} className="auth-button auth-login">
@@ -40,10 +41,7 @@ const Header = () => {
           <button onClick={() => navigate('/signup')} className="auth-button auth-signup">
             Signup
           </button>
-        </div>
-        <div className="header-hamburger">
-          <Hamburger toggled={isMenuOpen} toggle={handleHamburgerClick} />
-        </div>
+        </nav>
       </header>
     </div>
   );
