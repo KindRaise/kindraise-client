@@ -1,10 +1,32 @@
-import React from 'react'
-import './DonorOutreach.css'
+import React, { useEffect } from 'react';
+import Outreach from "../../assets/donor-outreach.png";
+import './DonorOutreach.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const DonorOutreach = () => {
-  return (
-    <div>DonorOutreach</div>
-  )
-}
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    });
+  }, []);
 
-export default DonorOutreach
+  return (
+    <section className="donor-outreach">
+      <div className="donor-outreach-wrapper">
+        <div className="donor-outreach-image" data-aos="fade-right">
+          <img src={Outreach} alt="Donor Outreach" className="donor-outreach-img" />
+        </div>
+
+        <div className="donor-outreach-text" data-aos="fade-left">
+          <h1>Donor <span>Outreach</span></h1>
+          <p>
+            Stay engaged. Share your <br /> message. Our Outreach Tools can <br /> help you build relationships and keep donors connected to your <br /> cause.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default DonorOutreach;
