@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css'; 
 import './Header.css';
 import { useNavigate } from 'react-router-dom';
 import logo from "../../assets/logo.svg";
@@ -9,14 +7,6 @@ import { GoChevronDown } from "react-icons/go";
 const Header = () => {
   const [dropdownOpen, setDropdownOpen] = useState(null);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    AOS.init({
-      duration: 3000,
-      once: false,    
-      mirror: true,
-    });
-  }, []);
 
   const toggleDropdown = (menu) => {
     setDropdownOpen(dropdownOpen === menu ? null : menu);
@@ -30,43 +20,36 @@ const Header = () => {
           alt="Logo"
           className="header-logo"
           onClick={() => navigate('/')}
-          data-aos="fade-right"
         />
         <nav className="header-nav">
           <ul className="nav-menu">
-            <li className="nav-menu-item" data-aos="fade-right">
+            <li className="nav-menu-item">
               <button
                 className="nav-dropdown-toggle"
                 onClick={() => toggleDropdown('product')}
               >
-                Product <GoChevronDown />
+                Campaigns
               </button>
               {dropdownOpen === 'product' && (
-                <ul className="nav-dropdown-menu" data-aos="fade-right">
+                <ul className="nav-dropdown-menu">
                   <li
                     className="nav-dropdown-item"
-                    onClick={() => navigate('/product1')}
+                    onClick={() => navigate('/product')}
                   >
-                    Product 1
-                  </li>
-                  <li
-                    className="nav-dropdown-item"
-                    onClick={() => navigate('/product2')}
-                  >
-                    Product 2
+                    Product Item 1
                   </li>
                 </ul>
               )}
             </li>
-            <li className="nav-menu-item" data-aos="fade-right">
+            <li className="nav-menu-item">
               <button
                 className="nav-dropdown-toggle"
-                onClick={() => toggleDropdown('pricing')}
+                onClick={() => toggleDropdown('about')}
               >
-                Pricing <GoChevronDown />
+                About <GoChevronDown />
               </button>
               {dropdownOpen === 'pricing' && (
-                <ul className="nav-dropdown-menu" data-aos="fade-right">
+                <ul className="nav-dropdown-menu">
                   <li
                     className="nav-dropdown-item"
                     onClick={() => navigate('/pricing')}
@@ -76,7 +59,7 @@ const Header = () => {
                 </ul>
               )}
             </li>
-            <li className="nav-menu-item" data-aos="fade-right">
+            <li className="nav-menu-item">
               <button
                 className="nav-dropdown-toggle"
                 onClick={() => toggleDropdown('resources')}
@@ -84,23 +67,15 @@ const Header = () => {
                 Resources <GoChevronDown />
               </button>
               {dropdownOpen === 'resources' && (
-                <ul className="nav-dropdown-menu" data-aos="fade-right">
+                <ul className="nav-dropdown-menu">
                   <li
                     className="nav-dropdown-item"
                     onClick={() => navigate('/resources')}
                   >
-                    Blog
+                    Resources
                   </li>
                 </ul>
               )}
-            </li>
-            <li className="nav-menu-item" data-aos="fade-right">
-              <button
-                className="nav-link"
-                onClick={() => navigate('/donation')}
-              >
-                Donation
-              </button>
             </li>
           </ul>
         </nav>
@@ -108,14 +83,12 @@ const Header = () => {
           <button
             onClick={() => navigate('/login')}
             className="auth-button auth-login"
-            data-aos="fade-right"
           >
             Login
           </button>
           <button
             onClick={() => navigate('/signup')}
             className="auth-button auth-signup"
-            data-aos="fade-right"
           >
             Signup
           </button>

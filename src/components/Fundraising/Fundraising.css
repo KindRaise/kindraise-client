@@ -1,0 +1,99 @@
+.fundraising-pages {
+    padding: 50px;
+    text-align: center;
+}
+
+.fundraising-pages-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.fundraising-pages-header h1 {
+    font-family: Proxima Nova, sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 40px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #3C4144;
+}
+
+.fundraising-pages-header p {
+    margin-bottom: 40px;
+    line-height: 1.5;
+    font-family: Proxima Nova, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.fundraising-description-section {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin-left: 50px;
+}
+
+.fundraising-description-container {
+    height: auto;
+    margin-top: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+}
+
+.fundraising-image {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.fundraising-text {
+    flex: 1;
+    padding: 20px;
+    margin-bottom: 0;
+}
+
+.fundraising-text h1 {
+    font-family: Proxima Nova, sans-serif;
+    margin-bottom: 40px;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 58.46px;
+    text-align: left;
+}
+
+.fundraising-text span {
+    color: #05CE78;
+}
+
+.fundraising-text p {
+    font-family: Proxima Nova, sans-serif;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 43.85px;
+    text-align: left;
+}
+
+.fundraising-main-image {
+    max-width: 100%;
+    margin: 0 auto;
+    margin-top: 0;
+}
+
+@media (max-width: 768px) {
+    .fundraising-description-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .fundraising-image,
+    .fundraising-text {
+        width: 100%;
+        padding: 10px;
+    }
+}
