@@ -37,6 +37,7 @@
     gap: 20px;
     justify-content: space-between;
     flex-wrap: wrap;
+    font-family: Proxima Nova, sans-serif;
 }
 
 .campaign-card {
@@ -45,7 +46,7 @@
     text-align: left;
     border-radius: 20px;
     box-sizing: border-box;
-    outline: 2px solid #E7E7E8;
+    outline: 1px solid #E7E7E8;
 }
 
 .campaign-details {
@@ -97,7 +98,7 @@
 
 .campaign-funded {
     text-align: right;
-    color: #05BB6D;
+    color: #05BB6D !important;
 }
 
 .campaign-card img {

@@ -30,7 +30,7 @@ const campaigns = [
         id: 3,
         image: Period,
         title: 'Menstrual Hygiene Support for Orphanages & Girls',
-        description: 'PeriodPals is about sponsoring menstrual kits for schoolgirls to keep them comfortable...',
+        description: 'PeriodPals is sponsoring menstrual kits for girls to keep them comfortable..',
         donors: 120,
         raised: 200000,
         funded: 90
@@ -62,8 +62,8 @@ const PopularCampaigns = () => {
                             <p className='campaign-donors'>{campaign.donors} Donors</p>
                             <progress className='campaign-progress' value={campaign.funded} max="100"></progress>
                             <div className='campaign-stats'>
-                                <p className='campaign-raised'>₦{campaign.raised.toLocaleString()} Raised</p>
-                                <p className='campaign-funded'>{campaign.funded}% Funded</p>
+                                <p className='campaign-raised'>₦{campaign.raised.toLocaleString()} raised</p>
+                                <p className='campaign-funded'>{campaign.funded}% funded</p>
                             </div>
                         </div>
                     </div>

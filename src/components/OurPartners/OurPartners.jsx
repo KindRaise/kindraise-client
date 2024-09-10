@@ -1,10 +1,26 @@
-import React from 'react'
-import './OurPartners.css'
+import React, { useEffect } from 'react';
+import PartnersImg from '../../assets/partners.png';
+import './OurPartners.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
 
 const OurPartners = () => {
-  return (
-    <div>OurPartners</div>
-  )
-}
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    });
+  }, []);
 
-export default OurPartners
+  return (
+    <div className="partners-container">
+      <div className="partners-text" data-aos="fade-up">
+        <p>OUR <br /> PARTNERS</p>
+      </div>
+      <div className="partners-image" data-aos="fade-up">
+        <img src={PartnersImg} alt="Our Partners" />
+      </div>
+    </div>
+  );
+};
+
+export default OurPartners;
