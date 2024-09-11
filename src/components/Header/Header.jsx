@@ -1,15 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Header.css';
 import { useNavigate } from 'react-router-dom';
 import logo from "../../assets/logo.svg";
 import { GoChevronDown } from "react-icons/go";
+import { Sling as Hamburger } from 'hamburger-react';
 
 const Header = () => {
   const [dropdownOpen, setDropdownOpen] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   const toggleDropdown = (menu) => {
     setDropdownOpen(dropdownOpen === menu ? null : menu);
+  };
+
+  const handleHamburgerClick = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
@@ -21,7 +27,7 @@ const Header = () => {
           className="header-logo"
           onClick={() => navigate('/')}
         />
-        <nav className="header-nav">
+        <nav className={`header-nav ${isMenuOpen ? 'show-nav' : ''}`}>
           <ul className="nav-menu">
             <li className="nav-menu-item">
               <button
@@ -48,13 +54,13 @@ const Header = () => {
               >
                 About <GoChevronDown />
               </button>
-              {dropdownOpen === 'pricing' && (
+              {dropdownOpen === 'about' && (
                 <ul className="nav-dropdown-menu">
                   <li
                     className="nav-dropdown-item"
-                    onClick={() => navigate('/pricing')}
+                    onClick={() => navigate('/about')}
                   >
-                    Pricing Plan 1
+                    About Us
                   </li>
                 </ul>
               )}
@@ -92,6 +98,9 @@ const Header = () => {
           >
             Signup
           </button>
+        </div>
+        <div className="header-hamburger">
+          <Hamburger toggled={isMenuOpen} toggle={handleHamburgerClick} />
         </div>
       </header>
     </div>
