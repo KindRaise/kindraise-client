@@ -10,52 +10,46 @@ import useLocalStorage from "use-local-storage";
 import WelcomeSignup from "../WelcomeSignup/WelcomeSignup";
 
 const Signup = () => {
-  const Nav = useNavigate();
+  const navigate = useNavigate(); 
+
+  const goToHomepage = () => {
+    navigate("/"); 
+  };
 
   const [activeSignupPage, setActiveSignupPage] = useLocalStorage("A");
 
   const renderPage = () => {
     switch (activeSignupPage) {
       case "A":
-        return <UserSignup setActiveSignupPage={setActiveSignupPage}/>;
+        return <UserSignup setActiveSignupPage={setActiveSignupPage} />;
       case "B":
-        return <IndividualSignup setActiveSignupPage={setActiveSignupPage}/>;
+        return <IndividualSignup setActiveSignupPage={setActiveSignupPage} />;
       case "C":
-        return <NpoSignup setActiveSignupPage={setActiveSignupPage}/>;
+        return <NpoSignup setActiveSignupPage={setActiveSignupPage} />;
       case "D":
-        return <WelcomeSignup setActiveSignupPage={setActiveSignupPage}/>;
+        return <WelcomeSignup setActiveSignupPage={setActiveSignupPage} />;
       default:
         return <UserSignup setActiveSignupPage={setActiveSignupPage} />;
     }
   };
 
   useEffect(() => {
-    // page()
-    // console.log(page())
-    // console.log(activeSignupPage)
   }, []);
-
-  // if (activeSignupPage === "A") {
-  //   console.log("a");
-  // } else if (activeSignupPage === "B") {
-  //   console.log("b");
-  // } else {
-  //   console.log("c");
-  // }
 
   return (
     <section>
       <div className="signup-container">
         <div className="signup-inner">
           <div className="signupBackArrow">
-            {activeSignupPage == "A" ? null : (
+            {activeSignupPage === "A" ? null : (
               <span onClick={() => setActiveSignupPage("A")}>
-                <BiArrowBack style={{ marginRight: '8px' }}/> Back
+                <BiArrowBack style={{ marginRight: '8px' }} />
+                Back
               </span>
             )}
           </div>
           <div className="signupLogoBox">
-            <img src={Logo} alt="" onClick={()=>setActiveSignupPage("A")}/>
+            <img src={Logo} alt="Logo" onClick={() => setActiveSignupPage("A")} />
           </div>
           <div className="signupTextBox">
             <h1>Create a KindRaise account</h1>
