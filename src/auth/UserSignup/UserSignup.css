@@ -30,6 +30,10 @@
   align-items: center;
   flex-direction: column;
   gap: 40px;
+   padding: 30px;
+    margin: 20px;
+    width: 100%;
+    max-width: 428.56px;
 }
 
 .signupQus {
