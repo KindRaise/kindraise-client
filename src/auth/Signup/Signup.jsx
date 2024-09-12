@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../../assets/Logo.svg";
 import "./Signup.css";
 import { BiArrowBack } from "react-icons/bi";
@@ -9,12 +9,19 @@ import { useNavigate } from "react-router-dom";
 import WelcomeSignup from "../WelcomeSignup/WelcomeSignup";
 
 const Signup = () => {
-  const Nav = useNavigate();
-  const [activeSignupPage, setActiveSignupPage] = useState(() => {
-    return localStorage.getItem("activeSignupPage") || "A";
-  });
+  const navigate = useNavigate();
+  const [activeSignupPage, setActiveSignupPage] = useState("A");
 
   useEffect(() => {
+    // Get initial value from localStorage
+    const savedPage = localStorage.getItem("activeSignupPage");
+    if (savedPage) {
+      setActiveSignupPage(savedPage);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Save to localStorage whenever activeSignupPage changes
     localStorage.setItem("activeSignupPage", activeSignupPage);
   }, [activeSignupPage]);
 
