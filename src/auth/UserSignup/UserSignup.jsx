@@ -11,7 +11,7 @@ const UserSignup = ({setActiveSignupPage}) => {
   return (
     <div className='userSignUpBody'>
       <div className='signupLoginBox'>
-        Already have an account?<span onClick={()=>Nav('/')}>Sign in</span>
+        Already have an account?<span onClick={()=>Nav('/login')}>Sign in</span>
       </div>
       <div className='signupUserSelectBox'>
         <div className='signupQus'>Who are you?</div>

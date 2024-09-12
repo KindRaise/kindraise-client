@@ -84,23 +84,21 @@ const Header = () => {
               )}
             </li>
           </ul>
-          {isMenuOpen && (
-            <div className="header-auth-mobile">
-              <button
-                onClick={() => navigate('/login')}
-                className="auth-button auth-login"
-              >
-                Login
-              </button>
-              <button
-                onClick={() => navigate('/signup')}
-                className="auth-button auth-signup"
-              >
-                Signup
-              </button>
-            </div>
-          )}
         </nav>
+        <div className="header-auth">
+          <button
+            onClick={() => navigate('/login')}
+            className="auth-button auth-login"
+          >
+            Login
+          </button>
+          <button
+            onClick={() => navigate('/signup')}
+            className="auth-button auth-signup"
+          >
+            Signup
+          </button>
+        </div>
         <div className="header-hamburger">
           <Hamburger toggled={isMenuOpen} toggle={handleHamburgerClick} />
         </div>

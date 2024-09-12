@@ -1,6 +1,6 @@
 .npoSignUpBody {
     height: 100%;
-    width: 100%;
+    width: 90%;
     /* background-color: red; */
   }
   
@@ -17,7 +17,7 @@
   
   .npoQusBox {
     /* height: 20px; */
-    width: 60%;
+    width: 50%;
     min-width: 360px;
     background-color: aqua;
   }
