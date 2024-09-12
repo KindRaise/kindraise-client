@@ -1,64 +1,68 @@
 import React, { useEffect, useState } from "react";
-import Logo from "../../assets/Logo.svg";
+import Logo from "../../assets/logo.svg";
 import "./Signup.css";
 import { BiArrowBack } from "react-icons/bi";
 import UserSignup from "../UserSignup/UserSignup";
 import IndividualSignup from "../IndividualSignup/IndividualSignup";
 import NpoSignup from "../NpoSignup/NpoSignup";
 import { useNavigate } from "react-router-dom";
+import useLocalStorage from "use-local-storage";
 import WelcomeSignup from "../WelcomeSignup/WelcomeSignup";
 
 const Signup = () => {
-  const navigate = useNavigate();
-  const [activeSignupPage, setActiveSignupPage] = useState("A");
+  const Nav = useNavigate();
 
-  useEffect(() => {
-    // Get initial value from localStorage
-    const savedPage = localStorage.getItem("activeSignupPage");
-    if (savedPage) {
-      setActiveSignupPage(savedPage);
-    }
-  }, []);
-
-  useEffect(() => {
-    // Save to localStorage whenever activeSignupPage changes
-    localStorage.setItem("activeSignupPage", activeSignupPage);
-  }, [activeSignupPage]);
+  const [activeSignupPage, setActiveSignupPage] = useLocalStorage("A");
 
   const renderPage = () => {
     switch (activeSignupPage) {
       case "A":
-        return <UserSignup setActiveSignupPage={setActiveSignupPage} />;
+        return <UserSignup setActiveSignupPage={setActiveSignupPage}/>;
       case "B":
-        return <IndividualSignup setActiveSignupPage={setActiveSignupPage} />;
+        return <IndividualSignup setActiveSignupPage={setActiveSignupPage}/>;
       case "C":
-        return <NpoSignup setActiveSignupPage={setActiveSignupPage} />;
+        return <NpoSignup setActiveSignupPage={setActiveSignupPage}/>;
       case "D":
-        return <WelcomeSignup setActiveSignupPage={setActiveSignupPage} />;
+        return <WelcomeSignup setActiveSignupPage={setActiveSignupPage}/>;
       default:
         return <UserSignup setActiveSignupPage={setActiveSignupPage} />;
     }
   };
+
+  useEffect(() => {
+    // page()
+    // console.log(page())
+    // console.log(activeSignupPage)
+  }, []);
+
+  // if (activeSignupPage === "A") {
+  //   console.log("a");
+  // } else if (activeSignupPage === "B") {
+  //   console.log("b");
+  // } else {
+  //   console.log("c");
+  // }
 
   return (
     <section>
       <div className="signup-container">
         <div className="signup-inner">
           <div className="signupBackArrow">
-            {activeSignupPage === "A" ? null : (
+            {activeSignupPage == "A" ? null : (
               <span onClick={() => setActiveSignupPage("A")}>
-                <BiArrowBack style={{ marginRight: '8px' }} /> Back
+                <BiArrowBack style={{ marginRight: '8px' }}/> Back
               </span>
             )}
           </div>
           <div className="signupLogoBox">
-            <img src={Logo} alt="" onClick={() => setActiveSignupPage("A")} />
+            <img src={Logo} alt="" onClick={()=>setActiveSignupPage("A")}/>
           </div>
           <div className="signupTextBox">
             <h1>Create a KindRaise account</h1>
             <p>Amplify your mission with our easy-to-use tools.</p>
           </div>
         </div>
+
         <div className="signup-inputs">{renderPage()}</div>
       </div>
     </section>
