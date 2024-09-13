@@ -145,18 +145,6 @@ progress::-webkit-progress-value {
     line-height: 29.23px;
 }
 
-@media (max-width: 1024px) {
-    .campaigns-list {
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-    }
-
-    .campaign-card {
-        max-width: 100%;
-        padding: 20px;
-    }
-}
 
 @media (max-width: 768px) {
     .campaigns-list {
