@@ -15,6 +15,10 @@
     font-weight: 400;
     line-height: 29.23px;
   }
+
+  .partners-text p {
+    white-space: pre-wrap; 
+  }
   
   .partners-image {
     display: flex; 
@@ -27,3 +31,25 @@
     height: auto;
   }
   
+
+  @media (max-width: 768px) {
+    .partners-container {
+      flex-direction: column; /* Stack text above the image */
+      gap: 20px; /* Adjust the gap for better spacing on mobile */
+      height: 30vh; /* Adjust height to fit content */
+    }
+  
+    .partners-text {
+      max-width: 100%; /* Allow the text to span full width */
+      text-align: center; /* Center the text on mobile */
+      margin-right: 0;
+    }
+  
+    .partners-image {
+      max-width: 100%; /* Allow the image to span full width */
+    }
+  
+    .partners-image img {
+      max-width: 50%; /* Make the image responsive */
+    }
+  }

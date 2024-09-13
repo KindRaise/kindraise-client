@@ -14,7 +14,7 @@ const OurPartners = () => {
   return (
     <div className="partners-container">
       <div className="partners-text" data-aos="fade-up">
-        <p>OUR <br /> PARTNERS</p>
+        <p>OUR <br />PARTNERS</p>
       </div>
       <div className="partners-image" data-aos="fade-up">
         <img src={PartnersImg} alt="Our Partners" />
