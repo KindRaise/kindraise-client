@@ -1,93 +1,110 @@
-.fundHeaderBody {
-    height: 140px;
-    /* background-color: aqua; */
+.headerBody {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
   }
   
-  .fundHeaderWrapper {
-    background-color: white;
-    height: 50%;
-    width: 85%;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 30px 0 30px;
-  }
-  
-  .fundHeadLogo {
+  .headerWrapper {
+    height: 100%;
     /* background-color: red; */
-    width: 150px;
-    /* height: 100px; */
-  
-    img {
-      height: 100%;
-      width: 100%;
-    }
+    width: 95%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
   }
   
-  .fundHeadNav {
-    /* background-color: green; */
-  
-    ul {
-      display: flex;
-      gap: 20px;
-      list-style-type: none;
-  
-      li {
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-  
-        &:hover {
-          color: #049255;
-        }
-      }
-    }
-  }
-  
-  .fundHeadBtnSide {
-    /* background-color: blue; */
+  .headerSighUp {
     display: flex;
     gap: 20px;
+    height: 30px;
+    /* background-color: red; */
+    align-items: center;
+    /* justify-content: center; */
+    /* justify-self: end; */
   }
   
-  .headLoginBtn {
-    height: 50px;
-    /* padding: 20px; */
-    width: 80px;
-    background-color: white;
-    border: 1px solid #049255;
-    border-radius: 50px;
-    font-size: 16px;
+  .headerBox {
+    /* background-color: rgb(83, 83, 83); */
+    height: 20px;
+    color: black;
+    display: flex;
+    gap: 5px;
+    /* width: 60px; */
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
+  }
   
-    &:hover {
-      background-color: #049255;
-      color: white;
+  .iconSide {
+    display: none;
+  }
+  
+  .menuSide {
+    display: none;
+    /* transition: all 0.3s ease-in-out; */
+  }
+  
+  .greenCircle {
+    height: 15px;
+    width: 15px;
+    background-color: rgb(6, 194, 6);
+    border-radius: 50%;
+  }
+  
+  .dropDown {
+    background-color: rgba(0, 0, 0, 0.355);
+    height: 90vh;
+    width: 100%;
+    position: fixed;
+    right: 0;
+    top: 10vh;
+    z-index: 9999;
+  }
+  
+  input {
+    /* outline-color: #05BB6D; */
+    outline-width: 0.5px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* .dropDown {
+    height: 90vh;
+    top: 10vh;
+    width: 100%;
+    background-color: red;
+    position: fixed;
+    
+  } */
+  
+  @media screen and (max-width: 428px) {
+    .iconSide {
+      display: block;
+      height: 50px;
+      width: 100px;
+      /* background-color: red; */
+  
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  
+    .menuSide {
+      display: block;
+    }
+    .headerWrapper {
+      justify-content: space-between;
+    }
+    .headerSighUp {
+      display: none;
     }
   }
   
-  .headSignUpBtn {
-    height: 50px;
-    /* padding: 20px; */
-    width: 100px;
-    border: none;
-    color: white;
-    background-color: #049255;
-    /* border: 1px solid #049255; */
-    border-radius: 50px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-  
-    &:hover {
-      background-color: white;
-      color: black;
-      border: 1px solid #049255;
+  @media screen and (min-width: 428px) {
+    .dropDown {
+      display: none;
     }
   }
+  
+  
