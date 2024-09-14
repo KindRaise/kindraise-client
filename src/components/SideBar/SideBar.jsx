@@ -5,7 +5,8 @@ import { BiBook, BiHome, BiWallet } from 'react-icons/bi'
 import { BsMegaphone, BsPeople } from 'react-icons/bs'
 import { FiSettings } from 'react-icons/fi'
 import Icon from '../../assets/Icon.svg'
-import Logo from '../../assets/Logo.svg'
+import Logo from '../../assets/Logo.svg';
+
 import { IoIosLogOut } from 'react-icons/io'
 
 const SideBar = () => {
