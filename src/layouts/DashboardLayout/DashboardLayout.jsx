@@ -1,10 +1,25 @@
-import React from 'react'
-import './DashboardLayout.css'
+import React from "react";
+import Header from "../../components/Header/Header";
+import { Outlet } from "react-router-dom";
+import "./DashboardLayout.css";
+import SideBar from "../../components/SideBar/SideBar";
 
 const DashboardLayout = () => {
   return (
-    <div>DashboardLayout</div>
-  )
-}
+    <div className="userLayoutBody">
+      <div className="sidebar">
+        <SideBar />
+      </div>
+      <div className="otherSide">
+        <div className="userLayoutHeader">
+          <Header />
+        </div>
+        <div className="holder">
+          <Outlet />
+        </div>
+      </div>
+    </div>
+  );
+};
 
-export default DashboardLayout
+export default DashboardLayout;
