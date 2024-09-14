@@ -3,10 +3,23 @@ import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import logo from '../../assets/logo.svg';
+import Loading from '../../components/Loading/Loading';
 
 const Login = () => {
   const Nav = useNavigate();
+
   const [show, setShow] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleClick = () => {
+    setIsLoading(true);
+    
+    setTimeout(() => {
+      Nav('/dashboard'); 
+      setIsLoading(false);
+    }, 1000); 
+  };
+  
   return (
     <div className="loginBody">
       <div className="logoSec">
@@ -36,10 +49,10 @@ const Login = () => {
                 </span>
               </div>
             </div>
-            <div className="forgetPassword">Forget Password?</div>
-            <button className="loginBtn" onClick={() => Nav("/passwordchange")}>
-              Sign in
-            </button>
+            <div className="forgetPassword" onClick={() => Nav("/resetpassword")}>Forget Password?</div>
+            <button className="loginBtn" onClick={handleClick} disabled={isLoading}>
+            {isLoading ? <Loading /> : 'Sign in'}
+          </button>
             <div className="sighUpCreateAcc">
               Don't have a kindRaise account? <span onClick={()=>Nav(-1)}>Create one</span>
             </div>

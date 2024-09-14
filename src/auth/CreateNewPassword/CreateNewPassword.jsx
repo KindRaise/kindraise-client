@@ -5,63 +5,65 @@ import logo from '../../assets/logo.svg';
 import { useNavigate } from "react-router-dom";
 
 const CreateNewPassword = () => {
-  const [showPassword, setShowPassword] = useState(true);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(true);
-  const navigate = useNavigate();
-
+  const [show, setShow] = useState(true);
+  const [show1, setShow1] = useState(true);
+  const Nav = useNavigate()
   return (
-    <div className="container">
-      <div className="logo-container">
-        <img src={logo} alt="Company Logo" />
+    <div className="loginBody">
+      <div className="logoSec">
+        <img src={logo} alt="" />
       </div>
-      <div className="form-container">
-        <div className="form-card">
-          <div className="form-content">
-            <div className="form-header">
-              <h2>Reset Your Password</h2>
+      <div className="formSec">
+        <div className="formBox">
+          <div className="formWrapper">
+            <div className="loginText">
+              <h2>Reset your password</h2>
               <p>Choose a new password below. For security reasons, you will be logged out of all devices.</p>
             </div>
-            <div className="input-group">
-              <label htmlFor="new-password">New Password</label>
-              <div className="input-wrapper">
-                <input 
-                  type={showPassword ? "password" : "text"} 
-                  id="new-password" 
-                  className="input-field" 
-                />
-                <span className="toggle-password" onClick={() => setShowPassword(!showPassword)}>
-                  {showPassword ? <BsEye size={20} /> : <BsEyeSlash size={20} />}
+            <div className="inputHolder">
+              Password
+              <div className="loginUpInput">
+                {show ? (
+                  <input type="password" className="pass inp" />
+                ) : (
+                  <input type="text" className="pass inp" />
+                )}
+                <span>
+                  {show ? (
+                    <BsEye size={20} onClick={() => setShow(false)} />
+                  ) : (
+                    <BsEyeSlash size={20} onClick={() => setShow(true)} />
+                  )}
                 </span>
               </div>
             </div>
-            <div className="input-group">
-              <label htmlFor="confirm-password">Confirm Password</label>
-              <div className="input-wrapper">
-                <input 
-                  type={showConfirmPassword ? "password" : "text"} 
-                  id="confirm-password" 
-                  className="input-field" 
-                />
-                <span className="toggle-password" onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
-                  {showConfirmPassword ? <BsEye size={20} /> : <BsEyeSlash size={20} />}
+            <div className="inputHolder">
+              Password
+              <div className="loginUpInput">
+                {show ? (
+                  <input type="password" className="pass inp" />
+                ) : (
+                  <input type="text" className="pass inp" />
+                )}
+                <span>
+                  {show ? (
+                    <BsEye size={20} onClick={() => setShow(false)} />
+                  ) : (
+                    <BsEyeSlash size={20} onClick={() => setShow(true)} />
+                  )}
                 </span>
               </div>
             </div>
-            <div className="password-requirements">
+                  
+            {/* <div className='correctPassInput'>hello</div> */}
+            <div className="correctPassMess">
               <p>Your password must have:</p>
-              <ul>
-                <li>At least 12 characters</li>
-                <li>1 uppercase letter</li>
-                <li>1 lowercase letter</li>
-                <li>1 number</li>
-              </ul>
+              <p>At least 12 characters, 1 uppercase letter, 1 lowercase letter and 1 number</p>
             </div>
-            <button className="reset-button" onClick={() => navigate('/resetpassword')}>Reset Password</button>
+            <button className="loginBtn" onClick={()=>Nav('/resetpassword')}>Reset Password</button>
           </div>
         </div>
-        <footer className="footer">
-          ©2024 KindRaise, Inc. All rights reserved
-        </footer>
+        <div>©2024 KindRaise, Inc. All rights reserved</div>
       </div>
     </div>
   );
