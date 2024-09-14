@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./DashboardHeader.css";
 import { useNavigate } from "react-router-dom";
 import { BsQuestionCircle } from "react-icons/bs";
-import Logo from "../../assets/Logo.svg";
+import Logo from "../../assets/logo.svg";
 import Icon from "../../assets/Icon.svg";
 import Menu from "../Menu/Menu";
 import 'animate.css';
