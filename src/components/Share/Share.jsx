@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./share.css";
+import "./Share.css";
 import { BiCopy } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { GoDownload } from "react-icons/go";
