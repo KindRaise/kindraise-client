@@ -17,7 +17,7 @@ const Fundraising = () => {
         <div className='fundraising-intro' data-aos="fade-up">
           <h1>KindRaise Gives You More</h1>
           <p>
-            Supercharge your fundraising efforts with our unique tools and personal <br />support.
+            Supercharge your fundraising efforts with our unique tools and personal support.
             Helping you raise more money effortlessly
           </p>
         </div>
@@ -34,7 +34,7 @@ const Fundraising = () => {
           <div className="fundraising-text" data-aos="fade-left">
             <h1>Fundraising <span>Pages</span></h1>
             <p>
-              Raise more for your mission with <br /> interactive fundraising pages
+              Raise more for your mission with interactive fundraising pages
             </p>
           </div>
         </div>
