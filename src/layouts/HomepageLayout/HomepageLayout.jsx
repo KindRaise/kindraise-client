@@ -6,7 +6,7 @@ import PopularCampaigns from '../../components/PopularCampaigns/PopularCampaigns
 import DonorEngagement from '../../components/DonorEngagement/DonorEngagement';
 import DonorOutreach from '../../components/DonorOutreach/DonorOutreach';
 import Solution from '../../components/Solution/Solution';
-import SecurityAssured from '../../components/SecurityAssured/SecurityAssured';
+import OurMission from '../../components/OurMission/OurMission';
 import OurPartners from '../../components/OurPartners/OurPartners';
 import StartFundraising from '../../components/StartFundraising/StartFundraising';
 import Footer from '../../components/Footer/Footer';
@@ -22,7 +22,7 @@ const HomepageLayout = () => {
       <DonorEngagement />
       <DonorOutreach />
       <Solution />
-      <SecurityAssured />
+      <OurMission />
       <StartFundraising />
       <OurPartners />
       <Footer />
