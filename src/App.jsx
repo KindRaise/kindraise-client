@@ -12,13 +12,15 @@ import Account from "./pages/Account/Account";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import CreateCampaign from "./pages/CreateCampaign/CreateCampaign";
 import FundraisingPage from "./pages/FundraisingPage/FundraisingPage";
+import HomepageLayout from "./layouts/HomepageLayout/HomepageLayout";
 
 const App = () => {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<HomepageLayout />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/passwordchange" element={<PasswordChange />} />
         <Route path="/createpassword" element={<CreateNewPassword />} />
         <Route path="/resetpassword" element={<ResetPassword />} />
