@@ -27,7 +27,7 @@
     font-family: Proxima Nova, sans-serif;
     font-size: 20px;
     font-weight: 400;
-    max-width: 800px;
+    max-width: 700px;
     margin: 0 auto; 
 
 }
@@ -80,7 +80,6 @@
     line-height: 43.85px;
     text-align: left;
     word-wrap: break-word; 
-    hyphens: auto;
     margin: 0; 
 }
 

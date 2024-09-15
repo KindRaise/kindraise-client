@@ -19,7 +19,7 @@ const OurMission = () => {
       <div className='mission-solution-header' data-aos="fade-up">
         <div className='mission-solution-content'>
             <h1>Our Mission is <span>Simplifying Generosity</span></h1>
-            <p>Together, we're not just raising funds; we're raising hope, raising communities, and <br />raising the bar for what's possible in Nigerian philanthropy.</p>
+            <p>Together, we're not just raising funds; we're raising hope, raising communities, and raising the bar for what's possible in Nigerian philanthropy.</p>
         </div>
       </div>
     </div>

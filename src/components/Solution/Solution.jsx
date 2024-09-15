@@ -19,7 +19,7 @@ const Solution = () => {
       <div className='fundraising-solution-header' data-aos="fade-up">
         <div className='fundraising-solution-content'>
             <h1>A Fundraising <span>Solution</span> For All</h1>
-            <p>No cause is big or small. From heartfelt personal missions to grand community projects, <br /> we empower you to turn dreams into reality.</p>
+            <p>No cause is big or small. From heartfelt personal missions to grand community projects, we empower you to turn dreams into reality.</p>
         </div>
       </div>
 
@@ -31,7 +31,7 @@ const Solution = () => {
         <div className='fundraising-step' data-aos="fade-right">
           <div className='step-number'>1</div>
           <h1 className='step-title'>Start your fundraiser</h1>
-          <p>Tell your story, set a target, <br /> add pictures and videos</p>
+          <p>Tell your story, set a target, add pictures and videos</p>
         </div>
 
         <div className='fundraising-step' data-aos="fade-up">
@@ -43,7 +43,7 @@ const Solution = () => {
         <div className='fundraising-step' data-aos="fade-left">
           <div className='step-number'>3</div>
           <h1 className='step-title'>Manage donations</h1>
-          <p>Receive donations, thank donors, <br />money goes to your bank account</p>
+          <p>Receive donations, thank donors, money goes to your bank account</p>
         </div>
       </div>
 
