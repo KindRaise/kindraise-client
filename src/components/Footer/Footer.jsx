@@ -13,6 +13,11 @@ const Footer = () => {
         <div className="footer-item footer-logo">
           <img src={FooterLogo} alt="Footer Logo" />
           <p className='footer-prescb'>Kindraise is dedicated to providing you with the tools you need to raise money for whatever your cause may be.</p>
+          <div className="social-media-icon">
+          <img src={Facebook} alt="Facebook" />
+          <img src={Telegram} alt="Telegram" />
+          <img src={Instagram} alt="Instagram" />
+        </div>
         </div>
         <div className="footer-item">
           <h2>Product</h2>
@@ -20,13 +25,6 @@ const Footer = () => {
             <li>Fundraising Page</li>
             <li>Nonprofit CRM</li>
             <li>Donor Engagement</li>
-          </ul>
-        </div>
-        <div className="footer-item">
-          <h2>Privacy</h2>
-          <ul>
-            <li>Privacy Notice</li>
-            <li>Cookies Policy</li>
           </ul>
         </div>
         <div className="footer-item">
@@ -41,11 +39,6 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div className="social-media-icon">
-          <img src={Facebook} alt="Facebook" />
-          <img src={Telegram} alt="Telegram" />
-          <img src={Instagram} alt="Instagram" />
-        </div>
 
         <div className="footer-item footer-bottom" style={{ gridColumn: 'span 5' }} data-aos="fade-up">
           <p>&copy; {new Date().getFullYear()} All rights reserved.</p>
