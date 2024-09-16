@@ -1,13 +1,13 @@
 .header-wrapper {
   display: flex;
   justify-content: center;
-  padding: 20px 0;
+  padding: 30px 0;
   position: relative;
 }
 
 .header-content {
   width: 80%;
-  height: 10vh;
+  height: 8vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -114,15 +114,13 @@
 
   .auth-button {
     left: -100%;
+    transform: translateX(+500%);
   }
 
   .auth-about,
   .auth-login{
-    transform: translateX(+450%);
-  }
+    transform: translateX(+550%);
 
-  .auth-signup{
-    transform: translateX(+400%);
 
   }
 }
