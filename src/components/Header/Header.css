@@ -7,7 +7,7 @@
 
 .header-content {
   width: 80%;
-  height: 8vh;
+  height: 10vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -114,13 +114,15 @@
 
   .auth-button {
     left: -100%;
-    transform: translateX(+500%);
   }
 
   .auth-about,
   .auth-login{
-    transform: translateX(+550%);
+    transform: translateX(+450%);
+  }
 
+  .auth-signup{
+    transform: translateX(+400%);
 
   }
 }
