@@ -27,19 +27,17 @@ const App = () => {
         <Route path="/resetpassword" element={<ResetPassword />} />
         <Route path="/fundraising-page" element={<FundraisingPage />} />
         <Route path="/explore-campaigns" element={<ExploreCampaigns />} />
-        <Route path="*" element={<div>page not found</div>} />
-        <Route
-          // path="/dashboard"  
-          element={<DashboardLayout />}
-          children={[
-            <Route path="/dashboard" element={<Dashboard/>}/>,
-            <Route path="/campaign" element={<Campaign/>}/>,
-            <Route path="/track" element={<Track/>}/>,
-            <Route path="/payout" element={<Payout/>}/>,
-            <Route path="/account" element={<Account/>}/>,
-            <Route path="/campaign/create.campaign" element={<CreateCampaign/>}/>,
-          ]}
-        />
+
+        <Route path="/dashboard" element={<DashboardLayout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="campaign" element={<Campaign />} />
+          <Route path="track" element={<Track />} />
+          <Route path="payout" element={<Payout />} />
+          <Route path="account" element={<Account />} />
+          <Route path="campaign/create-campaign" element={<CreateCampaign />} />
+        </Route>
+
+        <Route path="*" element={<div>Page not found</div>} />
       </Routes>
     </Router>
   );
