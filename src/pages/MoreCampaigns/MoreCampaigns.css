@@ -23,7 +23,7 @@
     animation-delay: 0.5s; 
   }
   
-  @keyframes fadeInUp {
+  @keyframes fadeInDown {
     to {
       opacity: 1;
       transform: translateY(0); 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Period from '../../assets/period.png';
 import Ads from '../../assets/ads.png';
@@ -42,6 +42,14 @@ const campaigns = [
 const MoreCampaigns = () => {
     const navigate = useNavigate();
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+
+        AOS.init({
+            duration: 2000,
+        });
+    }, []);
+
     const handleClick = () => {
         navigate('/explore-campaigns'); 
     };
@@ -50,32 +58,26 @@ const MoreCampaigns = () => {
         navigate('/signup'); 
     };
 
-    useEffect(() => {
-        AOS.init({
-            duration: 2000,
-        });
-    }, []);
-
     return (
         <section className='more-campaigns'>
-            <div className='more-campaigns-header' data-aos="fade-up">
+            <div className='more-campaigns-header' data-aos="fade-down">
                 <h1>Discover Fundraising Campaigns</h1>
             </div>
             <div className='container'>
-            <label htmlFor="fundraiser-type" className="bold-label">Fundraiser Type</label>
-            <input type="text" id="fundraiser-type" className="search-box" placeholder="Search..." />
-        </div>
+                <label htmlFor="fundraiser-type" className="bold-label">Fundraiser Type</label>
+                <input type="text" id="fundraiser-type" className="search-box" placeholder="Search..." />
+            </div>
 
-        <div className='checkbox-group'>
-            <label>
-                <input type="checkbox" name="fundraiser-type" value="non-profit" />
-                Non profit organization
-            </label>
-            <label>
-                <input type="checkbox" name="fundraiser-type" value="individual" />
-                Individual
-            </label>
-        </div>
+            <div className='checkbox-group'>
+                <label>
+                    <input type="checkbox" name="fundraiser-type" value="non-profit" />
+                    Non profit organization
+                </label>
+                <label>
+                    <input type="checkbox" name="fundraiser-type" value="individual" />
+                    Individual
+                </label>
+            </div>
             <div className='campaigns-container'>
                 {campaigns.map((campaign) => (
                     <div className='campaign-card' key={campaign.id} data-aos="fade-up"> 
@@ -108,12 +110,12 @@ const MoreCampaigns = () => {
                     you are an individual, group, or organization.
                     </p>
                     <div className="more-button-container" data-aos="zoom-in">
-                    <button onClick={handleSignup} className="more-button">
-                        Start fundraising
-                    </button>
+                        <button onClick={handleSignup} className="more-button">
+                            Start fundraising
+                        </button>
                     </div>
                 </div>
-                </div>
+            </div>
         </section>
     );
 };
