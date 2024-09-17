@@ -1,16 +1,16 @@
 
 .terms-content{
-    padding: 40px;
-    max-width: 80%;
+    padding: 5px;
+    max-width: 100%;
     width: 80%;
     margin: 0;
-    padding: 20px;
     color: #333;
     margin: 0 auto;
     font-family: Proxima Nova, sans-serif;
-    font-size: 20px;
+    font-size: 24px;
     line-height: 50.23px;
     text-align: left;
+    margin-bottom: 50%;
 
 }
 
