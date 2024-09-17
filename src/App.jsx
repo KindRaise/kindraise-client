@@ -14,6 +14,12 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import CreateCampaign from "./pages/CreateCampaign/CreateCampaign";
 import FundraisingPage from "./pages/FundraisingPage/FundraisingPage";
 import HomepageLayout from "./layouts/HomepageLayout/HomepageLayout";
+import PrivacyCookies from "./pages/PrivacyCookies/PrivacyCookies"; 
+import TermsOfUse from "./pages/TermsOfUse/TermsOfUse"; 
+import AboutUs from "./pages/AboutUs/AboutUs"; 
+import Faqs from "./pages/Faqs/Faqs"; 
+import Pricing from "./pages/Pricing/Pricing"; 
+import ContactUs from "./pages/ContactUs/ContactUs"; 
 
 const App = () => {
   return (
@@ -36,6 +42,13 @@ const App = () => {
           <Route path="account" element={<Account />} />
           <Route path="campaign/create-campaign" element={<CreateCampaign />} />
         </Route>
+
+        <Route path="/privacy-cookies" element={<PrivacyCookies />} />
+        <Route path="/terms-of-use" element={<TermsOfUse />} />
+        <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/faqs" element={<Faqs />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/contact-us" element={<ContactUs />} />
 
         <Route path="*" element={<div>Page not found</div>} />
       </Routes>

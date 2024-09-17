@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import FooterLogo from '../../assets/logo.svg';
 import Facebook from '../../assets/fb-icon.png';
 import Instagram from '../../assets/instagram-icon.png';
@@ -20,21 +21,33 @@ const Footer = () => {
         </div>
         </div>
         <div className="footer-item">
-          <h2>Privacy and Legal</h2>
-          <ul>
-            <li>Privacy and Cookies</li>
-            <li>Terms of use</li>
-          </ul>
-        </div>
-        <div className="footer-item">
-          <h2>About</h2>
-          <ul>
-            <li>About Us</li>
-            <li>FAQS</li>
-            <li>Pricing</li>
-            <li>Contact Us</li>
-          </ul>
-        </div>
+        <h2>Privacy and Legal</h2>
+        <ul>
+          <li>
+            <Link to="/privacy-cookies">Privacy and Cookies</Link>
+          </li>
+          <li>
+            <Link to="/terms-of-use">Terms of use</Link>
+          </li>
+        </ul>
+      </div>
+      <div className="footer-item">
+        <h2>About</h2>
+        <ul>
+          <li>
+            <Link to="/about-us">About Us</Link>
+          </li>
+          <li>
+            <Link to="/faqs">FAQS</Link>
+          </li>
+          <li>
+            <Link to="/pricing">Pricing</Link>
+          </li>
+          <li>
+            <Link to="/contact-us">Contact Us</Link>
+          </li>
+        </ul>
+      </div>
         <div className="footer-item footer-bottom">
           <p>&copy; {new Date().getFullYear()} All rights reserved.</p>
         </div>

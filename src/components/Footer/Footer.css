@@ -60,6 +60,18 @@
   text-align: left;
 }
 
+footer a {
+  text-decoration: none; 
+  color: inherit; 
+}
+
+footer .footer-item a {
+  text-decoration: none;
+  color: inherit; 
+  cursor: pointer;
+}
+
+
 .footer-item h2,
 .footer-item ul li,
 .footer-prescb {
