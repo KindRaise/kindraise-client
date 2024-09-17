@@ -24,7 +24,7 @@ const Hero = () => {
         </div>
 
         <div className="text-wrapper" data-aos="fade-left">
-          <h1>Do something <br />incredible today</h1>
+          <h1>Do something incredible today</h1>
           <p>
             Empower the causes you care <br />about. Fundraise with ease.
           </p>

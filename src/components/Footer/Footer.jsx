@@ -12,7 +12,7 @@ const Footer = () => {
       <div className="footer-grid">
         <div className="footer-item footer-logo">
           <img src={FooterLogo} alt="Footer Logo" />
-          <p className='footer-prescb'>Kindraise is dedicated to providing you with the tools you need to raise money for whatever your cause may be.</p>
+          <p className='footer-prescb'>Kindraise is dedicated to <br />providing you with the tools you <br /> need to raise money for whatever <br /> your cause may be.</p>
           <div className="social-media-icon">
           <img src={Facebook} alt="Facebook" />
           <img src={Telegram} alt="Telegram" />
@@ -20,27 +20,22 @@ const Footer = () => {
         </div>
         </div>
         <div className="footer-item">
-          <h2>Product</h2>
+          <h2>Privacy and Legal</h2>
           <ul>
-            <li>Fundraising Page</li>
-            <li>Nonprofit CRM</li>
-            <li>Donor Engagement</li>
+            <li>Privacy and Cookies</li>
+            <li>Terms of use</li>
           </ul>
         </div>
         <div className="footer-item">
-          <h2>Company</h2>
+          <h2>About</h2>
           <ul>
             <li>About Us</li>
             <li>FAQS</li>
-            <li>Teams</li>
             <li>Pricing</li>
-            <li>Careers</li>
             <li>Contact Us</li>
           </ul>
         </div>
-
-
-        <div className="footer-item footer-bottom" style={{ gridColumn: 'span 5' }} data-aos="fade-up">
+        <div className="footer-item footer-bottom">
           <p>&copy; {new Date().getFullYear()} All rights reserved.</p>
         </div>
       </div>

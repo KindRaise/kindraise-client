@@ -34,7 +34,7 @@ const Fundraising = () => {
           <div className="fundraising-text" data-aos="fade-left">
             <h1>Fundraising <span>Pages</span></h1>
             <p>
-              Raise more for your mission with interactive fundraising pages
+            Get more support for your cause with engaging, interactive fundraising pages that inspire people to give.
             </p>
           </div>
         </div>

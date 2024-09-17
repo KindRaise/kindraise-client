@@ -6,6 +6,7 @@ import PasswordChange from "./auth/PasswordChange/PasswordChange";
 import CreateNewPassword from "./auth/CreateNewPassword/CreateNewPassword";
 import ResetPassword from "./auth/ResetPassword/ResetPassword";
 import Campaign from "./pages/Campaign/Campaign";
+import ExploreCampaigns from "./pages/ExploreCampaigns/ExploreCampaigns";
 import Track from "./pages/Track/Track";
 import Payout from "./pages/Payout/Payout";
 import Account from "./pages/Account/Account";
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/createpassword" element={<CreateNewPassword />} />
         <Route path="/resetpassword" element={<ResetPassword />} />
         <Route path="/fundraising-page" element={<FundraisingPage />} />
+        <Route path="/explore-campaigns" element={<ExploreCampaigns />} />
         <Route path="*" element={<div>page not found</div>} />
         <Route
           // path="/dashboard"  

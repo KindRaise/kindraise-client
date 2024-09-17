@@ -7,6 +7,7 @@
 
 .header-content {
   width: 80%;
+  max-width: 80%;
   height: 8vh;
   display: flex;
   justify-content: space-between;
@@ -15,6 +16,7 @@
   background-color: white;
   border-radius: 10px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-sizing: border-box; 
 }
 
 .header-logo {
@@ -22,6 +24,7 @@
   width: auto;
   height: auto;
   cursor: pointer;
+  box-sizing: border-box; 
 }
 
 .header-nav {
@@ -62,15 +65,16 @@
   font-weight: 500;
   text-align: center;
   transition: background-color 0.3s ease;
+  border-radius: 5px; 
 }
 
 .auth-about,
-.auth-login{
+.auth-login {
   background-color: white;
   color: black;
 }
 
-.auth-signup{
+.auth-signup {
   border-radius: 5px;
 }
 
@@ -84,9 +88,6 @@
 
 @media screen and (min-width: 1024px) {
   .header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 0 20px; 
   }
 
@@ -96,16 +97,13 @@
   }
 
   .header-logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    margin: 0 auto; 
+    position: static; 
+    margin: 0; 
   }
 
   .header-auth {
     display: flex;
     gap: 10px; 
-    align-items: center;
   }
 
   .header-hamburger {
@@ -113,19 +111,14 @@
   }
 
   .auth-button {
-    left: -100%;
-    transform: translateX(+500%);
+    display: inline-block; 
   }
 
   .auth-about,
-  .auth-login{
-    transform: translateX(+550%);
-
-
+  .auth-login {
+    display: inline-block; 
   }
 }
-
-
 
 @media screen and (max-width: 1024px) {
   .header-content {

@@ -26,11 +26,14 @@ const Header = () => {
           <Hamburger toggled={isMenuOpen} toggle={handleHamburgerClick} />
         </div>
         <nav className={`header-nav ${isMenuOpen ? 'show-nav' : ''}`}>
-          <button className="nav-button" onClick={() => navigate('/campaigns')}>
+          <button className="nav-button" onClick={() => navigate('/explore-campaigns')}>
             Campaigns
           </button>
           <button className="nav-button" onClick={() => navigate('/search')}>
             <CiSearch /><span>Search</span>
+          </button>
+          <button onClick={() => navigate('/login')} className="auth-button auth-login">
+            About
           </button>
           <button onClick={() => navigate('/login')} className="auth-button auth-login">
             Login

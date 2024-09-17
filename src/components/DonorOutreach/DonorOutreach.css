@@ -1,8 +1,11 @@
+/* General styles */
 .donor-outreach {
   display: flex;
   justify-content: center;
   padding: 20px;
   margin-left: 50px;
+  max-width: 100%; 
+  box-sizing: border-box; 
 }
 
 .donor-outreach-wrapper {
@@ -13,7 +16,7 @@
   justify-content: space-between;
   gap: 20px;
   width: 90%;
-  overflow-x: hidden;
+  max-width: 100%; 
 }
 
 .donor-outreach-image {
@@ -54,6 +57,7 @@
   margin-top: 0;
 }
 
+/* Media query for mobile screens (max width 768px) */
 @media (max-width: 768px) {
   .donor-outreach-wrapper {
     flex-direction: column;
@@ -70,17 +74,43 @@
   .donor-outreach-text h1 {
     font-size: 27px; 
     line-height: 48px;
-    text-align: left; 
+    text-align: left;
   }
 
   .donor-outreach-text p {
     font-size: 20px; 
     line-height: 32px;
-    text-align: left; 
+    text-align: left;
   }
 
   .donor-outreach {
     margin-left: 0; 
     padding: 10px;
+  }
+}
+
+/* Media query for 2K screens (2560px width) */
+@media (min-width: 2560px) {
+  .donor-outreach-text h1 {
+    font-size: 60px;
+    line-height: 72px;
+  }
+
+  .donor-outreach-text p {
+    font-size: 30px;
+    line-height: 50px;
+  }
+}
+
+/* Media query for 4K screens (3840px width) */
+@media (min-width: 3840px) {
+  .donor-outreach-text h1 {
+    font-size: 72px;
+    line-height: 85px;
+  }
+
+  .donor-outreach-text p {
+    font-size: 36px;
+    line-height: 60px;
   }
 }

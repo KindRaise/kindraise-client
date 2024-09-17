@@ -3,6 +3,8 @@
   justify-content: center;
   padding: 20px;
   margin-left: 50px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .donor-engagement-wrapper {
@@ -13,6 +15,7 @@
   justify-content: space-between;
   gap: 10px;
   width: 90%;
+  max-width: 100%;
 }
 
 .donor-engagement-text {
@@ -54,6 +57,7 @@
   margin-top: 0;
 }
 
+/* Media query for mobile screens (max width 768px) */
 @media (max-width: 768px) {
   .donor-engagement-wrapper {
     flex-direction: column;
@@ -61,9 +65,10 @@
     gap: 10px;
   }
 
-  .donor-engagement-image{
+  .donor-engagement-image {
     order: -1;
   }
+
   .donor-engagement-text {
     width: 100%;
     padding: 10px;
@@ -82,7 +87,33 @@
   }
 
   .donor-engagement {
-    margin-left: 0; 
-    padding: 10px;  
+    margin-left: 0;
+    padding: 10px;
+  }
+}
+
+/* Media query for 2K screens (2560px width) */
+@media (min-width: 2560px) {
+  .donor-engagement-text h1 {
+    font-size: 60px;
+    line-height: 72px;
+  }
+
+  .donor-engagement-text p {
+    font-size: 30px;
+    line-height: 50px;
+  }
+}
+
+/* Media query for 4K screens (3840px width) */
+@media (min-width: 3840px) {
+  .donor-engagement-text h1 {
+    font-size: 72px;
+    line-height: 85px;
+  }
+
+  .donor-engagement-text p {
+    font-size: 36px;
+    line-height: 60px;
   }
 }
