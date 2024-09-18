@@ -183,6 +183,7 @@
   .text-wrapper h1 {
     font-size: 37px; 
     line-height: 55.9px;
+    margin-bottom: 20px;
   }
 
   .text-wrapper p {
@@ -192,7 +193,7 @@
 
   .cta-button {
     padding: 8px 15px; 
-    font-size: 12px;
-    margin-left: 15px; 
+    font-size: 15px;
+    margin-left: 10px; 
   }
 }
