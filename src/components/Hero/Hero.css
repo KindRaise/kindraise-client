@@ -36,7 +36,7 @@
 
 .text-wrapper p {
   font-family: Proxima Nova, sans-serif;
-  font-size: 30px;
+  font-size: 35px;
   font-weight: 400;
   line-height: 1.9; 
   text-align: left;
@@ -126,8 +126,7 @@
     flex-direction: column; 
     align-items: center;
     width: 100%; 
-    padding-left: 7%;
-
+    padding: 0 5%; 
   }
 
   .image-wrapper {
@@ -158,41 +157,42 @@
 
 @media (max-width: 768px) {
   .text-wrapper h1 {
-    font-size: 50px; 
+    font-size: 60px; 
     line-height: 80.9px;
-    padding-left: 7%;
+    padding: 0 2%; 
   }
 
   .text-wrapper p {
-    font-size: 18px; 
-    line-height: 28px;
-    padding-left: 7%;
+    font-size: 22px; 
+    line-height: 32.9px;
+    padding: 0 2%; 
   }
 
   .cta-button {
-    margin-left: 7%;
     padding: 10px 20px; 
     font-size: 14px; 
+    margin-left: 2%;
   }
 }
 
 @media (max-width: 400px) {
-  .hero-section {
+  .text-wrapper {
     padding: 5px; 
   }
 
   .text-wrapper h1 {
-    font-size: 40px; 
-    line-height: 60.9px;
+    font-size: 37px; 
+    line-height: 55.9px;
   }
 
   .text-wrapper p {
-    font-size: 16px; 
-    line-height: 24px;
+    font-size: 20px; 
+    line-height: 30.9px;
   }
 
   .cta-button {
     padding: 8px 15px; 
-    font-size: 12px; 
+    font-size: 12px;
+    margin-left: 15px; 
   }
 }
