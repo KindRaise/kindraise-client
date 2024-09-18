@@ -1,24 +1,44 @@
-import React from 'react'
-import Header from '../../components/Header/Header'
-import Footer from '../../components/Footer/Footer'
-import './ContactUs.css'
+import React from 'react';
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
+import './ContactUs.css';
+import Mail from '../../assets/mail-icon.png';
+import Faq from '../../assets/faq.png';
 
 const ContactUs = () => {
-  return (
-    <>
-    <Header/>
-    <div className='contact-container'>
-        <h1>Get in touch</h1>
-        <p>We are happy to help. Please contact us if you need help or have any questions.</p>
+    const sendMail = () => {
+        window.location.href = 'mailto:contact@kindraise.com';
+    };
 
-        <div className='container-inner'>
+    return (
+        <>
+            <Header/>
+            <div className='contact-container'>
+                <h1>Get in touch</h1>
+                <p>We are happy to help. Please contact us if you need help or have any questions.</p>
 
-        </div>
+                <div className='container-inner'>
+                    <img src={Mail} alt="Mail Icon" />
+                    <h1>Send a mail</h1>
+                    <p>Do you have general questions or need assistance? <br /> Please send us a quick email.</p>
+                    <div className="contact-button-container" data-aos="zoom-in">
+                        <button onClick={sendMail} className="contact-button">Send Email</button>
+                    </div>
+                </div>
+            </div>
+            <div className='help-container'>
+                    <h1>Need more help?</h1>
+                    <p>Find answers to your questions. Explore our docs to learn everything you need to know about KindRaise.</p>
 
-    </div>
-    <Footer/>
-    </>
-  )
-}
+                    <div className='faq-container'>
+                    <img src={Faq} alt="FAQ Icon" />
+                    <h1>Frequently Asked Questions</h1>
+                    <p>Get answers to some of the most commonly asked questions and feedback.</p>
+                </div>
+                </div>
+            <Footer/>
+        </>
+    );
+};
 
-export default ContactUs
+export default ContactUs;

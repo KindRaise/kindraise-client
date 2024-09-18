@@ -1,0 +1,142 @@
+/* ContactUs.css */
+
+.contact-container {
+    width: 80%; /* Adjusted width to ensure the content fits well on different screens */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    margin-top: 5%;
+  }
+  
+  .contact-container h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-family: Proxima Nova, sans-serif;
+    font-size: 64px;
+    font-weight: 600;
+    line-height: 77.95px;
+    text-align: center;
+  }
+  
+  .contact-container p {
+    color: #666;
+    line-height: 1.6;
+    font-family: Proxima Nova, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29.23px;
+    text-align: center;
+  }
+  
+  .container-inner {
+    border-radius: 8px;
+    border: 1px solid #E7E7E8;
+    padding: 20px;
+    margin: 10% 0;
+  }
+  
+  .container-inner img, .faq-container img {
+    max-width: 100px;
+    margin-bottom: 15px;
+  }
+  
+  .container-inner h1, .faq-container h1, .help-container h1 {
+    font-family: Proxima Nova, sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 38.98px;
+    text-align: center;
+    color: #333;
+  }
+
+  .faq-container h1, .help-container h1 {
+    text-align: left;
+  }
+  
+  .container-inner p, .faq-container p {
+    font-family: Proxima Nova, sans-serif;
+    font-size: 24px;
+    line-height: 38.23px;
+    text-align: center;
+    color: #666;
+  }
+  
+  .help-container{
+    margin: 0 auto; /* Center containers */
+    width: 80%; /* Ensure they don't stretch too wide */
+    padding: 20px; /* Add padding inside the containers */
+    border-radius: 8px; /* Optional: for rounded corners */
+  }
+  
+  .help-container {
+    background-color: #ECF3FF;
+    margin-bottom: 20px; /* Space between help and FAQ containers */
+  }
+  
+  .faq-container {
+    display: flex;
+    width: 50%; /* Ensure they don't stretch too wide */
+    background-color: #0B1215;
+    color: white;
+    padding: 20px; /* Add padding inside the containers */
+    /* Ensure text is visible on dark background */
+  }
+
+
+.faq-container h1, .faq-container p {
+    margin: 0; 
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    /* Remove default margins to ensure proper spacing */
+  }
+  
+  .faq-container h1 {
+    margin-bottom: 10px; /* Add some space below the h1 */
+  }
+  
+  .faq-container p {
+    font-size: 18px; /* Adjust font size if needed */
+  }
+  
+  .contact-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+  }
+  
+  .contact-button {
+    padding: 10px 20px;
+    background: #05BB6D !important; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: Proxima Nova, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 29.23px;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .contact-container {
+      padding: 10px;
+    }
+  
+    .contact-container h1 {
+      font-size: 28px;
+    }
+  
+    .container-inner h1, .faq-container h1, .help-container h1 {
+      font-size: 22px;
+    }
+  
+    .container-inner p, .faq-container p, .help-container p {
+      font-size: 14px;
+    }
+  
+    .container-inner img, .faq-container img {
+      max-width: 80px;
+    }
+  }
+  
