@@ -19,7 +19,7 @@ import School from "../../assets/School.svg";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { myCampaigns } from "../../Global/slice";
+import { myCampaigns } from "../../global/slice";
 import toast from "react-hot-toast";
 // import { Bar } from 'rechart';
 // import { BarChart, ResponsiveContainer,Bar, XAxis, YAxis, Tooltip } from 'recharts';
