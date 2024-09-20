@@ -3,7 +3,7 @@ import './Content.css'
 import Upload from '../../assets/upload.png'
 import { FcCancel } from 'react-icons/fc';
 
-const Content = ({setTitle,setSubTitle,setStory,setPhoto}) => {
+const Content = ({setTitle,setSubTitle,goal,setStory,setPhoto}) => {
   const [post, setPost] = useState();
   // const [word, setWord] = useState(setTitle);
 
@@ -71,6 +71,9 @@ const Content = ({setTitle,setSubTitle,setStory,setPhoto}) => {
                 </div>
                 <FcCancel onClick={()=>setPost("")}/>
             </div>
+          </div>
+          <div className='nextBtnBox'>
+            <button className='nextBtn' onClick={goal}>Next</button>
           </div>
         </div>
       </div>

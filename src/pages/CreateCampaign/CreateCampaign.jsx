@@ -125,7 +125,7 @@ const CreateCampaign = () => {
   return (
     <>
     <div className="createBody">
-      <h2 className="createName">Create a New Campaigns</h2>
+      <h2 className="createName">Create a New Campaign</h2>
       <div className="createContent">
         <div className="createHead">
           <div className="createSmallHeader">
@@ -148,7 +148,7 @@ const CreateCampaign = () => {
               Sharing
             </div>
           </div>
-          <div>hello</div>
+          {/* <div>hello</div> */}
         </div>
 
         <div className="create">{renderComponent()}</div>
