@@ -37,18 +37,18 @@
   cursor: pointer;
 }
 
-.search-header {
-  display: flex; 
-  align-items: center; 
-  text-decoration: none; 
-  color: #333; 
+.search-header-mobile {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
-.search-header svg {
-  font-size: 20px; 
-  vertical-align: middle; 
-  margin-right: 5px;
+.search-header-mobile span,
+.search-header-mobile svg {
+  display: inline-block;
+  vertical-align: middle;
 }
+
 
 .header-center {
   flex-grow: 1;

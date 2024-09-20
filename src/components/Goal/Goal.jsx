@@ -1,7 +1,7 @@
 import React from "react";
 import "./Goal.css";
 
-const Goal = ({setAmount}) => {
+const Goal = ({setAmount,setEndDate,sharing}) => {
   return (
     <div className="goalBody">
       <div className="goalTitleBox">
@@ -21,11 +21,14 @@ const Goal = ({setAmount}) => {
           <div>
             <h3>End Date</h3>
             <div className="goalDateText">Add an end date/countdown to your page</div>
+            {
+              <input type="date" onChange={(e)=> setEndDate(e.target.value)} className="dateInput" name="" id="" />
+            }
           </div>
           <div>toggle</div>
         </div>
         <div className="SaveBtnBox">
-          <button className="goalSaveBtn">Save</button>
+          <button className="goalSaveBtn" onClick={sharing}>Save</button>
         </div>
       </div>
     </div>

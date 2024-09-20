@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './Content.css'
+import Upload from '../../assets/upload.png'
 import { FcCancel } from 'react-icons/fc';
 
 const Content = ({setTitle,setSubTitle,setStory,setPhoto}) => {
@@ -64,7 +65,7 @@ const Content = ({setTitle,setSubTitle,setStory,setPhoto}) => {
               </div>
                 <div className='photoBox'>
                   <label htmlFor="1">
-                    {post ? <img src={post} alt="pic" className="postImg" /> : <div>hello</div>}
+                    {post ? <img src={post} alt="pic" className="postImg" /> : <div> <img src={Upload} alt="" /><br />Click to add a photo</div>}
                     <input type="file" id="1" hidden onChange={showImg} />
                   </label>
                 </div>

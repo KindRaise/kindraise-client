@@ -27,7 +27,6 @@ const Amount = ({setActiveComponent,setPay,setAmount}) => {
           <p>Nuturing Our Future, One Tree at a Time</p>
         </div>
       </div>
-      
         {/* <button onClick={()=>setActiveComponent("B")}>amount</button> */}
     </div>
   )

@@ -4,7 +4,26 @@
   padding: 10px;
 }
 
+body {
+  overflow: auto; 
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+}
+
+body {
+  -ms-overflow-style: none; 
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; 
+}
+
 .hero-content-wrapper {
+  margin-top: 50px;
   width: 80%;
   display: flex;
   align-items: center;
@@ -28,15 +47,16 @@
   font-family: Proxima Nova, sans-serif;
   font-size: 70px;
   font-weight: 800;
-  line-height: 1.4; 
+  margin-bottom: 20px;
+  line-height: 1.5; 
   text-align: left;
-  margin-bottom: 40px;
   color: #3C4144;
 }
 
 .text-wrapper p {
+  margin-top: 30px;
   font-family: Proxima Nova, sans-serif;
-  font-size: 35px;
+  font-size: 28px;
   font-weight: 400;
   line-height: 1.9; 
   text-align: left;
@@ -65,6 +85,8 @@
   font-weight: 700;
   line-height: 1.8; 
   text-align: left;
+  margin-bottom: 10%;
+
 }
 
 @media (min-width: 3840px) { 
