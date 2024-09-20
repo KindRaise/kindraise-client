@@ -1,5 +1,5 @@
 import React from 'react'
-import './amount.css'
+import './Amount.css'
 import { useNavigate } from 'react-router-dom'
 import Tree from '../../assets/Tree.svg'
 
