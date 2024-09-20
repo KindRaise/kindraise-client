@@ -1,178 +1,140 @@
-.header-wrapper {
+.header {
   display: flex;
-  justify-content: center;
-  padding: 30px 0;
-  position: relative;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 50px;
+  width: 100%;
+  max-width: 1200px; /* Set your desired max width */
+  height: 80px; 
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 40px;
+  margin: 0 auto;
+  margin: 20px auto 0;
 }
 
-.header-content {
-  width: 80%;
-  max-width: 80%;
-  height: 8vh;
+.header-desktop {
+  display: flex; 
+}
+
+.header-left,
+.header-right {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 5px 10px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  box-sizing: border-box; 
+}
+
+.header-left a,
+.header-right a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #333;
+  font-size: 17px;
+}
+
+.header-left a:hover,
+.header-right a:hover {
+  text-decoration: none; 
+  cursor: pointer;
+}
+
+.search-header {
+  display: flex; 
+  align-items: center; 
+  text-decoration: none; 
+  color: #333; 
+}
+
+.search-header svg {
+  font-size: 20px; 
+  vertical-align: middle; 
+  margin-right: 5px;
+}
+
+.header-center {
+  flex-grow: 1;
+  text-align: center;
 }
 
 .header-logo {
-  max-height: 25px;
-  width: auto;
-  height: auto;
-  cursor: pointer;
-  box-sizing: border-box; 
+  width: 160px; 
 }
 
-.header-nav {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-
-.nav-button {
-  background: none;
-  border: none;
-  color: black;
-  cursor: pointer;
-  padding: 12px 10px;
-  gap: 10px;
-  font-family: Proxima Nova, sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  transition: background-color 0.3s ease;
-  display: flex;
-  align-items: center;
-}
-
-.header-auth {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.auth-button {
+.signup-button {
+  padding: 10px 20px;
   background-color: #05BB6D;
-  color: white;
+  color: white !important;
   border: none;
-  padding: 12px 30px;
   cursor: pointer;
   font-family: Proxima Nova, sans-serif;
   font-size: 16px;
   font-weight: 500;
   text-align: center;
   transition: background-color 0.3s ease;
-  border-radius: 5px; 
+  border-radius: 8px; 
 }
 
-.auth-about,
-.auth-login {
-  background-color: white;
-  color: black;
+.signup-button:hover {
+  text-decoration: none;
+  background-color: #05CE78;
 }
 
-.auth-signup {
-  border-radius: 5px;
+/* Mobile and Tablet Header */
+.header-mobile {
+  display: none; 
 }
 
-.auth-button:hover {
-  background-color: #04a65f;
-}
-
-.header-hamburger {
-  display: none;
-}
-
-@media screen and (min-width: 1024px) {
-  .header-content {
-    padding: 0 20px; 
-  }
-
-  .header-nav {
-    display: flex;
-    gap: 20px; 
-  }
-
-  .header-logo {
-    position: static; 
-    margin: 0; 
-  }
-
-  .header-auth {
-    display: flex;
-    gap: 10px; 
-  }
-
-  .header-hamburger {
+@media (max-width: 768px) {
+  .header-desktop {
     display: none; 
   }
 
-  .auth-button {
-    display: inline-block; 
-  }
-
-  .auth-about,
-  .auth-login {
-    display: inline-block; 
-  }
-}
-
-@media screen and (max-width: 1024px) {
-  .header-content {
-    flex-direction: row;
+  .header-mobile {
+    display: flex; 
     justify-content: space-between;
-  }
-
-  .header-nav {
-    display: none; 
-  }
-
-  .header-nav.show-nav {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    right: 0;
-    background-color: white;
-    padding: 20px;
-    z-index: 1000;
+    align-items: center;
+    padding: 0 20px;
+    height: 80px;
+    background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
-  .header-hamburger {
-    display: block;
+  .search-icon {
+    width: 34px !important;
+    height: 34px !important;
+    font-size: 50px !important;
+    cursor: pointer; 
   }
 
-  .nav-button,
-  .auth-button {
-    margin-top: 10px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .header-content {
-    padding: 15px;
-  }
-
-  .header-nav.show-nav {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    right: 0;
-    background-color: white;
-    padding: 20px;
-    z-index: 1000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  .auth-button {
-    padding: 10px 20px;
-    font-size: 16px;
-  }
+  /* Additional styles for screens 400px and up */
+  @media (min-width: 400px) {
+    .header-mobile {
+      display: flex; 
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      height: 80px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Add spacing for individual items */
+    .header-mobile .search-header,
+    .header-mobile .header-logo,
+    .hamburger {
+      margin: 0 15px; /* Adjust as needed for desired spacing */
+    }
+    
+    .header-logo {
+      width: 160px; 
+    }
+    
+    /* Update for search icon and hamburger */
+    .search-header {
+      margin-right: 10px; /* Space after search icon */
+    }
+    
+    .hamburger {
+      margin-left: 10px; 
+    }
+  }    
 }

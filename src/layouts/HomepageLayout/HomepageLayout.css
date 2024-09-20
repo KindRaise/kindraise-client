@@ -27,12 +27,14 @@ body {
     overflow-x: hidden; 
   }
   
-  .landingpag-container {
+  .landingpage-container {
     width: 100%;
     overflow-x: auto; 
     box-sizing: border-box; 
+    background-color: #E6FAF2 !important;
+
   }
   
-  .coloured-nav{
-    background-color: #E6FAF2;
+  .not-coloured-nav{
+    background-color: white;
   }

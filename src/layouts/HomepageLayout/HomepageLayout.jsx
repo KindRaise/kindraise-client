@@ -15,10 +15,9 @@ import './HomepageLayout.css';
 const HomepageLayout = () => {
   return (
     <section className='landingpage-container'>
-      <div className='coloured-nav'>
       <Header />
       <Hero />
-      </div>
+      <div className='not-coloured-nav'>
       <PopularCampaigns />
       <Fundraising />
       <DonorEngagement />
@@ -28,6 +27,8 @@ const HomepageLayout = () => {
       <StartFundraising />
       <OurPartners />
       <Footer />
+      </div>
+
     </section>
   );
 }

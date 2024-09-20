@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Roots from "../../assets/roots.png";
+import Roots from "../../assets/roots.jpg";
 import './Fundraising.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 

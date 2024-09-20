@@ -3,6 +3,8 @@ import './AboutUs.css'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import OurPartners from '../../components/OurPartners/OurPartners'
+import OurTeam from '../../components/OurTeam/OurTeam'
+
 
 
 const AboutUs = () => {
@@ -10,7 +12,7 @@ const AboutUs = () => {
     <>
     <div className='about-container'>
     <div className='about-inner'>
-        <Header/>
+    <Header/>
     <div className='about-section'>
       <div className='about-header'>
         <div className='about-content'>
@@ -21,6 +23,7 @@ const AboutUs = () => {
     </div>
     </div>
     </div>
+    <OurTeam/>
     <OurPartners/>
     <Footer/>
     </>

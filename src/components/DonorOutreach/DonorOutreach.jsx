@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Outreach from "../../assets/donor-outreach.png";
+import Outreach from "../../assets/donor-outreach.jpg";
 import './DonorOutreach.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';

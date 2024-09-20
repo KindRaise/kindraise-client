@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./FundraisingPage.css";
-import DashboardHeader from "../../components/DashboardHeader/DashboardHeader";
+import Header from "../../components/Header/Header";
 import { BsArrowDownShort } from "react-icons/bs";
 import Icon from '../../assets/Icon.svg'
 import Amount from "../../pages/Amount/Amount";
 import Modal from "../../pages/Modal/Modal";
 import Tree from '../../assets/Tree.svg'
+import Nobis from '../../assets/nobis.JPG'
 
 const FundraisingPage = () => {
   const [pay, setPay] = useState(false)
@@ -38,26 +39,86 @@ const FundraisingPage = () => {
 
   const donor = [
     {
-      name: "Anonymous",
-      date: "02/01/2024",
-      amount: "10,000"
+        name: "Anonymous",
+        date: "01/15/2024",
+        amount: "10,000"
     },
     {
-      name: "Chidi Benson",
-      date: "02/01/2024",
-      amount: "20,000"
+        name: "Chidi Benson",
+        date: "01/16/2024",
+        amount: "20,000"
     },
     {
-      name: "Jack Samuel",
-      date: "02/01/2024",
-      amount: "2,000"
+        name: "Jack Samuel",
+        date: "01/17/2024",
+        amount: "2,000"
     },
     {
-      name: "Lucy Eze",
-      date: "02/01/2024",
-      amount: "15,000"
+        name: "Lucy Eze",
+        date: "01/18/2024",
+        amount: "15,000"
     },
-  ]
+    {
+        name: "Ayo Olawale",
+        date: "01/19/2024",
+        amount: "12,500"
+    },
+    {
+        name: "Ngozi Okeke",
+        date: "01/20/2024",
+        amount: "8,000"
+    },
+    {
+        name: "Emeka Uche",
+        date: "01/21/2024",
+        amount: "25,000"
+    },
+    {
+        name: "Tolu Adebayo",
+        date: "01/22/2024",
+        amount: "5,500"
+    },
+    {
+        name: "Chinonso Nwankwo",
+        date: "01/23/2024",
+        amount: "30,000"
+    },
+    {
+        name: "Zainab Mohammed",
+        date: "01/24/2024",
+        amount: "18,000"
+    },
+    {
+        name: "Ifeoma Nwachukwu",
+        date: "01/25/2024",
+        amount: "11,000"
+    },
+    {
+        name: "Kehinde Ogunleye",
+        date: "01/26/2024",
+        amount: "14,000"
+    },
+    {
+        name: "Femi Adetola",
+        date: "01/27/2024",
+        amount: "9,000"
+    },
+    {
+        name: "Olamide Balogun",
+        date: "01/28/2024",
+        amount: "22,500"
+    },
+    {
+        name: "Sade Akinwunmi",
+        date: "01/29/2024",
+        amount: "7,800"
+    },
+    {
+        name: "Tunde Ilesanmi",
+        date: "01/30/2024",
+        amount: "16,300"
+    }
+]
 
   const num =()=>{
     console.log(Date.now());
@@ -75,7 +136,7 @@ const FundraisingPage = () => {
         null
       }
       <div className="fund-head">
-        <DashboardHeader />
+        <Header />
       </div>
       <div className="fundRaiseTitleBox">
         <h2>Roots of Hope</h2>
@@ -106,16 +167,15 @@ const FundraisingPage = () => {
               </div>
             </div>
 
-            <div className="fundRaiseOrgName">
-              <div className="fundRaiseOrgCard">
-                <div className="orgImg">hello</div>
-                <div>
-                  <div className="fundRaiseOgBy">Organized by</div>
-                  <div className="fundOrgName">Nobis Foundation</div>
-                </div>
-              </div>
-              <div className="fundRaiseOrgVerified">verified</div>
-            </div>
+            <div className="fundRaiseOrgCard">
+    <div className="orgImg">
+        <img src={Nobis} alt="" />
+    </div>
+    <div>
+        <div className="fundRaiseOgBy">Organized by</div>
+        <div className="fundOrgName">Nobis Foundation</div>
+    </div>
+</div>
 
             <div className="fundRaiseStoryBox">
               <h2>Story</h2>

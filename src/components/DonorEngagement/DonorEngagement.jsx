@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import ScanToDonate from "../../assets/scan-to-donate.png";
+import ScanToDonate from "../../assets/scan-to-donate.jpg";
 import './DonorEngagement.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';

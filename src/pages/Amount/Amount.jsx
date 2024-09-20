@@ -1,5 +1,5 @@
 import React from 'react'
-import './Amount.css'
+import './amount.css'
 import { useNavigate } from 'react-router-dom'
 import Tree from '../../assets/Tree.svg'
 
@@ -27,6 +27,7 @@ const Amount = ({setActiveComponent,setPay,setAmount}) => {
           <p>Nuturing Our Future, One Tree at a Time</p>
         </div>
       </div>
+      
         {/* <button onClick={()=>setActiveComponent("B")}>amount</button> */}
     </div>
   )

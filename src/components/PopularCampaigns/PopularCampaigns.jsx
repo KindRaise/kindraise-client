@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'; // Import useState
+import React, { useState, useEffect } from 'react'; 
 import { useNavigate } from 'react-router-dom';
 import Period from '../../assets/period.png';
 import WaterSupply from '../../assets/water-supply.png';
