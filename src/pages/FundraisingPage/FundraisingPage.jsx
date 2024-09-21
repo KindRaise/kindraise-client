@@ -74,7 +74,8 @@ const FundraisingPage = () => {
       onClose: function () {
       },
       onSuccess: function (data) {
-        console.log("paid");
+
+        
       },
       onFailed: function (data) {
       },
