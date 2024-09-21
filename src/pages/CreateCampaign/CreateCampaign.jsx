@@ -65,10 +65,11 @@ const CreateCampaign = () => {
       })  
       .then((res) => {  
           console.log(res);  
-          toast.success(res?.data?.info);  
+          toast.success(res,"res");  
           // Handle successful response here, e.g., navigating or setting state  
-          Nav('/dashboard');  
+          // Nav('/dashboard');  
           setLoading(false);  
+          
       })  
       .catch((err) => {  
           console.log(err);  
@@ -128,9 +129,9 @@ const CreateCampaign = () => {
   const renderComponent = () => {  
     switch (activeComponent) {  
       case 'A':  
-        return <Content setFile={setFile} setSubTitle={setSubTitle} setTitle={setTitle} setStory={setStory} />;  
+        return <Content  setFile={setFile} setSubTitle={setSubTitle} setTitle={setTitle} setStory={setStory} />;  
       case 'B':  
-        return <Goal setAmount={setAmount} setEndDate={setEndDate} Create={Create} />;  
+        return <Goal sharing={sharing} setAmount={setAmount} setEndDate={setEndDate} Create={Create} />;  
       case 'C':  
         return <Share setEv={setEv} loading={loading}  />;  
       default:  
@@ -148,7 +149,7 @@ const CreateCampaign = () => {
               <div onClick={content} className={activeComponent === "A" ? "active" : "notActive"}>
                 Content
               </div>
-              <div onClick={goal} className={activeComponent === "B" ? "active" : "notActive"}>
+              <div className={activeComponent === "B" ? "active" : "notActive"}>
                 Goal
               </div>
               <div onClick={sharing} className={activeComponent === "C" ? "active" : "notActive"}>
