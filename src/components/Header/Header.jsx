@@ -4,11 +4,29 @@ import { CiSearch } from "react-icons/ci";
 import logo from "../../assets/logo.svg";
 import Hamburger from 'hamburger-react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const {token} = useSelector((state)=>state.kindraise)
+  // console.log(token,"user")
+
+  const handleHamburgerClick = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const proceed =()=>{
+    if (!token) {
+      navigate('/')
+    } else {
+      navigate('/dashboard')
+    }
+  }
+
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -34,7 +52,7 @@ const Header = () => {
       {isMobile ? (
         <div className="header-mobile">
           <CiSearch />
-          <img src={logo} alt="logo" className="header-logo" onClick={() => navigate('/')} />
+          <img src={logo} alt="logo" className="header-logo" onClick={{proceed}} />
           <Hamburger
           toggled={isOpen}
           toggle={toggleMenu}
@@ -42,8 +60,8 @@ const Header = () => {
         />
           {isOpen && (
             <nav className={`mobile-nav ${isOpen ? 'open' : ''}`}>
+            <a onClick={() => navigate('/about-us')}>About</a>
             <a onClick={() => navigate('/explore-campaigns')}>Campaigns</a>
-              <a onClick={() => navigate('/about-us')}>About</a>
               <a onClick={() => navigate('/login')}>Login</a>
               <a className="signup-button" onClick={() => navigate('/signup')}>Sign Up</a>
             </nav>
@@ -52,17 +70,17 @@ const Header = () => {
       ) : (
         <div className="header header-desktop">
           <div className="header-left">
-            <a onClick={() => navigate('/explore-campaigns')}>Campaigns</a>
-            <a onClick={() => navigate('/search')} className='search-header-mobile'>
+            <a onClick={() => navigate('/about-us')}>About</a>
+            <a onClick={() => navigate('/explore-campaigns')} className='search-header-mobile'>
             <CiSearch />
-            <span>Search</span>
+            <span>Campaign</span>
           </a>
           </div>
           <div className="header-center">
             <img src={logo} alt="logo" className="header-logo" onClick={() => navigate('/')} />
           </div>
           <div className="header-right">
-            <a onClick={() => navigate('/about-us')}>About</a>
+            <a onClick={() => navigate('/pricing')}>Pricing</a>
             <a onClick={() => navigate('/login')}>Login</a>
             <a className="signup-button" onClick={() => navigate('/signup')}>Sign Up</a>
           </div>

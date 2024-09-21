@@ -1,17 +1,19 @@
 import React, { useState } from 'react'
 import './Content.css'
-import Upload from '../../assets/upload.png'
 import { FcCancel } from 'react-icons/fc';
 
-const Content = ({setTitle,setSubTitle,goal,setStory,setPhoto}) => {
+const Content = ({setTitle,setSubTitle,setStory,setPhoto,goal,setFile}) => {
   const [post, setPost] = useState();
   // const [word, setWord] = useState(setTitle);
 
   const showImg = (e) => {
     const file = e.target.files[0];
+    console.log(file)
+    setFile(file)
     const img = URL.createObjectURL(file);
     setPost(img);
     setPhoto(img)
+    console.log(img)
   };
 
 
@@ -65,19 +67,18 @@ const Content = ({setTitle,setSubTitle,goal,setStory,setPhoto}) => {
               </div>
                 <div className='photoBox'>
                   <label htmlFor="1">
-                    {post ? <img src={post} alt="pic" className="postImg" /> : <div> <img src={Upload} alt="" /><br />Click to add a photo</div>}
+                    {post ? <img src={post} alt="pic" className="postImg" /> : <div>hello</div>}
                     <input type="file" id="1" hidden onChange={showImg} />
                   </label>
                 </div>
                 <FcCancel onClick={()=>setPost("")}/>
             </div>
           </div>
-          <div className='nextBtnBox'>
-            <button className='nextBtn' onClick={goal}>Next</button>
-          </div>
         </div>
       </div>
-
+      <div className="SaveBtnBox">
+          <button className="goalSaveBtn" onClick={goal}>Next</button>
+        </div>
       
     </div>
   )

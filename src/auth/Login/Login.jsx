@@ -4,50 +4,52 @@ import { useNavigate } from "react-router-dom";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import logo from '../../assets/logo.svg';
 import Loading from '../../components/Loading/Loading';
-import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 import { useDispatch } from "react-redux";
+import { addUser, userRole, userToken } from "../../Global/slice";
+import toast, { Toaster } from "react-hot-toast";
+// import { useDispatch } from "react-redux";
 
 const Login = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate(); 
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const Nav = useNavigate();
   const [show, setShow] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch()
+  const [loading, setLoading] = useState(false);
 
-  const handleClick = () => {
-    if (!email || !password) {
-      toast.error("Email and password are required");
-      return;
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const Login =()=>{
+    if (!email || !password)  {
+      toast.error("details is required")
+    } else {
+      setLoading(true)
+      const url = "https://kindraise.onrender.com/api/v1/login"
+      const data = {email, password}
+      axios.post(url, data)
+      .then((res)=>{
+        console.log(res)
+        toast.success(res?.data?.info)
+        dispatch(addUser(res?.data?.data))
+        dispatch(userToken(res?.data?.token))
+        dispatch(userRole(res?.data?.data?.role))
+        Nav('/dashboard')
+        setLoading(false)
+
+      })
+      .catch((err)=>{
+        console.log(err)
+        toast.error(err?.message)
+        setLoading(false)
+      })
     }
-
-    setIsLoading(true);
-
-    const url = "https://kindraise.onrender.com/api/v1/login";
-    const data = { email, password };
-
-    axios.post(url, data)
-      .then((res) => {
-        console.log(res);
-        toast.success("Login successful");
-        navigate('/dashboard'); // Navigate to dashboard
-      })
-      .catch((err) => {
-        console.error(err);
-        toast.error("Login failed");
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
-
+  }
+  
   return (
+    <>
     <div className="loginBody">
-      <Toaster /> {/* To display toast notifications */}
       <div className="logoSec">
-        <img src={logo} alt="KindRaise Logo" />
+        <img src={logo} alt="" />
       </div>
       <div className="formSec">
         <div className="formBox">
@@ -58,41 +60,35 @@ const Login = () => {
             </div>
             <div className="inputHolder">
               Email Address
-              <input
-                type="text"
-                className="loginUpInput inp"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
+              <input type="text" className="loginUpInput inp" onChange={(e)=>setEmail(e.target.value)}/>
             </div>
             <div className="inputHolder">
               Password
               <div className="loginUpInput">
-                <input
-                  type={show ? "password" : "text"}
-                  className="pass inp"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <span onClick={() => setShow(!show)}>
-                  {show ? <BsEye size={20} /> : <BsEyeSlash size={20} />}
+                <input type={show ? 'password' : 'text'} className="pass inp" onChange={(e)=>setPassword(e.target.value)}/>
+                <span>
+                  {show ? (
+                    <BsEye size={20} onClick={() => setShow(false)} />
+                  ) : (
+                    <BsEyeSlash size={20} onClick={() => setShow(true)} />
+                  )}
                 </span>
               </div>
             </div>
-            <div className="forgetPassword" onClick={() => navigate("/resetpassword")}>
-              Forget Password?
-            </div>
-            <button className="loginBtn" onClick={handleClick} disabled={isLoading}>
-              {isLoading ? <Loading /> : "Sign in"}
-            </button>
+            <div className="forgetPassword" onClick={() => Nav("/resetpassword")}>Forget Password?</div>
+            <button className="loginBtn" onClick={Login} >
+            {loading ? "Loading..." : 'Sign in'}
+          </button>
             <div className="sighUpCreateAcc">
-              Don't have a KindRaise account? <span onClick={() => navigate("/signup")}>Create one</span>
+              Don't have a kindRaise account? <span onClick={()=>Nav(-1)}>Create one</span>
             </div>
           </div>
         </div>
         <div className="rights">©2024 KindRaise, Inc. All rights reserved</div>
       </div>
     </div>
+    <Toaster/>
+    </>
   );
 };
 

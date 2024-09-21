@@ -1,21 +1,7 @@
 import React from 'react'
 import './PaymentDetails.css'
 
-const PaymentDetails = ({setEmail,setPay,setName,setMessage}) => {
-
-  function payKorapay() {
-    window.Korapay.initialize({
-      key: import.meta.env.VITE_Public_Key,
-      reference: `hi_jack_${Date.now()}`,
-      amount: total,
-      currency: "NGN",
-      customer: {
-        name: user.userName,
-        email: user.email,
-      },
-      // notification_url: ""
-    });
-  }
+const PaymentDetails = ({payKorapay,setEmail,setPay,setName,setMessage}) => {
 
   
   return (

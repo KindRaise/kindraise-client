@@ -8,10 +8,13 @@ import Menu from "../Menu/Menu";
 import 'animate.css';
 import { HiMenuAlt3 } from "react-icons/hi";
 import { BiMenuAltLeft } from "react-icons/bi";
+import { useSelector } from "react-redux";
 
 const DashboardHeader = () => {
   const [show, setShow] = useState(false);
   // console.log(show);
+  const {organizationName} = useSelector((state)=>state.kindraise.user)
+  console.log(organizationName)
 
   const Nav = useNavigate();
   return (
@@ -34,7 +37,7 @@ const DashboardHeader = () => {
             <BsQuestionCircle size={15} />
           </div>
           <div className="headerBox">
-            <div className="greenCircle"></div>Jack samuel
+            <div className="greenCircle"></div>{organizationName}
           </div>
         </div>
       </div>

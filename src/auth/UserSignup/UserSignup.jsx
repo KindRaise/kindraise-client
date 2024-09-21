@@ -24,14 +24,14 @@ const UserSignup = ({setActiveSignupPage}) => {
           <div><GrNext/></div>
         </div>
 
-        <div className='signupUserBox' onClick={()=>setActiveSignupPage("B")}>
+        {/* <div className='signupUserBox' onClick={()=>setActiveSignupPage("B")}>
         <div className='signupUserIconBox'><BsPerson size={20}/></div>
           <div className='signupUserInfo'>
             <h3>Individual</h3>
             <p>I would like to create a fundraising account for myself or <br />another individual</p>
           </div>
           <div><GrNext/></div>
-        </div>
+        </div> */}
       </div>
       <div className='mediaSignupLoginBox'>
         Already have an account?<span onClick={()=>Nav('/')}>Sign in</span>

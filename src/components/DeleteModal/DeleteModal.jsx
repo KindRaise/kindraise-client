@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import "./DeleteModal.css";
+import toast, { Toaster } from "react-hot-toast";
 
 const DeleteModal = ({ setDeleteModal }) => {
   const [show, setShow] = useState(false);
   const [deleteConfirm, setDeleteConfirm] = useState("");
-  console.log(delectConfirm);
+  console.log(deleteConfirm);
 
   const deleteModal = () => {
     if (deleteConfirm == "DELETE") {
       setShow(false);
+      toast.success("deleted")
     } else {
       setShow(true);
     }
@@ -16,6 +18,7 @@ const DeleteModal = ({ setDeleteModal }) => {
     // return setShow
   };
   return (
+    <>
     <div className="deleteModalBody">
       <div className="deleteModalWrapper">
         <div className="deleteModLHead">
@@ -37,7 +40,7 @@ const DeleteModal = ({ setDeleteModal }) => {
             type="text"
             onChange={(e) => setDeleteConfirm(e.target.value)}
           />
-          <button onClick={delect}>DELETE</button>
+          <button onClick={deleteModal}>DELETE</button>
         </div>
         {show ? (
           <div className="delectErrMessage">
@@ -46,6 +49,8 @@ const DeleteModal = ({ setDeleteModal }) => {
         ) : null}
       </div>
     </div>
+    <Toaster/>
+    </>
   );
 };
 

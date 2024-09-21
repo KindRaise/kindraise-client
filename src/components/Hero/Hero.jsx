@@ -28,7 +28,7 @@ const Hero = () => {
           <p>
           Fundraise for yourself, as a group working towards a goal, or an NGO on a mission. </p>
 
-          <button onClick={() => navigate('/signup')} className="cta-button">Start Your Campaign</button>
+          <button onClick={() => navigate('/signup')} className="cta-button">Start a KindRaise</button>
         </div>
       </div>
     </section>

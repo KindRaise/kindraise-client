@@ -8,7 +8,7 @@ const Loading = () => {
       <div className="loadingWrapper">
         <img src={Icon} alt="" />
         <div>
-          Loading dashboard...
+          Loading...
         </div>
       </div>
     </div>

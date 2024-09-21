@@ -20,7 +20,7 @@ import FundraisingPage from "./pages/FundraisingPage/FundraisingPage";
 import HomepageLayout from "./layouts/HomepageLayout/HomepageLayout";
 import TermsOfUse from "./pages/TermsOfUse/TermsOfUse"; 
 import AboutUs from "./pages/AboutUs/AboutUs"; 
-import Search from './pages/Search/Search'
+// import Search from './pages/Search/Search'
 import Pricing from "./pages/Pricing/Pricing"; 
 import ContactUs from "./pages/ContactUs/ContactUs";
 
@@ -34,6 +34,7 @@ const App = () => {
       <Route path="/passwordchange" element={<PasswordChange />} />
       <Route path="/createpassword" element={<CreateNewPassword />} />
       <Route path="/resetpassword" element={<ResetPassword />} />
+      <Route path="/change-password" element={<ChangePassword />} />
       <Route path="/fundraising-page/:id" element={<FundraisingPage />} />
       <Route path="/explore-campaigns" element={<ExploreCampaigns />} />
       
@@ -48,7 +49,6 @@ const App = () => {
         <Route path="/campaign/create-campaign" element={<CreateCampaign />} />
       ]} />
 
-      <Route path="/change-password" element={<ChangePassword />} />
       <Route path="/terms-of-use" element={<TermsOfUse />} />
       <Route path="/about-us" element={<AboutUs />} />
       <Route path="/pricing" element={<Pricing />} />

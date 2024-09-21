@@ -1,24 +1,26 @@
-import React, { useState, useEffect } from "react";  
-import { useNavigate } from "react-router-dom";  
-import Period from "../../assets/period.png";  
-import Ads from "../../assets/ads.png";  
-import WaterSupply from "../../assets/water-supply.png";  
-import BackToSchool from "../../assets/back-to-school.png";  
-import "./MoreCampaigns.css";  
-import { SlArrowDown } from "react-icons/sl";  
-import AOS from "aos";  
-import "aos/dist/aos.css";  
-import axios from "axios";  
-import { useDispatch } from "react-redux"; // Import useDispatch from react-redux  
-import { allCampaigns } from "../../global/slice";  
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Period from '../../assets/period.png';
+import Ads from '../../assets/ads.png';
+import WaterSupply from '../../assets/water-supply.png';
+import BackToSchool from '../../assets/back-to-school.png';
+import './MoreCampaigns.css';  
+import { SlArrowDown } from 'react-icons/sl';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import Search from '../../components/Search/Search';
 
-const MoreCampaigns = () => {  
-  const [campaign, setCampaigns] = useState([]);  
+
+const MoreCampaigns = () => {
+    const [campaign, setCampaigns] = useState([]);  
   const [visibleCount, setVisibleCount] = useState(3); // Initially show 3 campaigns  
   const [searchTerm, setSearchTerm] = useState(""); // State for search term  
   const navigate = useNavigate();  
-  const dispatch = useDispatch();  
+  const dispatch = useDispatch(); 
 
+    
   useEffect(() => {  
     window.scrollTo(0, 0);  
 
@@ -36,7 +38,7 @@ const MoreCampaigns = () => {
       .then((res) => {  
         console.log(res?.data?.allCampaigns, "all campaigns");  
         setCampaigns(res?.data?.allCampaigns);  
-        dispatch(allCampaigns(res?.data?.allCampaigns));  
+        // dispatch(allCampaigns(res?.data?.allCampaigns));  
       })  
       .catch((err) => {  
         console.log(err); // Set the error message  
@@ -57,38 +59,18 @@ const MoreCampaigns = () => {
 
   // Filtered campaigns based on search term  
   const filteredCampaigns = campaign.filter((Mcampaign) =>  
-    Mcampaign.story.toLowerCase().includes(searchTerm.toLowerCase())  
-  );  
-
-  return (  
-    <section className="more-campaigns">  
+    Mcampaign.story.toLowerCase().includes(searchTerm.toLowerCase())  
+  );
+    return (
+        <section className="more-campaigns">  
       <div className="more-campaigns-header">  
         <h1>Discover Fundraising Campaigns</h1>  
       </div>  
       <div className="container">  
-        <label htmlFor="fundraiser-type" className="bold-label">  
-          Fundraiser Type  
-        </label>  
-        <input  
-          type="text"  
-          id="fundraiser-type"  
-          className="search-box"  
-          placeholder="Search..."  
-          value={searchTerm} // Input value from state  
-          onChange={(e) => setSearchTerm(e.target.value)} // Update searchTerm on change  
-        />  
+        
+        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
       </div>  
 
-      <div className="checkbox-group">  
-        <label>  
-          <input type="checkbox" name="fundraiser-type" value="non-profit" />  
-          Non profit organization  
-        </label>  
-        <label>  
-          <input type="checkbox" name="fundraiser-type" value="individual" />  
-          Individual  
-        </label>  
-      </div>  
       <div className="campaign-container">  
         {filteredCampaigns.slice(0, visibleCount).map((Mcampaign) => {  
             const percent = (Mcampaign.totalRaised / Mcampaign.Goal) * 100;  
@@ -150,9 +132,9 @@ const MoreCampaigns = () => {
             </button>  
           </div>  
         </div>  
-      </div>  
-    </section>  
-  );  
-};  
+      </div>  
+    </section>
+    );
+};
 
 export default MoreCampaigns;

@@ -1,19 +1,11 @@
-.search-container {
-    text-align: center;
-    padding: 20px;
-}
-
-.title {
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
 
 .search-box {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
     border: none;
     outline: none;
+    margin-bottom: 10%;
+
 }
 
 .search-input {
@@ -28,7 +20,7 @@ button {
     padding: 10px;
     border: 0.8px solid #049255;
     border-left: none;
-    background-color: #007BFF;
+    background-color: #049255;
     color: white;
     cursor: pointer;
     border-radius: 0 4px 4px 0;
@@ -41,8 +33,4 @@ button i {
 
 .filter {
     font-size: 18px;
-}
-
-strong {
-    font-weight: bold;
 }

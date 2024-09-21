@@ -1,4 +1,5 @@
 import React, { useState } from 'react';  
+import './Contacts.css';  
 import { useTable } from 'react-table';  
 import { BsArrowDown } from 'react-icons/bs';  
 import { BiSearch } from 'react-icons/bi';  

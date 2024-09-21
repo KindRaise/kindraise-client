@@ -19,8 +19,9 @@ import School from "../../assets/School.svg";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { myCampaigns } from "../../global/slice.js";
+// import { myCampaigns } from "../../global/slice.js";
 import toast from "react-hot-toast";
+import { myCampaigns } from "../../Global/slice";
 // import { Bar } from 'rechart';
 // import { BarChart, ResponsiveContainer,Bar, XAxis, YAxis, Tooltip } from 'recharts';
 
@@ -103,6 +104,7 @@ const DashBoard = () => {
     },
   ];
   const token = useSelector((state) => state.kindraise.token);
+  
   // console.log("main token", token);
 
   const [campaign, setCampaign] = useState([]);
@@ -139,7 +141,7 @@ const DashBoard = () => {
   }
 
   const firstTwoProducts = getFirstTwoObjects(campaign);
-  // console.log(firstTwoProducts);
+  console.log(firstTwoProducts, "first two");
 
   function filterActiveCampaigns(products) {
     return products.filter((product) => product.status === "active");

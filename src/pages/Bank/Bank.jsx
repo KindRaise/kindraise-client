@@ -1,6 +1,6 @@
 import React from 'react'
 import './Bank.css'
-import Kora from '../assets/Kora.svg'
+import Kora from '../../assets/Kora.svg'
 
 const Bank = ({setActiveComponent,setPay={setPay}}) => {
   return (

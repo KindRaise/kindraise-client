@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import './Modal.css'
 import Amount from '../Amount/Amount';
 import PaymentDetails from '../PaymentDetails/PaymentDetails';
+import Bank from '../Bank/Bank';
 // import Tree from '../assets/Tree.svg';
 
-const Modal = ({amount,setPay,setMessage,setEmail,setName,setBank,setAmount}) => {
+const Modal = ({amount,payKorapay,setPay,setMessage,setEmail,setName,setBank,setAmount}) => {
 
   const [activeComponent, setActiveComponent] = useState('A');
 
@@ -15,7 +16,7 @@ const Modal = ({amount,setPay,setMessage,setEmail,setName,setBank,setAmount}) =>
         case 'B':  
             return <Bank setActiveComponent={setActiveComponent} setPay={setPay}/>;  
         case 'C':  
-            return <PaymentDetails setEmail={setEmail} setMessage={setMessage} setName={setName} setPay={setPay}/>;  
+            return <PaymentDetails payKorapay={payKorapay} setEmail={setEmail} setMessage={setMessage} setName={setName} setPay={setPay}/>;  
         default:  
             return <Amount setActiveComponent={setActiveComponent} setPay={setPay}/>;  
     }  

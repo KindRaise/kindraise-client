@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const appSlice = createSlice({
-  name: 'app',
+  name: 'kindraise',
   initialState: {
     user: {},
     allCampaigns: [],
