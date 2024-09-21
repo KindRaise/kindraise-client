@@ -21,7 +21,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 // import { myCampaigns } from "../../global/slice.js";
 import toast from "react-hot-toast";
-import { myCampaigns } from "../../Global/slice";
+import { myCampaigns } from "../../global/slice";
 // import { Bar } from 'rechart';
 // import { BarChart, ResponsiveContainer,Bar, XAxis, YAxis, Tooltip } from 'recharts';
 

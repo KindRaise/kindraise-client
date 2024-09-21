@@ -6,7 +6,7 @@ import logo from '../../assets/logo.svg';
 import Loading from '../../components/Loading/Loading';
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { addUser, userRole, userToken } from "../../Global/slice";
+import { addUser, userRole, userToken } from "../../global/slice";
 import toast, { Toaster } from "react-hot-toast";
 // import { useDispatch } from "react-redux";
 
