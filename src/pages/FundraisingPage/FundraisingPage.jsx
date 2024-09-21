@@ -32,7 +32,7 @@ const FundraisingPage = () => {
 
   const payment = {
       amount,
-      bank,
+      // bank,
       name,
       email,
       message
@@ -74,7 +74,7 @@ const FundraisingPage = () => {
       onClose: function () {
       },
       onSuccess: function (data) {
-
+        console.log("first")
         
       },
       onFailed: function (data) {

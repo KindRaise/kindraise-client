@@ -1,7 +1,8 @@
 import React from "react";
 import "./Goal.css";
 
-const Goal = ({setAmount,setEndDate,sharing,Create,loading}) => {
+const Goal = ({setAmount,setEv,setEndDate,sharing,Create,loading}) => {
+  
   return (
     <div className="goalBody">
       <div className="goalTitleBox">
@@ -25,7 +26,7 @@ const Goal = ({setAmount,setEndDate,sharing,Create,loading}) => {
               <input type="date" onChange={(e)=> setEndDate(e.target.value)} className="dateInput" name="" id="" />
             }
           </div>
-          <div>toggle</div>
+          {/* <div>toggle</div> */}
         </div>
         <div className="SaveBtnBox">
           <button className="goalSaveBtn" onClick={Create}>
