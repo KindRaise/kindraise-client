@@ -8,7 +8,7 @@ import 'animate.css';
 
 import { QRCodeSVG } from "qrcode.react";
 
-const Share = ({setActiveComponent,setEv,ev,campaignData}) => {
+const Share = ({setActiveComponent,setEv,ev,campaignData,Create,loading}) => {
   const Nav = useNavigate()
   const [num, setNum] = useState();
   const [link, setLink] = useState();
@@ -21,7 +21,7 @@ const Share = ({setActiveComponent,setEv,ev,campaignData}) => {
   // setEv(num)
   useEffect(()=>{
     setEv(num)
-    setLink(`https://kindraise.vercel.app/fundraising-page/${num}`)
+    setLink(`https://kindraise.vercel.app/fundraising-page/${ev}`)
   },[num])
   // console.log("ev",ev)
   
@@ -138,7 +138,11 @@ const Share = ({setActiveComponent,setEv,ev,campaignData}) => {
       </div>
 
       <div className="shareBtnBox">
-        <button className="publishBtn"onClick={Back}>Publish</button>
+        <button className="publishBtn"onClick={Create}>
+          {
+            loading? "Creating..." : "Publish"
+          }
+        </button>
       </div>
     </div>
   );

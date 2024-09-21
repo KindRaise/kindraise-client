@@ -3,7 +3,7 @@ import './Content.css'
 import { FcCancel } from 'react-icons/fc';
 import { IoCloudUploadOutline } from 'react-icons/io5';
 
-const Content = ({goal,setTitle,setSubTitle,setStory,setPhoto,goal,setFile}) => {
+const Content = ({setTitle,setSubTitle,setStory,setPhoto,goal,setFile}) => {
   const [post, setPost] = useState();
   // const [word, setWord] = useState(setTitle);
 
@@ -72,7 +72,7 @@ const Content = ({goal,setTitle,setSubTitle,setStory,setPhoto,goal,setFile}) => 
                     <input type="file" id="1" hidden onChange={showImg} />
                   </label>
                 </div>
-                {/* <FcCancel onClick={()=>setPost("")}/> */}
+                <FcCancel onClick={()=>setPost("")}/>
             </div>
           </div>
         </div>

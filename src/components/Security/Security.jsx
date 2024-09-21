@@ -16,7 +16,7 @@ const Security = () => {
           <div>Organization Contact Email</div>
           <span>example@gmail.com</span>
         </div>
-        <aside>Reguest Email Change</aside>
+        {/* <aside>Reguest Email Change</aside> */}
       </div>
       <div className='securityPasswordBox'>
         <div className='securityPasswordWrapper'>

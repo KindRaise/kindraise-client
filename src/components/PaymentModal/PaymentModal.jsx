@@ -2,13 +2,13 @@ import React from 'react'
 import './PaymentModal.css'
 import { MdClose } from 'react-icons/md'
 
-const PayoutModal = ({setPayout}) => {
+const PayoutModal = ({setModal}) => {
   return (
     <div className='payoutModalBody'>
       <div className='payoutModalWrapper'>
         <div className='payoutModalHead'>
           <h3>Add payout method</h3>
-          <div onClick={()=>setPayout(false)}><MdClose size={20} cursor="pointer"/></div>
+          <div onClick={()=>setModal(false)}><MdClose size={20} cursor="pointer"/></div>
         </div>
         <div className='payoutModalInputHolder'>
           <div className='payoutModalInputBox'>

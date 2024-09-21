@@ -18,7 +18,7 @@ const CreateCampaign = () => {
     const [title, setTitle] = useState("");  
     const [subtitle, setSubTitle] = useState("");  
     const [story, setStory] = useState("");  
-    // const [photo, setPhoto] = useState(null); // Changed to accept a file  
+    const [photo, setPhoto] = useState(null); // Changed to accept a file  
     const [amount, setAmount] = useState("");  
     const [endDate, setEndDate] = useState("");  
     const [ev, setEv] = useState("");  
@@ -34,9 +34,9 @@ const CreateCampaign = () => {
       // campaignPic is no longer needed; we'll use FormData  
       Goal: amount,  
       endDate,  
-      ev,  
+      ev:Date.now(),  
   };  
-  // const token = useSelector((state)=>state.app.token)
+  console.log(campaignData)
   const Create = () => {  
       if (!title || !subtitle || !story || !amount || !endDate || !file) { // Include file in validation  
           toast.error("All details, including the file, are required to create a campaign");  
@@ -65,16 +65,16 @@ const CreateCampaign = () => {
       })  
       .then((res) => {  
           console.log(res);  
-          toast.success(res,"res");  
+          toast.success(res?.data?.info);  
           // Handle successful response here, e.g., navigating or setting state  
-          // Nav('/dashboard');  
-          setLoading(false);  
+          Nav('/dashboard');  
+            setLoading(false);  
           
       })  
       .catch((err) => {  
-          console.log(err);  
-          toast.error(err?.response?.data?.info || "An error occurred");  
-          setLoading(false);  
+        console.log(err);  
+        toast.error(err?.response?.data?.info || "An error occurred");  
+        setLoading(false);  
       });  
   };
 
@@ -129,11 +129,11 @@ const CreateCampaign = () => {
   const renderComponent = () => {  
     switch (activeComponent) {  
       case 'A':  
-        return <Content  setFile={setFile} setSubTitle={setSubTitle} setTitle={setTitle} setStory={setStory} />;  
+        return <Content setFile={setFile} goal={goal} setTitle={setTitle} setSubTitle={setSubTitle} setStory={setStory} setPhoto={setPhoto} />;  
       case 'B':  
-        return <Goal sharing={sharing} setAmount={setAmount} setEndDate={setEndDate} Create={Create} />;  
+        return <Goal sharing={sharing} setAmount={setAmount} setEndDate={setEndDate} />;  
       case 'C':  
-        return <Share setEv={setEv} loading={loading}  />;  
+        return <Share loading={loading} Create={Create} campaignData={campaignData} ev={ev} setEv={setEv} setActiveComponent={setActiveComponent}  />;  
       default:  
         return <Content />;  
     }  
@@ -146,15 +146,9 @@ const CreateCampaign = () => {
         <div className="createContent">
           <div className="createHead">
             <div className="createSmallHeader">
-              <div onClick={content} className={activeComponent === "A" ? "active" : "notActive"}>
-                Content
-              </div>
-              <div className={activeComponent === "B" ? "active" : "notActive"}>
-                Goal
-              </div>
-              <div onClick={sharing} className={activeComponent === "C" ? "active" : "notActive"}>
-                Sharing
-              </div>
+              <div className={activeComponent === "A" ? "active" : "notActive"}>Content</div>  
+              <div className={activeComponent === "B" ? "active" : "notActive"}>Goal</div>  
+              <div className={activeComponent === "C" ? "active" : "notActive"}>Sharing</div> 
             </div>
           </div>
 

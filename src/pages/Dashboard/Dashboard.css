@@ -119,6 +119,26 @@
   /* color: rgb(78, 78, 239); */
 }
 
+.contactBox {
+  /* background-color: red; */
+  display: flex;
+  /* height: max-content; */
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  flex-wrap: wrap;
+
+  .contacts-list {
+    width: 400px;
+    min-width: 100px;
+    background-color: white;
+  }
+}
+
+.details-container {
+  /* background-color: red; */
+  width: 100%;
+}
+
 .dashBoardCardLower {
   height: 30%;
   width: 100%;

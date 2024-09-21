@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Goal.css";
 
-const Goal = ({setAmount,setEv,setEndDate,sharing,Create,loading}) => {
+const Goal = ({setAmount,setEndDate,sharing }) => {
+  const [isChecked, setIsChecked] = useState(false);
+
+  // Handler for the toggle switch change
+  // const handleToggle = () => {
+  //   setIsChecked(!isChecked); // Toggle the state
+  //   console.log(isChecked);
+  // };
   
   return (
     <div className="goalBody">
@@ -29,10 +36,8 @@ const Goal = ({setAmount,setEv,setEndDate,sharing,Create,loading}) => {
           {/* <div>toggle</div> */}
         </div>
         <div className="SaveBtnBox">
-          <button className="goalSaveBtn" onClick={Create}>
-            {
-              loading ? 'Creating...' : 'Create'
-            }
+          <button className="goalSaveBtn" onClick={sharing}>
+            save
           </button>
         </div>
       </div>

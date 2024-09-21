@@ -14,7 +14,7 @@ import Loading from "../../components/Loading/Loading";
 
 const FundraisingPage = () => {
   const { id } = useParams(); 
-  // console.log(id);
+  console.log(id,"id");
   const Nav = useNavigate()
 
     
@@ -50,9 +50,12 @@ const FundraisingPage = () => {
       .get(url)
       .then((res) => {
         setOneData(res?.data?.allCampaigns);
+        console.log(oneData, "one")
         const nae = res?.data?.allCampaigns.filter((data) => data.ev == id);
+        console.log(nae)
         console.log(nae[0], "nae");
         setDatas(nae[0]);
+        console.log(datas)
         setLoading(false);
       })
       .catch((err) => {

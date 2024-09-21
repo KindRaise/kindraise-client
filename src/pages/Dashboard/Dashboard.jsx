@@ -31,73 +31,73 @@ const DashBoard = () => {
 
   const products = [
     {
-      name: "05/17/2024",
+      name: "jan",
       donor: 1500,
       receiver: 3000,
       hidden: 900,
     },
     {
-      name: "06/17/2024",
+      name: "feb",
       donor: 3000,
       receiver: 3500,
       hidden: 1000,
     },
     {
-      name: "07/17/2024",
+      name: "Mar",
       donor: 4000,
       receiver: 2000,
       hidden: 400,
     },
     {
-      name: "08/17/2024",
+      name: "Apr",
       donor: 4500,
       receiver: 2500,
       hidden: 700,
     },
     {
-      name: "09/17/2024",
+      name: "May",
       donor: 3000,
       receiver: 2000,
       hidden: 1200,
     },
     {
-      name: "10/17/2024",
+      name: "Jun",
       donor: 500,
       receiver: 2800,
       hidden: 1200,
     },
     {
-      name: "11/17/2024",
+      name: "Jul",
       donor: 2000,
       receiver: 4500,
       hidden: 1200,
     },
     {
-      name: "12/17/2024",
+      name: "Aug",
       donor: 3000,
       receiver: 2500,
       hidden: 1200,
     },
     {
-      name: "01/17/2024",
+      name: "Sep",
       donor: 0,
       receiver: 3000,
       hidden: 1200,
     },
     {
-      name: "02/17/2024",
+      name: "Oct",
       donor: 5000,
       receiver: 4000,
       hidden: 1200,
     },
     {
-      name: "03/17/2024",
+      name: "Nov",
       donor: 3000,
       receiver: 4500,
       hidden: 1200,
     },
     {
-      name: "04/17/2024",
+      name: "Dec",
       donor: 5000,
       receiver: 4000,
       hidden: 1200,
@@ -290,7 +290,8 @@ const DashBoard = () => {
                 <div className="upperCardSubText">Total Donation</div>
               </div>
               <div className="dashBoardCardLower">
-                <div className="cardSmallText">+2.5% from yesterday</div>
+              <div className="cardSmallText"></div>
+                {/* <div className="cardSmallText">+2.5% from yesterday</div> */}
                 <div className="iconCircle">
                   <BiMoney color="rgb(78, 78, 239)" size={20} />
                 </div>
@@ -302,7 +303,8 @@ const DashBoard = () => {
                 <div className="upperCardSubText">Total Donors</div>
               </div>
               <div className="dashBoardCardLower">
-                <div className="cardSmallText">+5 this month</div>
+              <div className="cardSmallText"></div>
+                {/* <div className="cardSmallText">+5 this month</div> */}
                 <div className="iconCircleHolder">
                   <div className="iconCircle">
                     <BsPeople color="rgb(78, 78, 239)" size={20} />
@@ -318,7 +320,8 @@ const DashBoard = () => {
                 <div className="upperCardSubText">Active Campaigns</div>
               </div>
               <div className="dashBoardCardLower">
-                <div className="cardSmallText">2 ending this week</div>
+              <div className="cardSmallText"></div>
+                {/* <div className="cardSmallText">2 ending this week</div> */}
                 <div className="iconCircle">
                   <BsMegaphone color="rgb(78, 78, 239)" size={20} />
                 </div>
@@ -444,7 +447,7 @@ const DashBoard = () => {
           />  
         </div>  
       </div>   */}
-            <div className="ca">
+            <div className="contactBox">
               <div className="contacts-list">
                 {filteredPersons.map((person, index) => (
                   <div
