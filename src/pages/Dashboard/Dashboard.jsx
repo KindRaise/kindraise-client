@@ -109,27 +109,43 @@ const DashBoard = () => {
 
   const [campaign, setCampaign] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [test, setTest] = useState(null);
+  const [totalRaised, setTotalRaised] = useState(0)
 
-  useEffect(() => {
-    const url = "https://kindraise.onrender.com/api/v1/get-NpoallCampaign";
-    setLoading(true);
-    const headers = {
-      Authorization: `Bearer: ${token}`,
-    };
-    axios
-      .get(url, { headers })
-      .then((res) => {
-        console.log(res?.data?.allCampaigns, "data");
+  const fetchAll = async()=>{
+      try{
+        // setLoading(true);
+        const url = "https://kindraise.onrender.com/api/v1/get-NpoallCampaign";
+        setLoading(true);
+        const headers = {
+          Authorization: `Bearer: ${token}`,
+        };
+        const res = await axios.get(url, { headers })
+        dispatch(myCampaigns(res?.data?.allCampaigns))
+        // console.log("The res",res?.data?.allCampaigns);
         setCampaign(res?.data?.allCampaigns);
+        const total = res?.data?.allCampaigns.reduce((acc, campaign) => (acc + Number(campaign.totalRaised)), 0)
+        setTotalRaised(total)
+        console.log(total)
         dispatch(myCampaigns(res?.data?.allCampaigns));
-        console.log(products);
+        
         setLoading(false);
-      })
-      .catch((err) => {
+      }catch(err){
         toast.error(err?.response?.data?.message)
         // setLoading(false); // Data has finished loading even on error
-      });
-  }, []);
+      };
+  }
+  useEffect(() => {
+    fetchAll()
+    console.log("check")
+  }, [totalRaised]);
+
+
+  // useEffect(() =>{
+  //   console.log(totalRaised)
+  // },[totalRaised])
+  const camp = useSelector((state)=>state.kindraise.myCampaigns)
+  console.log(camp)
 
   function getFirstTwoObjects(arr) {
     // Check if the input is an array and has at least two objects
@@ -140,8 +156,8 @@ const DashBoard = () => {
     }
   }
 
-  const firstTwoProducts = getFirstTwoObjects(campaign);
-  console.log(firstTwoProducts, "first two");
+  const firstTwoProducts = getFirstTwoObjects(camp);
+  // console.log(firstTwoProducts, "first two");
 
   function filterActiveCampaigns(products) {
     return products.filter((product) => product.status === "active");
@@ -153,6 +169,8 @@ const DashBoard = () => {
     return products.reduce((total, product) => total + product.totalRaised, 0);
   }
   const totalAmount = calculateTotalAmount(campaign);
+  // console.log("Total: ",totalAmount)
+  // console.log("Type: ",typeof totalAmount)
 
   const [searchTerm, setSearchTerm] = useState(""); // State for search term
   const [selectedPerson, setSelectedPerson] = useState(null); // State for selected person
@@ -274,7 +292,7 @@ const DashBoard = () => {
           <div className="dashBoardUpperCard">
             <div className="dashboardSmallCard">
               <div className="dashBoardCardUpper">
-                <h2 className="upperCardMainText one">₦{totalAmount}</h2>
+                <h2 className="upperCardMainText one">₦{totalRaised}</h2>
                 <div className="upperCardSubText">Total Raised</div>
               </div>
               <div className="dashBoardCardLower">
@@ -360,7 +378,7 @@ const DashBoard = () => {
               </div>
               <div className="fundraiseDashBody">
                 {
-                  loading ? <div>Not campaign found</div>:
+                  loading ? <div>Fetching campaigns...</div>:
                 firstTwoProducts.map((e, i) => {
                   const percentage = (e.totalRaised / e.Goal) * 100;
 

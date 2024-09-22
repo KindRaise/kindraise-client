@@ -11,6 +11,8 @@ import { allCampaigns } from '../../global/slice';
 import Icon from '../../assets/Icon.svg';
 import Tree from '../../assets/Tree.svg';
 import Loading from "../../components/Loading/Loading";
+import toast, { Toaster } from "react-hot-toast";
+import FundModal from "../../components/FundModal/FundModal";
 
 const FundraisingPage = () => {
   const { id } = useParams(); 
@@ -21,7 +23,7 @@ const FundraisingPage = () => {
   const [campaign, setCampaign] = useState(null);
   const [pay, setPay] = useState(false);
   const [oneData, setOneData] = useState(null);
-  const [amount, setAmount] = useState("");
+  const [amount, setAmount] = useState(0);
   const [bank, setBank] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -29,6 +31,7 @@ const FundraisingPage = () => {
   const [loading, setLoading] = useState(true); 
   const [ loadingScreen, setLoadingScreen] = useState(true)
   const [datas, setDatas] = useState(null); 
+  const [toggles, setToggles] = useState(false)
 
   const payment = {
       amount,
@@ -68,7 +71,7 @@ const FundraisingPage = () => {
     window.Korapay.initialize({
       key: import.meta.env.VITE_Public_Key,
       reference: `kindraiser_${Date.now()}`,
-      amount: 2000,
+      amount: amount,
       currency: "NGN",
       customer: {
         name: "jack",
@@ -77,7 +80,16 @@ const FundraisingPage = () => {
       onClose: function () {
       },
       onSuccess: function (data) {
-        console.log("first")
+        const api = `https://kindraise.onrender.com/api/v1/donate/${datas?.id}`
+        axios.post(api, payment)
+        .then((res)=>{
+          console.log(res)
+          // toast.success('payment received')
+          setPay(false)
+        })
+        .catch((err)=>{
+          console.log(err)
+        })
         
       },
       onFailed: function (data) {
@@ -104,7 +116,11 @@ const FundraisingPage = () => {
 
   return (
     <>
+    <Toaster/>
       <div className="fundRaiseBody">
+        {
+          toggles? <FundModal setToggles={setToggles} id={id}/>:null
+        }
         {
           loading ? <Loading/>: null
         }
@@ -194,7 +210,7 @@ const FundraisingPage = () => {
                 <button className="fundRaiseDonateBtn" onClick={() => setPay(true)}>
                   Donate
                 </button>
-                <button className="fundRaiseShareBtn">
+                <button className="fundRaiseShareBtn" onClick={(e)=>setToggles(true)}>
                   Share with friends
                 </button>
               </div>

@@ -15,7 +15,7 @@ const Amount = ({setActiveComponent,setPay,setAmount}) => {
       <div className='amountWrapper'>
         <div className='amountAmount'>
           <div className='inputBox'>
-            ₦ <input type="text" onChange={(e)=>setAmount(e.target.value)}/>
+            ₦ <input type="number" onChange={(e)=>setAmount(e.target.value)}/>
           </div>
           <button onClick={()=>setActiveComponent("B")}>continue</button>
         </div>

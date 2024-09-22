@@ -8,8 +8,18 @@ import Icon from '../../assets/Icon.svg'
 import Logo from '../../assets/logo.svg';
 
 import { IoIosLogOut } from 'react-icons/io'
+import { useDispatch } from 'react-redux'
+import { addUser, allCampaigns, myCampaigns, userRole, userToken } from '../../global/slice'
 
 const SideBar = () => {
+  const dispatch = useDispatch()
+  const logout = ()=>{
+    dispatch(userRole(''))
+    dispatch(userToken(''))
+    dispatch(addUser({}))
+    dispatch(allCampaigns([]))
+    dispatch(myCampaigns([]))
+  }
   const Nav = useNavigate()
   return (
     <div className='sideBarBody'>
@@ -29,7 +39,7 @@ const SideBar = () => {
             <NavLink to={'/track'} className={({ isActive }) =>isActive ? "HeaderActive" : "HeaderNotActive"}><BsPeople size={15}/><span>Donor</span></NavLink>
             <NavLink to={'/payout'} className={({ isActive }) =>isActive ? "HeaderActive" : "HeaderNotActive"}><BiWallet size={15}/><span>Payout</span></NavLink>
             <NavLink to={'/account'} className={({ isActive }) =>isActive ? "HeaderActive" : "HeaderNotActive"}><FiSettings size={15}/><span>Account</span></NavLink>
-            <NavLink to={'/'} className={({ isActive }) =>isActive ? "logOut end" : "HeaderNotActive end"}><IoIosLogOut /><span>Logout</span></NavLink>
+            <NavLink to={'/'} onClick={logout} className={({ isActive }) =>isActive ? "logOut end" : "HeaderNotActive end"}><IoIosLogOut /><span>Logout</span></NavLink>
           </ul>
         </div>
       </div>

@@ -10,20 +10,24 @@ import { QRCodeSVG } from "qrcode.react";
 
 const Share = ({setActiveComponent,setEv,ev,campaignData,Create,loading}) => {
   const Nav = useNavigate()
-  const [num, setNum] = useState();
   const [link, setLink] = useState();
   const qrRef = useRef();
+  const [num, setNum] = useState();
   
   useEffect(()=>{
-    setNum(Date.now())
+    // setNum(Date.now())
+    setEv(Date.now())
   },[])
+  
+  setTimeout(() => {
+  }, 2000);
   // console.log("num",num)
   // setEv(num)
   useEffect(()=>{
-    setEv(num)
     setLink(`https://kindraise.vercel.app/fundraising-page/${ev}`)
   },[num])
-  // console.log("ev",ev)
+  console.log("ev",ev)
+  
   
 
 

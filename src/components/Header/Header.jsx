@@ -13,12 +13,18 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const {token} = useSelector((state)=>state.kindraise)
-  // console.log(token,"user")
+  console.log(token,"user")
 
   const handleHamburgerClick = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
+  const handleLogo=()=>{   
+    if (token) {
+      navigate(-1)
+    } else {
+      navigate("/")
+    }
+  }
   const proceed =()=>{
     if (!token) {
       navigate('/')
@@ -77,7 +83,7 @@ const Header = () => {
           </a>
           </div>
           <div className="header-center">
-            <img src={logo} alt="logo" className="header-logo" onClick={() => navigate('/')} />
+            <img src={logo} alt="logo" className="header-logo" onClick={handleLogo} />
           </div>
           <div className="header-right">
             <a onClick={() => navigate('/pricing')}>Pricing</a>
