@@ -127,6 +127,7 @@ const FundraisingPage = () => {
         {pay && (
           <Modal
           payKorapay={payKorapay}
+          datas={datas}
             setMessage={setMessage}
             setEmail={setEmail}
             setName={setName}

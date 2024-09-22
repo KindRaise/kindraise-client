@@ -3,7 +3,7 @@ import './Amount.css'
 import { useNavigate } from 'react-router-dom'
 import Tree from '../../assets/Tree.svg'
 
-const Amount = ({setActiveComponent,setPay,setAmount}) => {
+const Amount = ({datas,setActiveComponent,setPay,setAmount}) => {
   const Nav = useNavigate()
   
   return (
@@ -21,10 +21,10 @@ const Amount = ({setActiveComponent,setPay,setAmount}) => {
         </div>
         <div className='amountDetailsBox'>
           <div>
-            <img src={Tree} alt="" />
+            <img src={datas?.profilePic} alt="" />
           </div>
-          <h3>Roots of hope</h3>
-          <p>Nuturing Our Future, One Tree at a Time</p>
+          <h3>{datas?.title}</h3>
+          <p>{datas?.subtitle}</p>
         </div>
       </div>
         {/* <button onClick={()=>setActiveComponent("B")}>amount</button> */}
