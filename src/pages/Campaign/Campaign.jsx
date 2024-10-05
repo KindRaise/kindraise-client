@@ -21,6 +21,7 @@ const Campaign = () => {
   const [campaigns, setCampaigns] = useState([]); // Original campaign list  
   const [filteredCampaigns, setFilteredCampaigns] = useState([]); // Filtered campaign list  
   const [selectedStatus, setSelectedStatus] = useState(""); // State for selected status  
+  const [err, setErr] = useState('')
 
   // Fetch campaigns from the API  
   useEffect(() => {  
@@ -39,7 +40,8 @@ const Campaign = () => {
         setLoading(false);  
       })  
       .catch((err) => {    
-        console.log(err);  
+        console.log(err?.response?.data?.message);  
+        setErr(err?.response?.data?.message)
         setLoading(false);  
       });  
   }, [token, dispatch]);  
@@ -47,7 +49,7 @@ const Campaign = () => {
   // Search function to filter campaigns based on searchTerm and selectedStatus  
   useEffect(() => {  
     const filtered = campaigns.filter((campaign) => {  
-      const matchesSearch = campaign.story.toLowerCase().includes(searchTerm.toLowerCase());  
+      const matchesSearch = campaign.title.toLowerCase().includes(searchTerm.toLowerCase());  
       const matchesStatus = selectedStatus ? campaign.status === selectedStatus : true; // Filter by status if selected  
       return matchesSearch && matchesStatus;  
     });  
@@ -59,7 +61,7 @@ const Campaign = () => {
 
   // Configure table columns  
   const columns = React.useMemo(() => [  
-    { Header: "Campaign", accessor: "story" },  
+    { Header: "Campaign", accessor: "title" },  
     { Header: "Created", accessor: "createdAt" },  
     { Header: "Raised", accessor: "totalRaised" },  
     { Header: "Supporters", accessor: "supporters" },  
@@ -78,17 +80,17 @@ const Campaign = () => {
             ...
           </button>
           {selectedRowIndex === row.index && (
-            <div
-              style={{
-                position: "absolute",
-                background: "white",
-                border: "1px solid #ccc",
-                padding: "10px",
-              }}
+            <div className="editor"
+              // style={{
+              //   position: "absolute",
+              //   background: "white",
+              //   border: "1px solid #ccc",
+              //   padding: "10px",
+              // }}
             >
-              <button onClick={() => handleAction("Edit", row.original.ev)}>
+              {/* <button onClick={() => handleAction("Edit", row.original.ev)}>
                 Edit
-              </button>
+              </button> */}
               <button onClick={() => handleAction("View", row.original.ev)}>
                 View
               </button>
@@ -161,7 +163,7 @@ const Campaign = () => {
                 <Loading/> 
               ) : (  
                 <table {...getTableProps()} className="campaign-table">  
-                  <thead>  
+                  <thead className="tableHead">  
                     {headerGroups.map(headerGroup => (  
                       <tr {...headerGroup.getHeaderGroupProps()} className="table-header">  
                         {headerGroup.headers.map(column => (  
@@ -188,6 +190,9 @@ const Campaign = () => {
                   </tbody>  
                 </table>  
               )}  
+              {
+                err ?<div>{err}</div>:null
+              }
             </div>  
             <div className="tableFooterPagination">  
               <div>Hello</div>  

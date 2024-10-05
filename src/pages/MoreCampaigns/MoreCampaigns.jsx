@@ -11,12 +11,15 @@ import 'aos/dist/aos.css';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import Search from '../../components/Search/Search';
+import load from '../../assets/load.gif'
 
 
 const MoreCampaigns = () => {
     const [campaign, setCampaigns] = useState([]);  
   const [visibleCount, setVisibleCount] = useState(3); // Initially show 3 campaigns  
   const [searchTerm, setSearchTerm] = useState(""); // State for search term  
+  const [loading, setLoading] = useState(true)
+  const [err, setErr] = useState('')
   const navigate = useNavigate();  
   const dispatch = useDispatch(); 
 
@@ -29,19 +32,23 @@ const MoreCampaigns = () => {
     });  
   }, []);  
 
+  
   useEffect(() => {  
     const url = "https://kindraise.onrender.com/api/v1/getallcampaigns";  
-
     // Perform the GET request  
     axios  
       .get(url)  
       .then((res) => {  
-        console.log(res?.data?.allCampaigns, "all campaigns");  
-        setCampaigns(res?.data?.allCampaigns);  
+        console.log(res?.data?.campaigns)
+        console.log(res?.data?.campaigns, "all campaigns");  
+        setCampaigns(res?.data?.campaigns);  
+        setLoading(false);
         // dispatch(allCampaigns(res?.data?.allCampaigns));  
       })  
       .catch((err) => {  
         console.log(err); // Set the error message  
+        setErr(err?.message)
+        setLoading(false);
       });  
   }, [dispatch]);  
 
@@ -72,6 +79,14 @@ const MoreCampaigns = () => {
       </div>  
 
       <div className="campaign-container">  
+        {
+          loading?
+          <img src={load} alt="" />:
+          null
+        }
+        {
+          err ? <div>{err}</div>:null
+        }
         {filteredCampaigns.slice(0, visibleCount).map((Mcampaign) => {  
             const percent = (Mcampaign.totalRaised / Mcampaign.Goal) * 100;  
           return (  
@@ -79,14 +94,17 @@ const MoreCampaigns = () => {
               className="Mcampaigns-card"  
               key={Mcampaign.id}  
               data-aos="fade-up"  
+              onClick={()=>navigate(`/fundraising-page/${Mcampaign.ev}`)}
+              
             >  
               <img  
                 src={Mcampaign.profilePic}  
                 alt={Mcampaign.story}  
                 className="Mcampaigns-image"  
+                onClick={()=>navigate(`/fundraising-page/${Mcampaign.ev}`)}
               />  
               <div className="Mcampaigns-info">  
-                <h2 className="Mcampaigns-title">{Mcampaign.story}</h2>  
+                <h2 className="Mcampaigns-title">{Mcampaign.title}</h2>  
                 <p className="Mcampaigns-description">{Mcampaign.subtitle}</p>  
                 <p className="Mcampaigns-donors">  
                   {Mcampaign.supporters} Donors  

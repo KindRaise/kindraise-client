@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Transaction.css";
 // import PayoutTable from '../components/PayoutTable/PayoutTable'
 import { useTable } from "react-table";
@@ -6,44 +6,87 @@ import { BsArrowDown } from "react-icons/bs";
 import useLocalStorage from "use-local-storage";
 import { BiSearch } from "react-icons/bi";
 import TransactionModal from "../../pages/TransactionModal/TransactionModal";
+import axios from "axios";
+import { useSelector } from "react-redux";
+import toast, { Toaster } from "react-hot-toast";
 
-const Transaction = () => {  
+const Transaction = ({persons=[]}) => {  
   const [modal, setModal] = useLocalStorage(false);  
   const [selectedPerson, setSelectedPerson] = useState(null);  
-  const [searchTerm, setSearchTerm] = useState(""); // State for the search term  
+  const [searchTerm, setSearchTerm] = useState(""); // State for the search term 
+  const token = useSelector((state) => state.kindraise.token); 
+  // const [persons, setPersons] = useState([])
 
-  const persons = [  
-    {  
-      name: "Alice",  
-      amount: 25,  
-      date: "22/03/2024",  
-      campaign: "Save the tree",  
-      message: "I’m so proud to be a changemaker. #Love",  
-      email: "jacksam@gmail.com",  
-      contribution: "1,000",  
-      contact_since: "22/03/2024",  
-    },  
-    {  
-      name: "Bob",  
-      amount: 30,  
-      date: "22/03/2024",  
-      campaign: "Save the tree",  
-      message: "I’m so proud to be a changemaker. #Love",  
-      email: "jacksam@gmail.com",  
-      contribution: "1,000",  
-      contact_since: "22/03/2024",  
-    },  
-    {  
-      name: "Charlie",  
-      amount: 22,  
-      date: "22/03/2024",  
-      campaign: "Save the tree",  
-      message: "I’m so proud to be a changemaker. #Love",  
-      email: "jacksam@gmail.com",  
-      contribution: "1,000",  
-      contact_since: "22/03/2024",  
-    },  
-  ];  
+  // const persons = [  
+  //   {  
+  //     name: "Alice",  
+  //     amount: 25,  
+  //     date: "22/03/2024",  
+  //     campaign: "Save the tree",  
+  //     message: "I’m so proud to be a changemaker. #Love",  
+  //     email: "jacksam@gmail.com",  
+  //     contribution: "1,000",  
+  //     contact_since: "22/03/2024",  
+  //   },  
+  //   {  
+  //     name: "Bob",  
+  //     amount: 30,  
+  //     date: "22/03/2024",  
+  //     campaign: "Save the tree",  
+  //     message: "I’m so proud to be a changemaker. #Love",  
+  //     email: "jacksam@gmail.com",  
+  //     contribution: "1,000",  
+  //     contact_since: "22/03/2024",  
+  //   },  
+  //   {  
+  //     name: "Charlie",  
+  //     amount: 22,  
+  //     date: "22/03/2024",  
+  //     campaign: "Save the tree",  
+  //     message: "I’m so proud to be a changemaker. #Love",  
+  //     email: "jacksam@gmail.com",  
+  //     contribution: "1,000",  
+  //     contact_since: "22/03/2024",  
+  //   },  
+  // ];  
+
+
+
+  // const getDonors = async() => {
+  //   try {
+  //     const url = "https://kindraise.onrender.com/api/v1/history";
+  //     const headers = {
+  //       Authorization: `Bearer: ${token}`,
+  //     };
+  //     const res = await axios.get(url, { headers });
+  //     console.log(res?.data?.donations)
+  //     setPersons(res?.data?.donations)
+  //     // console.log(person)
+  //   }catch (err) {
+  //     console.log(err, "all donors")
+  //   }
+  // }
+
+  // useEffect(()=>{
+  //   const url = "https://kindraise.onrender.com/api/v1/history"
+  //   axios  
+  //     .get(url, {  
+  //       headers: { Authorization: `Bearer: ${token}` },  
+  //     }) 
+  //     .then((res)=>{
+  //       console.log(res)
+  //       setPersons(res?.data?.donations)
+  //     })
+  //     .catch((err)=>{
+  //       console.log(err?.message, "all")
+  //       toast.error(err?.message)
+  //     })
+  // },[])
+
+  // useEffect(()=>{
+  //   getDonors()
+  //   // getDonors()
+  // },[])
 
   // Filter persons based on search term  
   const filteredPersons = persons.filter(person =>  
@@ -58,7 +101,7 @@ const Transaction = () => {
       },  
       {  
         Header: "Date",  
-        accessor: "date",  
+        accessor: "donationDate",  
       },  
       {  
         Header: "Amount",  
@@ -66,14 +109,14 @@ const Transaction = () => {
       },  
       {  
         Header: "Campaign",  
-        accessor: "campaign",  
+        accessor: "campaign.title",  
       },  
     ],  
     []  
   );  
 
-  const handleRowClick = (person) => {  
-    setSelectedPerson(person);  
+  const handleRowClick = (persons) => {  
+    setSelectedPerson(persons);  
     setModal(true); // Show the modal when clicking a row  
   };  
 
@@ -136,16 +179,17 @@ const Transaction = () => {
           </table>  
         </div>  
         <div className="tableFooterPagination">  
-          <div>hello</div>  
+          {/* <div>hello</div>  
           <div>hello</div>  
           <div>  
             10 per page <BsArrowDown />  
-          </div>  
+          </div>   */}
         </div>  
         {modal ? (  
           <TransactionModal person={selectedPerson} setModal={setModal} />  
         ) : null}  
       </div>  
+      <Toaster/>
     </>  
   );  
 };  

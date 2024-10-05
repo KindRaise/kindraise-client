@@ -7,23 +7,29 @@ import { PiPrinterThin } from "react-icons/pi";
 import 'animate.css';
 
 import { QRCodeSVG } from "qrcode.react";
+import { IoCheckmarkDoneOutline } from "react-icons/io5";
+import toast, { Toaster } from "react-hot-toast";
 
-const Share = ({setActiveComponent,setEv,ev,campaignData}) => {
+const Share = ({setActiveComponent,setEv,ev,campaignData,Create,loading}) => {
   const Nav = useNavigate()
-  const [num, setNum] = useState();
   const [link, setLink] = useState();
   const qrRef = useRef();
+  const [num, setNum] = useState();
   
   useEffect(()=>{
-    setNum(Date.now())
+    // setNum(Date.now())
+    setEv(Date.now())
   },[])
+  
+  setTimeout(() => {
+  }, 2000);
   // console.log("num",num)
   // setEv(num)
   useEffect(()=>{
-    setEv(num)
-    setLink(`https://kindraise.vercel.app/fundraising-page/${num}`)
+    setLink(`https://kindraise.vercel.app/fundraising-page/${ev}`)
   },[num])
-  // console.log("ev",ev)
+  console.log("ev",ev)
+  
   
 
 
@@ -72,14 +78,21 @@ const Share = ({setActiveComponent,setEv,ev,campaignData}) => {
     link.download = "qrcode.svg";  
     link.click();  
   };  
+  const [buttonText, setButtonText] = useState(<BiCopy size={25} cursor="pointer"/>)
 
   
 
   const copyToClipboard = () => {
+    setButtonText(<IoCheckmarkDoneOutline color="green" size={25}/>)
+
+    setTimeout(() => {  
+      setButtonText(<BiCopy size={25} cursor="pointer"/>);  
+    }, 1000);
+
     navigator.clipboard
       .writeText(link)
       .then(() => {
-        alert("Link copied to clipboard!");
+        toast.success("Link copied to clipboard!");
       })
       .catch((err) => {
         console.error("Failed to copy: ", err);
@@ -109,7 +122,7 @@ const Share = ({setActiveComponent,setEv,ev,campaignData}) => {
           <div className="codeHolder" ref={qrRef}>
             <QRCodeSVG value={link} size={140}/>
           </div>
-          <button onClick={handleDownload} className="codeDbBtn animate__animated animate__fadeIn animate__infinite animate__slow"><GoDownload />Download</button>
+          <button onClick={handleDownload} className="codeDbBtn"><GoDownload />Download</button>
           <button className="codeDbBtn" onClick={handlePrint}><PiPrinterThin />Print</button>
         </div>
       </div>
@@ -131,15 +144,20 @@ const Share = ({setActiveComponent,setEv,ev,campaignData}) => {
                 readOnly
                 className="linkInput"
               />
-              <div onClick={copyToClipboard}><BiCopy size={25} cursor="pointer"/></div>
+              <div onClick={copyToClipboard}>{buttonText}</div>
             </div>
           </div>
         </div>
       </div>
 
       <div className="shareBtnBox">
-        <button className="publishBtn"onClick={Back}>Publish</button>
+        <button className="publishBtn"onClick={Create}>
+          {
+            loading? "Creating..." : "Publish"
+          }
+        </button>
       </div>
+      <Toaster/>
     </div>
   );
 };
