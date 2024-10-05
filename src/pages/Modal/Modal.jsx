@@ -5,14 +5,14 @@ import PaymentDetails from '../PaymentDetails/PaymentDetails';
 import Bank from '../Bank/Bank';
 // import Tree from '../assets/Tree.svg';
 
-const Modal = ({amount,payKorapay,setPay,setMessage,setEmail,setName,setBank,setAmount}) => {
+const Modal = ({datas,amount,payKorapay,setPay,setMessage,setEmail,setName,setBank,setAmount}) => {
 
   const [activeComponent, setActiveComponent] = useState('A');
 
   const renderComponent = () => {  
     switch (activeComponent) {  
         case 'A':  
-            return <Amount setActiveComponent={setActiveComponent} setAmount={setAmount} setPay={setPay}/>;  
+            return <Amount datas={datas} setActiveComponent={setActiveComponent} setAmount={setAmount} setPay={setPay}/>;  
         case 'B':  
             return <Bank setActiveComponent={setActiveComponent} setPay={setPay}/>;  
         case 'C':  

@@ -1,0 +1,172 @@
+/* .fundModalBody {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.401);
+}
+
+.fundModalWrapper {
+  height: 90%;
+  width: 40%;
+  padding: 20px;
+  min-width: 350px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.fundModalHeader {
+  height: 20px;
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-end;
+
+  span {
+    cursor: pointer;
+  }
+} */
+
+
+
+
+.shareModalBody {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.371);
+}
+
+.shareModalWrapper {
+  height: 95%;
+  width: 40%;
+  min-width: 350px;
+  background-color: white;
+  /* background-color: red; */
+  border-radius: 10px;
+  display: flex;
+  padding: 30px;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.shareModalHead {
+  height: 9%;
+  /* background-color: red; */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* padding-left: 10px; */
+  /* padding-right: 10px; */
+}
+
+.shareModalTextBox {
+  width: 100%;
+  height: max-content;
+  /* background-color: brown; */
+  font-size: 18px;
+  text-align: center;
+
+  span {
+    font-weight: bold;
+  }
+}
+
+.shareOnSocialsBox {
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* margin-bottom: 40px; */
+}
+
+.shareOnSocialsText {
+  text-align: center;
+  width: 100%;
+  color: #000000;
+  height: 20px;
+  font-size: 17px;
+}
+
+.shareOnSocialsIcons {
+  width: 100%;
+  display: flex;
+  /* background-color: red; */
+  justify-content: space-between;
+}
+
+.shareOnMessangerBox {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.shareOnMessangerText {
+  text-align: center;
+  width: 100%;
+  color: #000000;
+  height: 20px;
+  font-size: 17px;
+}
+
+.shareOnMessangerIcon {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.campaignUrlBox {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .campaignBoxInputHolder {
+    /* background-color: red; */
+    height: 40px;
+  }
+
+  span {
+    color: gray;
+  }
+
+  input {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    outline: none;
+    padding-left: 10px;
+    font-size: 18px;
+    color: gray;
+  }
+
+  div {
+    display: flex;
+    gap: 10px;
+  }
+
+  button {
+    background-color: #05BB6D;
+    color: white;
+    border-radius: 10px;
+    height: 100%;
+    width: 100px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    
+  }
+}

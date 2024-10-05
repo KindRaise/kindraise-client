@@ -119,6 +119,26 @@
   /* color: rgb(78, 78, 239); */
 }
 
+.contactBox {
+  /* background-color: red; */
+  display: flex;
+  /* height: max-content; */
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  flex-wrap: wrap;
+
+  .contacts-list {
+    width: 400px;
+    min-width: 100px;
+    background-color: white;
+  }
+}
+
+.details-container {
+  /* background-color: red; */
+  width: 100%;
+}
+
 .dashBoardCardLower {
   height: 30%;
   width: 100%;
@@ -223,6 +243,15 @@
   max-width: 300px;
   width: 100%;
   /* background-color: aqua; */
+  /* white-space: nowrap; */
+  /* overflow: hidden; */
+  /* text-overflow: ellipsis; */
+
+  overflow: hidden; /* Hide overflow */  
+    text-overflow: ellipsis; /* Show ellipsis for truncated text */  
+    display: -webkit-box; /* Use flexbox for truncation */  
+    -webkit-box-orient: vertical; /* Set orientation */  
+    -webkit-line-clamp: 5; /* Number of lines to show before truncating */  
 }
 
 .trackBar {
@@ -395,7 +424,8 @@
 }  
 
 .details-container {  
-  width: 300px; /* Adjust width as needed */  
+  width: 300px;
+  /* background-color: green;   */
   padding: 10px;  
   /* background-color: ; */
   /* border-left: 1px solid #ccc; Optional: to separate details   */

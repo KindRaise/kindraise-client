@@ -1,19 +1,62 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './PaymentModal.css'
 import { MdClose } from 'react-icons/md'
+import axios from 'axios';
+import { useSelector } from 'react-redux';
+import toast, { Toaster } from 'react-hot-toast';
 
-const PayoutModal = ({setPayout}) => {
+const PayoutModal = ({setModal}) => {
+  const [BankName, setBank] = useState('')
+  const [accountNumber, setAccount] = useState(0)
+  const [beneficiaryName, setName] = useState('')
+  const [amount, setAmount] = useState('')
+  const [loading, setLoading] = useState(false)
+  const data = {
+    BankName,
+    accountNumber,
+    beneficiaryName,
+    amount
+  }
+  console.log(data)
+
+
+  const token = useSelector((state) => state.kindraise.token);
+
+  const sendBank = ()=>{
+    const url = `https://kindraise.onrender.com/api/v1/payout`
+    setLoading(true)
+    axios
+      .post(url, data, {headers: { Authorization: `Bearer: ${token}` }}) 
+      .then((res)=>{
+        console.log(res)
+       setLoading(false)
+       setModal(false)
+       setTimeout(() => {
+         toast.success(res?.data?.message)
+       }, 2000);
+      })
+      .catch((err)=>{
+        console.log(err)
+        setLoading(false)
+        setModal(false)
+        toast.error(err?.response?.data?.message)
+
+      })
+    // alert('Error')
+  }
+
+
   return (
     <div className='payoutModalBody'>
       <div className='payoutModalWrapper'>
         <div className='payoutModalHead'>
           <h3>Add payout method</h3>
-          <div onClick={()=>setPayout(false)}><MdClose size={20} cursor="pointer"/></div>
+          <div onClick={()=>setModal(false)}><MdClose size={20} cursor="pointer"/></div>
         </div>
         <div className='payoutModalInputHolder'>
           <div className='payoutModalInputBox'>
             <span>Bank</span>
-            <select name="banks" id="banks">  
+            <select name="banks" id="banks" onChange={(e)=>setBank(e.target.value)}>  
     <option value="">Select a Bank</option>  
     <option value="access_bank">Access Bank</option>  
     <option value="diamond_bank">Diamond Bank</option>  
@@ -46,17 +89,22 @@ const PayoutModal = ({setPayout}) => {
           </div>
           <div className='payoutModalInputBox'>
             <span>Account Number</span>
-            <input type="text" />
+            <input type="text" onChange={(e)=>setAccount(e.target.value)}/>
           </div>
           <div className='payoutModalInputBox'>
             <span>Beneficiary Name</span>
-            <input type="text"placeholder='(optional)' />
+            <input type="text"placeholder='(optional)' onChange={(e)=>setName(e.target.value)}/>
+          </div>
+          <div className='payoutModalInputBox'>
+            <span>Amount</span>
+            <input type="text"placeholder='(optional)' onChange={(e)=>setAmount(e.target.value)}/>
           </div>
         </div>
         <div className='payoutModalBtnBox'>
-          <button>Save</button>
+          <button onClick={sendBank}>{loading ? "sending": "save"}</button>
         </div>
       </div>
+      <Toaster/>
     </div>
   )
 }

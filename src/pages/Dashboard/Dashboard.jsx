@@ -17,87 +17,89 @@ import { BsMegaphone, BsPeople } from "react-icons/bs";
 import { AiOutlineExport } from "react-icons/ai";
 import School from "../../assets/School.svg";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 // import { myCampaigns } from "../../global/slice.js";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { myCampaigns } from "../../global/slice";
+import { BeatLoader } from "react-spinners";
 // import { Bar } from 'rechart';
 // import { BarChart, ResponsiveContainer,Bar, XAxis, YAxis, Tooltip } from 'recharts';
 
 const DashBoard = () => {
   // const userData = JSON.parse(localStorage.getItem('userData'))
   // console.log(userData)
+  const dispatch = useDispatch()
 
   const products = [
     {
-      name: "05/17/2024",
+      name: "jan",
       donor: 1500,
       receiver: 3000,
       hidden: 900,
     },
     {
-      name: "06/17/2024",
+      name: "feb",
       donor: 3000,
       receiver: 3500,
       hidden: 1000,
     },
     {
-      name: "07/17/2024",
+      name: "Mar",
       donor: 4000,
       receiver: 2000,
       hidden: 400,
     },
     {
-      name: "08/17/2024",
+      name: "Apr",
       donor: 4500,
       receiver: 2500,
       hidden: 700,
     },
     {
-      name: "09/17/2024",
+      name: "May",
       donor: 3000,
       receiver: 2000,
       hidden: 1200,
     },
     {
-      name: "10/17/2024",
+      name: "Jun",
       donor: 500,
       receiver: 2800,
       hidden: 1200,
     },
     {
-      name: "11/17/2024",
+      name: "Jul",
       donor: 2000,
       receiver: 4500,
       hidden: 1200,
     },
     {
-      name: "12/17/2024",
+      name: "Aug",
       donor: 3000,
       receiver: 2500,
       hidden: 1200,
     },
     {
-      name: "01/17/2024",
+      name: "Sep",
       donor: 0,
       receiver: 3000,
       hidden: 1200,
     },
     {
-      name: "02/17/2024",
+      name: "Oct",
       donor: 5000,
       receiver: 4000,
       hidden: 1200,
     },
     {
-      name: "03/17/2024",
+      name: "Nov",
       donor: 3000,
       receiver: 4500,
       hidden: 1200,
     },
     {
-      name: "04/17/2024",
+      name: "Dec",
       donor: 5000,
       receiver: 4000,
       hidden: 1200,
@@ -109,27 +111,73 @@ const DashBoard = () => {
 
   const [campaign, setCampaign] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [test, setTest] = useState(null);
+  const [totalRaised, setTotalRaised] = useState(0)
+  const [monthly, setMonthly] = useState()
+  const [today, setToday]= useState(0)
+
+  const fetchAll = async()=>{
+      try{
+        // setLoading(true);
+        const url = "https://kindraise.onrender.com/api/v1/get-NpoallCampaign";
+        setLoading(true);
+        const headers = {
+          Authorization: `Bearer: ${token}`,
+        };
+        const res = await axios.get(url, { headers })
+        setCampaign(res?.data?.allCampaigns)
+        // console.log(campaign)
+        setMonthly(res?.data?.monthlyDonations)
+        // setToday(res?.data?.todayRaised)
+        console.log(res, "responce")
+        setTotalRaised(res?.data?.totalRaisedFromAllCampaigns)
+        // toast.success(res?.data?.message)
+        dispatch(myCampaigns(res?.data?.allCampaigns))
+        // console.log("The res",res?.data?.allCampaigns);
+        setCampaign(res?.data?.allCampaigns);
+        const total = res?.data?.allCampaigns.reduce((acc, campaign) => (acc + Number(campaign.totalRaised)), 0)
+        setToday(res?.data?.allCampaigns.reduce((acc, campaign) => (acc + Number(campaign.todaysDonation)), 0))
+        console.log(today, "today")
+        setTotalRaised(total)
+        // console.log(total, "total")
+        dispatch(myCampaigns(res?.data?.allCampaigns));
+        
+        setLoading(false);
+      }catch(err){
+        console.log(err)
+        // toast.error(err?.message)
+        setLoading(false); // Data has finished loading even on error
+      };
+  }
+
+  const getDonors = async() => {
+    try {
+      const url = "https://kindraise.onrender.com/api/v1/history";
+      const headers = {
+        Authorization: `Bearer: ${token}`,
+      };
+      const res = await axios.get(url, { headers });
+      // console.log(res)
+      setPerson(res?.data?.donations)
+      console.log(person, "person")
+    }catch (err) {
+      console.log(err, "all donors")
+    }
+  }
+
 
   useEffect(() => {
-    const url = "https://kindraise.onrender.com/api/v1/get-NpoallCampaign";
-    setLoading(true);
-    const headers = {
-      Authorization: `Bearer: ${token}`,
-    };
-    axios
-      .get(url, { headers })
-      .then((res) => {
-        console.log(res?.data?.allCampaigns, "data");
-        setCampaign(res?.data?.allCampaigns);
-        dispatch(myCampaigns(res?.data?.allCampaigns));
-        console.log(products);
-        setLoading(false);
-      })
-      .catch((err) => {
-        toast.error(err?.response?.data?.message)
-        // setLoading(false); // Data has finished loading even on error
-      });
-  }, []);
+    fetchAll()
+    getDonors();
+    // console.log("check")
+  }, [totalRaised]);
+
+
+  // useEffect(() =>{
+  //   console.log(totalRaised)
+  // },[totalRaised])
+  const camp = useSelector((state)=>state.kindraise.myCampaigns)
+  // console.log(camp)
 
   function getFirstTwoObjects(arr) {
     // Check if the input is an array and has at least two objects
@@ -139,9 +187,33 @@ const DashBoard = () => {
       return []; // Return an empty array if the input is not an array
     }
   }
+  // const getFirstTwoObjects=(arr)=> {
+  //   // Check if the input is an array and has at least two objects
+  //   if (Array.isArray(arr)) {
+  //     return arr.slice(0, 2); // Return the first two objects
+  //   } else {
+  //     return []; // Return an empty array if the input is not an array
+  //   }
+  // }
+  const getPerson =(arr)=>{
+    if (Array.isArray(arr)) {
+      return arr.slice(0, 4); // Return the first two objects
+    } else {
+      return []
+    }
+  }
+
+
+
+  function totalSupporters(campaigns) {  
+    return campaigns.map(campaign => campaign.supporters) // Extract the number of supporters  
+    .reduce((accumulator, current) => accumulator + current, 0); // Sum them up  
+ }
+
+ const total = totalSupporters(campaign);
 
   const firstTwoProducts = getFirstTwoObjects(campaign);
-  console.log(firstTwoProducts, "first two");
+  // console.log(firstTwoProducts, "first two");
 
   function filterActiveCampaigns(products) {
     return products.filter((product) => product.status === "active");
@@ -153,10 +225,12 @@ const DashBoard = () => {
     return products.reduce((total, product) => total + product.totalRaised, 0);
   }
   const totalAmount = calculateTotalAmount(campaign);
+  // console.log("Total: ",totalAmount)
+  // console.log("Type: ",typeof totalAmount)
 
   const [searchTerm, setSearchTerm] = useState(""); // State for search term
   const [selectedPerson, setSelectedPerson] = useState(null); // State for selected person
-
+  const [person, setPerson] = useState([]); 
   const persons = [
     {
       name: "Alice",
@@ -186,9 +260,7 @@ const DashBoard = () => {
       contact_since: "22/03/2024",
     },
   ];
-  if (!selectedPerson) {
-    setSelectedPerson(persons[0]);
-  }
+  
 
   const [data, setdata] = useState([
     {
@@ -218,10 +290,10 @@ const DashBoard = () => {
   ]);
 
   const Nav = useNavigate();
-
-  // const max = 2000;
-  // const current = 1000;
   const percentage = (1000 / 2000) * 100;
+
+  const gotten = getPerson(person)
+  // console.log(gotten, "gotten")
 
   const RoundedTopBar = (props) => {
     const { x, y, width, height, radius, fill } = props;
@@ -253,6 +325,10 @@ const DashBoard = () => {
   const filteredPersons = persons.filter((person) =>
     person.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+  
+  if (!selectedPerson) {
+    setSelectedPerson(persons[0]);
+  }
 
   const handlePersonClick = (person) => {
     setSelectedPerson(person); // Set the selected person
@@ -274,7 +350,7 @@ const DashBoard = () => {
           <div className="dashBoardUpperCard">
             <div className="dashboardSmallCard">
               <div className="dashBoardCardUpper">
-                <h2 className="upperCardMainText one">₦{totalAmount}</h2>
+                <h2 className="upperCardMainText one">₦{totalRaised?.toLocaleString()}</h2>
                 <div className="upperCardSubText">Total Raised</div>
               </div>
               <div className="dashBoardCardLower">
@@ -286,23 +362,26 @@ const DashBoard = () => {
             </div>
             <div className="dashboardSmallCard">
               <div className="dashBoardCardUpper">
-                <h2 className="upperCardMainText two">₦12,000</h2>
-                <div className="upperCardSubText">Total Donation</div>
+                <h2 className="upperCardMainText two">₦{today?.toLocaleString()}</h2>
+                <div className="upperCardSubText">Today Donation</div>
               </div>
               <div className="dashBoardCardLower">
-                <div className="cardSmallText">+2.5% from yesterday</div>
+              <div className="cardSmallText"></div>
+                {/* <div className="cardSmallText">+2.5% from yesterday</div> */}
                 <div className="iconCircle">
                   <BiMoney color="rgb(78, 78, 239)" size={20} />
                 </div>
               </div>
             </div>
             <div className="dashboardSmallCard">
+
               <div className="dashBoardCardUpper">
-                <h2 className="upperCardMainText three">40</h2>
+                <h2 className="upperCardMainText three">{total?.toLocaleString()}</h2>
                 <div className="upperCardSubText">Total Donors</div>
               </div>
               <div className="dashBoardCardLower">
-                <div className="cardSmallText">+5 this month</div>
+              <div className="cardSmallText"></div>
+                {/* <div className="cardSmallText">+5 this month</div> */}
                 <div className="iconCircleHolder">
                   <div className="iconCircle">
                     <BsPeople color="rgb(78, 78, 239)" size={20} />
@@ -311,6 +390,7 @@ const DashBoard = () => {
               </div>
             </div>
             <div className="dashboardSmallCard">
+              
               <div className="dashBoardCardUpper">
                 <h2 className="upperCardMainText four">
                   {activeCampaigns.length}
@@ -318,22 +398,23 @@ const DashBoard = () => {
                 <div className="upperCardSubText">Active Campaigns</div>
               </div>
               <div className="dashBoardCardLower">
-                <div className="cardSmallText">2 ending this week</div>
+              <div className="cardSmallText"></div>
+                {/* <div className="cardSmallText">2 ending this week</div> */}
                 <div className="iconCircle">
                   <BsMegaphone color="rgb(78, 78, 239)" size={20} />
                 </div>
               </div>
+
+              
             </div>
-            {/* <div className="dashboardSmallCard">hello</div>
-            <div className="dashboardSmallCard">hello</div>
-            <div className="dashboardSmallCard">hello</div> */}
           </div>
 
           <div className="dashBoardLowerCard">
+
             <div className="barChart">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={products}>
-                  <XAxis dataKey="name" />
+                <BarChart data={monthly}>
+                  <XAxis dataKey="month" />
                   <YAxis />
                   <Tooltip />
                   <Bar
@@ -341,7 +422,7 @@ const DashBoard = () => {
                     type="monotone"
                     stroke="#0042d1"
                     fill="#4d77e1"
-                    dataKey="donor"
+                    dataKey="amount"
                     barSize={20} // Adjust this value to make bars thinner or thicker
                   />
                 </BarChart>
@@ -357,8 +438,8 @@ const DashBoard = () => {
               </div>
               <div className="fundraiseDashBody">
                 {
-                  loading ? <div>Not campaign found</div>:
-                firstTwoProducts.map((e, i) => {
+                  // loading ? <div>Fetching campaigns...</div>:
+                  firstTwoProducts.map((e, i) => {
                   const percentage = (e.totalRaised / e.Goal) * 100;
 
                   return (
@@ -382,7 +463,7 @@ const DashBoard = () => {
 
                         <div className="fundraiseAmountTrack">
                           <div>
-                            ₦{e.totalRaised}/<span>{e.Goal}</span>
+                            ₦{e.totalRaised?.toLocaleString()}/<span>{e.Goal?.toLocaleString()}</span>
                           </div>
                           <div>{percentage}% funded</div>
                         </div>
@@ -392,61 +473,14 @@ const DashBoard = () => {
                 })
                 }
 
-                {/* <div className="fundRaiseDashCard">
-                  <div className="fundraiseFrameBox">
-                    <div className="fundRaiseFrameImgBox">
-                      <img src={School} alt="" />
-                    </div>
-                    <div className="fundRaiseFrameText">
-                      Sponsor 5 Children in Nigeria Get Back to School
-                    </div>
-                  </div>
-                  <div className="fundRaiseTrackBox">
-                    <div className="trackBoxDash small">
-                      <div className="progress-containerDash">
-                        <div
-                          className="progress-barDash"
-                          style={{ width: `${percentage}%` }}
-                        ></div>
-                      </div>
-                    </div>
-                    <div className="fundraiseAmountTrack">
-                      <div>
-                        ₦100,450/<span>150,000</span>
-                      </div>
-                      <div>69% funded</div>
-                    </div>
-                  </div>
-                </div> */}
+               
               </div>
             </div>
           </div>
-
-          {/* <div className="recentDonorsHistory">
-            <div className="donationHistoryPersonBox">
-              <div className="donorHistoryHead">Donation history</div>
-              <div className="donorHistoryPeople">
-                <div className="donorPeople">hello</div>
-                <div className="donorPeople">hello</div>
-              </div>
-            </div>
-            <div className="donationHistoryPersonShow">hello</div>
-          </div> */}
           <div className="contacts-container">
-            {/* <div className="transactionSearchSide">  
-        <div className="searchBox">  
-          <BiSearch color="gray" />  
-          <input  
-            type="text"  
-            placeholder="Search by name"  
-            value={searchTerm} // Bind input value to searchTerm state  
-            onChange={(e) => setSearchTerm(e.target.value)} // Update search term on change  
-          />  
-        </div>  
-      </div>   */}
-            <div className="ca">
+            <div className="contactBox">
               <div className="contacts-list">
-                {filteredPersons.map((person, index) => (
+                {gotten.map((person, index) => (
                   <div
                     key={index}
                     className="person-item"
@@ -456,7 +490,7 @@ const DashBoard = () => {
                   </div>
                 ))}
               </div>
-              <div className="details-container">
+              {/* <div className="details-container">
                 {selectedPerson && (
                   <div className="details">
                     <h2>{selectedPerson.name}</h2>
@@ -474,11 +508,12 @@ const DashBoard = () => {
                     </p>
                   </div>
                 )}
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
       </div>
+      <Toaster/>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './Content.css'
 import { FcCancel } from 'react-icons/fc';
+import { IoCloudUploadOutline } from 'react-icons/io5';
 
 const Content = ({setTitle,setSubTitle,setStory,setPhoto,goal,setFile}) => {
   const [post, setPost] = useState();
@@ -67,7 +68,7 @@ const Content = ({setTitle,setSubTitle,setStory,setPhoto,goal,setFile}) => {
               </div>
                 <div className='photoBox'>
                   <label htmlFor="1">
-                    {post ? <img src={post} alt="pic" className="postImg" /> : <div>hello</div>}
+                    {post ? <img src={post} alt="pic" className="postImg" /> : <div className='uploadCircle'><IoCloudUploadOutline color='white' size={20} /></div>}
                     <input type="file" id="1" hidden onChange={showImg} />
                   </label>
                 </div>
