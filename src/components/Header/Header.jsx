@@ -83,8 +83,8 @@ const Header = () => {
           <ul>
             <li onClick={()=>navigate('/about-us')}>About</li>
             <li onClick={()=>navigate('/login')}>Login</li>
-            <li><button onClick={()=>navigate('/signup')}>sign up</button></li>
-            <div className='mobileMenuHead'>{isOpen ? <CgClose color='white' onClick={()=>setIsOpen(false)} size={20}/>:<BiMenu  onClick={()=>setIsOpen(true)} size={20}/>}</div>
+            <li><button onClick={()=>navigate('/signup')}>Sign Up</button></li>
+            <div className='mobileMenuHead'>{isOpen ? <CgClose color='white' onClick={()=>setIsOpen(false)} size={40}/>:<BiMenu  onClick={()=>setIsOpen(true)} size={40}/>}</div>
           </ul>
           {
             isOpen ? <div className='mediaHead'>

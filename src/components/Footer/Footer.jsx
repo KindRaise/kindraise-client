@@ -16,7 +16,7 @@ const addressList = [
 const items = [
     { text: 'About Us', link: '/about-us' },
     { text: 'Pricing', link: '/pricing' },
-    { text: 'Contact us ↗', link: '/contact-us' },
+    { text: 'Contact us', link: '/contact-us' },
 ];
 
 const Footer = () => {
